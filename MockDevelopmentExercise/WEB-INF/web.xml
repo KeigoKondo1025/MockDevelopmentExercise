@@ -1,0 +1,192 @@
+<web-app>
+	<servlet>
+		<servlet-name>SignInServletMapping</servlet-name>
+		<servlet-class>servlet.SignInServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>SignInServletMapping</servlet-name>
+		<url-pattern>/SignInServlet</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>SignOutServletMapping</servlet-name>
+		<servlet-class>servlet.SignOutServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>SignOutServletMapping</servlet-name>
+		<url-pattern>/SignOutServlet</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>InsertUserServletMapping</servlet-name>
+		<servlet-class>servlet.InsertUserServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>InsertUserServletMapping</servlet-name>
+		<url-pattern>/InsertUserServlet</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>UserInfoServletMapping</servlet-name>
+		<servlet-class>servlet.UserInfoServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>UserInfoServletMapping</servlet-name>
+		<url-pattern>/UserInfoServlet</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>UpdateUserInfoServletMapping</servlet-name>
+		<servlet-class>servlet.UpdateUserInfoServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>UpdateUserInfoServletMapping</servlet-name>
+		<url-pattern>/UpdateUserInfoServlet</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>MyPageServletMapping</servlet-name>
+		<servlet-class>servlet.MyPageServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>MyPageServletMapping</servlet-name>
+		<url-pattern>/MyPageServlet</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>UpdatePayAndShipServletMapping</servlet-name>
+		<servlet-class>servlet.UpdatePayAndShipServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>UpdatePayAndShipServletMapping</servlet-name>
+		<url-pattern>/UpdatePayAndShipServlet</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>ListServletMapping</servlet-name>
+		<servlet-class>servlet.ListServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ListServletMapping</servlet-name>
+		<url-pattern>/ListServlet</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>ItemDetailServletMapping</servlet-name>
+		<servlet-class>servlet.ItemDetailServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ItemDetailServletMapping</servlet-name>
+		<url-pattern>/ItemDetailServlet</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>SearchServletMapping</servlet-name>
+		<servlet-class>servlet.SearchServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>SearchServletMapping</servlet-name>
+		<url-pattern>/SearchServlet</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>BuyItemServletMapping</servlet-name>
+		<servlet-class>servlet.BuyItemServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>BuyItemServletMapping</servlet-name>
+		<url-pattern>/BuyItemServlet</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>BuyConfirmServletMapping</servlet-name>
+		<servlet-class>servlet.BuyConfirmServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>BuyConfirmServletMapping</servlet-name>
+		<url-pattern>/BuyConfirmServlet</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>FavoriteServletMapping</servlet-name>
+		<servlet-class>servlet.FavoriteServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>FavoriteServletMapping</servlet-name>
+		<url-pattern>/FavoriteServlet</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>ItemEntryServletMapping</servlet-name>
+		<servlet-class>servlet.ItemEntryServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ItemEntryServletMapping</servlet-name>
+		<url-pattern>/ItemEntryServlet</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>ItemListServletMapping</servlet-name>
+		<servlet-class>servlet.ItemListServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ItemListServletMapping</servlet-name>
+		<url-pattern>/ItemListServlet</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>SellerListServletMapping</servlet-name>
+		<servlet-class>servlet.SellerListServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>SellerListServletMapping</servlet-name>
+		<url-pattern>/SellerListServlet</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>UserListServletMapping</servlet-name>
+		<servlet-class>servlet.UserListServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>UserListServletMapping</servlet-name>
+		<url-pattern>/UserListServlet</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>SalesListServletMapping</servlet-name>
+		<servlet-class>servlet.SalesListServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>SalesListServletMapping</servlet-name>
+		<url-pattern>/SalesListServlet</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>ItemDeleteServletMapping</servlet-name>
+		<servlet-class>servlet.ItemDeleteServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ItemDeleteServletMapping</servlet-name>
+		<url-pattern>/ItemDeleteServlet</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>UserDeleteServletMapping</servlet-name>
+		<servlet-class>servlet.UserDeleteServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>UserDeleteServletMapping</servlet-name>
+		<url-pattern>/UserDeleteServlet</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>UserBanServletMapping</servlet-name>
+		<servlet-class>servlet.UserBanServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>UserBanServletMapping</servlet-name>
+		<url-pattern>/UserBanServlet</url-pattern>
+	</servlet-mapping>
+
+</web-app>
+

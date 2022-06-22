@@ -1,0 +1,18 @@
+.userlist{
+	text-align: center;
+}
+
+.userlist-table{
+	width: 100%;
+	text-align: center;
+	
+}
+
+.userlist-table th{
+	width: 20%;
+	background-color: dimgray;
+}
+
+.userlist_flex{
+	display: inline-flex;
+}
