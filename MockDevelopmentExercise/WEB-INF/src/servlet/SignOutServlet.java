@@ -7,7 +7,7 @@ import javax.servlet.http.*;
 
 public class SignOutServlet extends HttpServlet {
 
-	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		HttpSession session = request.getSession();
 		session.invalidate();
