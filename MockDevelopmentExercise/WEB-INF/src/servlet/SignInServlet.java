@@ -64,7 +64,7 @@ public class SignInServlet extends HttpServlet {
 
 //			エラーが無ければトップページへ
 			} else {
-				request.getRequestDispatcher("index.jsp").forward(request, response);
+				request.getRequestDispatcher("/view/index.jsp").forward(request, response);
 			}
 		}
 	}
