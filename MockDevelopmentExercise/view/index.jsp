@@ -26,7 +26,7 @@
 			<div class="recommendation-item" id="item<%=count%>">
 				<a href="<%=request.getContextPath()%>/itemDetail?itemId=<%=item.getItemId()%>">
 					<div class="picture">
-						<img src="img/<%=item.getImage1()%>" alt="">
+						<img src="<%=request.getContextPath() %>/common/image/<%=item.getImage1()%>" alt="">
 						<p class="price"><%=moneyFormat.moneyFormat(item.getPrice())%></p>
 					</div>
 					<span class="item-name"><%=item.getItemName()%></span>
