@@ -52,7 +52,7 @@ public class BuyItemServlet extends HttpServlet {
 			cmd = "logout";
 		}finally {
 			if(error.equals("")) {
-				request.getRequestDispatcher("/BuyConfirmServlet").forward(request, response);
+				request.getRequestDispatcher("/BuyConfirm").forward(request, response);
 			}else {
 				request.setAttribute("error", error);
 				request.setAttribute("cmd", cmd);
