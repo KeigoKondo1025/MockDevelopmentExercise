@@ -28,9 +28,9 @@ if(userCookie != null) {
     <head>
         <title>神田雑貨店フリマ</title>
         <meta charset="UTF-8">
-        <link rel="stylesheet" href="css/style.css">
-        <link rel="stylesheet" href="css/menu.css">
-    <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="/common/css/style.css">
+        <link rel="stylesheet" href="/common/css/menu.css">
+    <link rel="stylesheet" href="/common/css/style.css">
         </head>
         <body>
         <%@include file="/common/header.jsp"%>
