@@ -28,7 +28,7 @@ public class SignInServlet extends HttpServlet {
 			String mail = request.getParameter("mail");
 			String password = request.getParameter("password");
 
-			User user = userDao.search(mail, password);
+			User user = userDao.search(mail, password);//ここでエラー
 
 			if (user.getMail() == null) {
 				message = "入力データが間違っています。";
@@ -38,7 +38,7 @@ public class SignInServlet extends HttpServlet {
 
 			session.setAttribute("user", user);
 
-//			userid用クッキー
+//			mail用クッキー
 			Cookie useridCookie = new Cookie("mail", mail);
 			useridCookie.setMaxAge(60 * 60 * 24 * 5);
 			response.addCookie(useridCookie);
@@ -61,10 +61,9 @@ public class SignInServlet extends HttpServlet {
 			} else if (!message.equals("")) {
 //				User情報が無い場合(入力データが間違っている場合)login.jspへ
 				request.getRequestDispatcher("/view/login.jsp").forward(request, response);
-
-//			エラーが無ければトップページへ
 			} else {
-				request.getRequestDispatcher("/view/index.jsp").forward(request, response);
+//				エラーが無ければトップページへ
+				request.getRequestDispatcher("/Index").forward(request, response);
 			}
 		}
 	}
