@@ -37,7 +37,7 @@ if(userCookie != null) {
         <div class="container">
         	<h2 align="center">ログイン</h2>
 
-            <form action="<%=request.getContextPath()%>/SignInServlet" method="post">
+            <form action="<%=request.getContextPath()%>/SignIn" method="post">
                 <table align = "center">
                     <tr>
                         <td>メールアドレス</td>
@@ -47,7 +47,7 @@ if(userCookie != null) {
                         <td>パスワード</td>
                         <td><input type=password size="20" name="password"></td> <!--password入力-->
                 </table>
-                <p><%=message %></p>
+                <p align="center"><%=message %></p>
                 <p align="center"><input type="submit" value="ログイン"></p>
             </form>
         </div>
