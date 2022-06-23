@@ -128,54 +128,54 @@ public class Item {
 	}
 
 	public void setImage1(String image1) {
-		image1 =  this.image1;
+		this.image1 = image1;
 	}
 
 	public void setImage2(String image2) {
-		image2 =  this.image2;
+		this.image2 = image2;
 	}
 
 	public void setImage3(String image3) {
-		image3 =  this.image3;
+		this.image3 = image3;
 	}
 
 	public void setImage4(String image4) {
-		image4 =  this.image4;
+		this.image4 = image4;
 	}
 
 	public void setItemState(int itemState) {
-		itemState =  this.itemState;
+		this.itemState = itemState;
 	}
 
 	public void setSellerId(int sellerId) {
-		sellerId =  this.sellerId;
+		this.sellerId = sellerId;
 	}
 
 	public void setSellerMessage(String sellerMessage) {
-		sellerMessage = this.sellerMessage;
+		 this.sellerMessage = sellerMessage;
 	}
 
 	public void setPrefectureId(int prefectureId) {
-		prefectureId = this.prefectureId;
+		this.prefectureId = prefectureId;
 	}
 
 	public void setDeleteFlag(boolean deleteFlag) {
-		deleteFlag =  this.deleteFlag;
+		this.deleteFlag = deleteFlag;
 	}
 
 	public void setItemSituation(int itemSituation) {
-		itemSituation =  this.itemSituation;
+		this.itemSituation = itemSituation;
 	}
 
 	public void setBuyerId(int buyerId) {
-		buyerId =  this.buyerId;
+		this.buyerId = buyerId;
 	}
 
 	public void setBoughtTime(String boughtTime) {
-		boughtTime =  this.boughtTime;
+		this.boughtTime = boughtTime;
 	}
 
 	public void setInsertedTime(String insertedTime) {
-		insertedTime =  this.insertedTime;
+		this.insertedTime = insertedTime;
 	}
 }
