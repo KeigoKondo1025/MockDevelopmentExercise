@@ -1,6 +1,7 @@
 <%@page contentType= "text/html; charset=UTF-8" %>
 
 <%@page import="bean.User" %>
+<%@page import="dao.IdToNameDAO" %>
 
 
 <link rel="stylesheet" href="css/style.css">
@@ -22,6 +23,11 @@ if(user.getGender() == 1){
 }else {
 	gender = "その他";
 }
+
+//都道府県名を受け取るメソッドの呼び出し
+IdToNameDAO idToNameDao = new IdToNameDAO();
+String prefecture = idToNameDao.prefectureIdToName(user.getPrefectureId());
+
 %>
 
 <html>
@@ -48,29 +54,30 @@ if(user.getGender() == 1){
 				</tr>
 				<tr>
 					<th>都道府県</th>
-					<td>東京都</td>
+					<td><%= prefecture %></td>
 				</tr>
 				<tr>
 					<th>住所</th>
-					<td>千代田区ホニャホニャ1丁目</td>
+					<td><%= user.getAddress1() + user.getAddress2() %></td>
 				</tr>
 				<tr>
 					<th>メールアドレス</th>
-					<td>kandataro@kanda.com</td>
+					<td><%= user.getMail() %></td>
 				</tr>
 				<tr>
 					<th>生年月日</th>
-					<td>2000年1月1日</td>
+					<td><%= user.getBirthday() %></td>
 				</tr>
 				<tr>
 					<th>電話番号</th>
-					<td>08011112222</td>
+					<td><%= user.getPhoneNumber() %></td>
 				</tr>
 
 
 			</table>
 			<form>
-				<a href="/myPage">マイページ</a><br> <a href="/changeUserInfo">ユーザ情報変更</a>
+				<a href="<%= request.getContextPath() %>/MyPageServlet">マイページ</a><br>
+				<a href="<%= request.getContextPath() %>/ChangeUserInfoServlet">ユーザ情報変更</a>
 			</form>
 		</div>
 	</body>
