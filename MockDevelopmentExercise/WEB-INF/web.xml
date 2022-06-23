@@ -68,7 +68,7 @@
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>ListServletMapping</servlet-name>
-		<url-pattern>/List</url-pattern>
+		<url-pattern>/Index</url-pattern>
 	</servlet-mapping>
 
 	<servlet>
