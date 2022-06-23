@@ -12,6 +12,6 @@ public class SignOutServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		session.invalidate();
 		request.setAttribute("message", "ログアウトしました。");
-		request.getRequestDispatcher("/view/index.jsp").forward(request, response);
+		request.getRequestDispatcher("/Index").forward(request, response);
 	}
 }
