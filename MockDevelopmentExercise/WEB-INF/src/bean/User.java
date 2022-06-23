@@ -11,7 +11,6 @@ public class User {
 	private int gender;			//性別
 	private String postalCode;	//郵便番号
 	private int prefectureId;		//都道府県id
-	private String prefectureName;//都道府県名
 	private String address1;		//住所1
 	private String address2;		//住所2
 	private Date birthday;			//生年月日
@@ -31,7 +30,6 @@ public class User {
 		this.gender = 0;
 		this.postalCode = null;
 		this.prefectureId = 0;
-		this.prefectureName = null;
 		this.address1 = null;
 		this.address2 = null;
 		this.birthday = new Date();
@@ -139,18 +137,6 @@ public class User {
 		this.prefectureId = prefectureId;
 	}
 	/**
-	 * @return prefectureName
-	 */
-	public String getPrefectureName() {
-		return prefectureName;
-	}
-	/**
-	 * @param prefectureName セットする prefectureName
-	 */
-	public void setPrefectureName(String prefectureName) {
-		this.prefectureName = prefectureName;
-	}
-	/**
 	 * @return address1
 	 */
 	public String getAddress1() {
@@ -237,7 +223,7 @@ public class User {
 	/**
 	 * @return isUserDeleted
 	 */
-	public boolean isUserDeleted() {
+	public boolean getIsUserDeleted() {
 		return isUserDeleted;
 	}
 	/**
@@ -249,7 +235,7 @@ public class User {
 	/**
 	 * @return isUserBanned
 	 */
-	public boolean isUserBanned() {
+	public boolean getIsUserBanned() {
 		return isUserBanned;
 	}
 	/**
