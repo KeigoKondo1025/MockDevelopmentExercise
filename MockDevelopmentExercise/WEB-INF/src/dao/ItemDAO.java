@@ -50,7 +50,7 @@ public class ItemDAO {
 				item.setImage1(rs.getString("image_1"));
 				item.setImage2(rs.getString("image_2"));
 				item.setImage3(rs.getString("image_3"));
-				item.setImage4(rs.getString("image4"));
+				item.setImage4(rs.getString("image_4"));
 				item.setItemState(rs.getInt("item_state"));
 				item.setSellerId(rs.getInt("seller_user_id"));
 				item.setDeleteFlag(rs.getBoolean("is_sent_deleted"));
