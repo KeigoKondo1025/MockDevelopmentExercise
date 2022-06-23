@@ -112,19 +112,19 @@ public class Item {
 
 	// ここからセッター
 	public void setItemId(int itemId) {
-		itemId =  this.itemId;
+		this.itemId = itemId;
 	}
 
 	public void setItemName(String itemName) {
-		itemName =  this.itemName;
+		this.itemName = itemName;
 	}
 
 	public void setCategoryId(int categoryId) {
-		categoryId =  this.categoryId;
+		this.categoryId = categoryId;
 	}
 
 	public void setPrice(int price) {
-		price =  this.price;
+		this.price = price;
 	}
 
 	public void setImage1(String image1) {
