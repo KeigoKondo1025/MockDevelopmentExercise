@@ -17,7 +17,7 @@ public class SignInServlet extends HttpServlet {
 		String cmd = "";
 		String message = "";// 入力データが間違っていた場合ログイン画面に表示する
 
-		UserDAO = userDao = new UserDAO();
+		UserDAO userDao = new UserDAO();
 
 		HttpSession session = request.getSession();
 
@@ -28,7 +28,7 @@ public class SignInServlet extends HttpServlet {
 			String mail = request.getParameter("mail");
 			String password = request.getParameter("password");
 
-			User user = userDao.selectByUser(mail, password);
+			User user = userDao.search(mail, password);
 
 			if (user.getMail() == null) {
 				message = "入力データが間違っています。";
