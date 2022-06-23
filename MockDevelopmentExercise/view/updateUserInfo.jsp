@@ -13,7 +13,7 @@ User userinfo = (User)request.getAttribute("userInfo");
 		<%@include file="../common/header.jsp" %>
 		<div class="container">
 			<h2>ユーザー情報変更</h2>
-			<form action="<%=request.getContextPath() %>/UpdateUserInfoServlet">
+			<form action="<%=request.getContextPath() %>/UpdateUserInfoServlet" method="post">
 				<table>
 					<tr>
 						<td>変更前</td>
