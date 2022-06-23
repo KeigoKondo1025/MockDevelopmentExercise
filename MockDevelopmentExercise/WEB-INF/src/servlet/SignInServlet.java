@@ -33,7 +33,6 @@ public class SignInServlet extends HttpServlet {
 
 			if (user.getMail() == null) {
 				message = "入力データが間違っています。";
-
 				return;
 			}
 
