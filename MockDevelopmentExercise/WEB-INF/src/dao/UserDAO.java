@@ -96,14 +96,14 @@ public class UserDAO {
 		return userList;
 
 	}
-	
+
 	/*
 	 * ＠メソッド名：searchByUserId
 	 * ＠説明 ：指定ユーザーIDをもとにDBからユーザ情報を取得するメソッド
 	 * ＠引数 ：ユーザID（Int userId)
 	 * ＠戻り値 ：User user(Userオブジェクト）
 	 */
-	public User searchByUserId(Int userId){
+	public User searchByUserId(int userId){
 		// 変数宣言
 		Connection con = null;	// DBコネクション
 		Statement smt = null;	// SQLステートメント
@@ -237,7 +237,7 @@ public class UserDAO {
 					+ user.getGender() + ",'" + user.getPostalCode() + "'," + user.getPrefectureId() + ",'"
 					+ user.getAddress1() + "','" + user.getAddress2() + "'," + user.getBirthday() + ",'"
 					+ user.getPhoneNumber() + user.getMail() + "'," + user.getAuthority() + "," + user.getInsertedOn()
-					+ "," + user.isUserDeleted() + "," + user.isUserBanned() + ")";
+					+ "," + user.getIsUserDeleted() + "," + user.getIsUserBanned() + ")";
 
 			// DBに接続するgetConnectionメソッドの呼び出し
 			con = getConnection();
@@ -285,8 +285,8 @@ public class UserDAO {
 					+ "',prefecture_id = " + user.getPrefectureId() + ",address1 = '" + user.getAddress1()
 					+ "',address2 = '" + user.getAddress2() + "',birthday = " + user.getBirthday() + ",phone_number = '"
 					+ user.getPhoneNumber() + "',mail = '" + user.getMail() + "',authority = " + user.getAuthority()
-					+ "',inserted_on = " + user.getInsertedOn() + "',is_user_deleted = " + user.isUserDeleted()
-					+ ",is_user_banned = " + user.isUserBanned() + " WHERE user_id = '" + user.getUserId() + "'";
+					+ "',inserted_on = " + user.getInsertedOn() + "',is_user_deleted = " + user.getIsUserDeleted()
+					+ ",is_user_banned = " + user.getIsUserBanned() + " WHERE user_id = '" + user.getUserId() + "'";
 
 			// メソッドを利用してDBに接続
 			con = getConnection();
