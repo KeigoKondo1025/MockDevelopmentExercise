@@ -9,9 +9,9 @@ public class User {
 	private String familyName; 	//苗字
 	private String firstName;  	//名前
 	private int gender;			//性別
-	private String postal_code;	//郵便番号
-	private int prefecture_id;		//都道府県id
-	private String prefecture_name;//都道府県名
+	private String postalCode;	//郵便番号
+	private int prefectureId;		//都道府県id
+	private String prefectureName;//都道府県名
 	private String address1;		//住所1
 	private String address2;		//住所2
 	private Date birthday;			//生年月日
@@ -29,9 +29,9 @@ public class User {
 		this.familyName = null;
 		this.firstName = null;
 		this.gender = 0;
-		this.postal_code = null;
-		this.prefecture_id = 0;
-		this.prefecture_name = null;
+		this.postalCode = null;
+		this.prefectureId = 0;
+		this.prefectureName = null;
 		this.address1 = null;
 		this.address2 = null;
 		this.birthday = new Date();
@@ -115,40 +115,40 @@ public class User {
 		this.gender = gender;
 	}
 	/**
-	 * @return postal_code
+	 * @return postalCode
 	 */
-	public String getPostal_code() {
-		return postal_code;
+	public String getPostalCode() {
+		return postalCode;
 	}
 	/**
-	 * @param postal_code セットする postal_code
+	 * @param postalCode セットする postalCode
 	 */
-	public void setPostal_code(String postal_code) {
-		this.postal_code = postal_code;
+	public void setPostalCode(String postalCode) {
+		this.postalCode = postalCode;
 	}
 	/**
-	 * @return prefecture_id
+	 * @return prefectureId
 	 */
-	public int getPrefecture_id() {
-		return prefecture_id;
+	public int getPrefectureId() {
+		return prefectureId;
 	}
 	/**
-	 * @param prefecture_id セットする prefecture_id
+	 * @param prefectureId セットする prefectureId
 	 */
-	public void setPrefecture_id(int prefecture_id) {
-		this.prefecture_id = prefecture_id;
+	public void setPrefectureId(int prefectureId) {
+		this.prefectureId = prefectureId;
 	}
 	/**
-	 * @return prefecture_name
+	 * @return prefectureName
 	 */
-	public String getPrefecture_name() {
-		return prefecture_name;
+	public String getPrefectureName() {
+		return prefectureName;
 	}
 	/**
-	 * @param prefecture_name セットする prefecture_name
+	 * @param prefectureName セットする prefectureName
 	 */
-	public void setPrefecture_name(String prefecture_name) {
-		this.prefecture_name = prefecture_name;
+	public void setPrefectureName(String prefectureName) {
+		this.prefectureName = prefectureName;
 	}
 	/**
 	 * @return address1
