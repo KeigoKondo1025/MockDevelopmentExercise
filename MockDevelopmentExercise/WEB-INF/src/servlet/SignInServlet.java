@@ -1,5 +1,7 @@
 package servlet;
-
+/*
+ * 作成者：高徳ちさと
+ */
 import java.io.*;
 import javax.servlet.*;
 import javax.servlet.http.*;
@@ -23,21 +25,21 @@ public class SignInServlet extends HttpServlet {
 
 			request.setCharacterEncoding("UTF-8");
 
-			String mailAddress = request.getParameter("mailAddress");
+			String mail = request.getParameter("mail");
 			String password = request.getParameter("password");
 
-			User user = userDao.selectByUser(mailAddress, password);
+			User user = userDao.selectByUser(mail, password);
 
-			if (user.getMailAddress() == null) {
+			if (user.getMail() == null) {
 				message = "入力データが間違っています。";
-				request.setAttribute("messager", message);
+				request.setAttribute("message", message);
 				return;
 			}
 
 			session.setAttribute("user", user);
 
 //			userid用クッキー
-			Cookie useridCookie = new Cookie("mailAddress", mailAddress);
+			Cookie useridCookie = new Cookie("mail", mail);
 			useridCookie.setMaxAge(60 * 60 * 24 * 5);
 			response.addCookie(useridCookie);
 
