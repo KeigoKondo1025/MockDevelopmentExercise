@@ -100,7 +100,7 @@ public class UserDAO {
 	/*
 	 * ＠メソッド名：searchByUserId
 	 * ＠説明 ：指定ユーザーIDをもとにDBからユーザ情報を取得するメソッド
-	 * ＠引数 ：ユーザID（String userId)
+	 * ＠引数 ：ユーザID（Int userId)
 	 * ＠戻り値 ：User user(Userオブジェクト）
 	 */
 	public User searchByUserId(Int userId){
