@@ -76,14 +76,15 @@ public class ItemDAO {
 	}
 
 	//指定された条件の商品を全て検索するメソッド
-	public ArrayList<Item> select(String sellerId, String price, String itemSituation){
+	public ArrayList<Item> select(String sellerId,String buyerId, String price, String itemSituation){
 		//データベース接続に利用する変数
 		Connection con = null;
 		Statement smt = null;
 
 		//sql文を文字列で設定
 		String sql = "select * from items_tb where seller_user_id like '%" + sellerId +
-				"%' and'price like '%" + price + "%' and item_situation like '%" + itemSituation + "%'";
+				"%' and  buyer_user_id like '%" + buyerId + "%' and'price like '%" + price +
+				"%' and item_situation like '%" + itemSituation + "%'";
 
 		//結果を格納する変数
 		ArrayList<Item> itemList = new ArrayList<Item>();
@@ -127,6 +128,7 @@ public class ItemDAO {
 		}
 		return itemList;
 	}
+
 
 	//データベースに商品を登録するメソッド
 	public int insert(Item item) {
