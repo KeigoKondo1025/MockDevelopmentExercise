@@ -35,7 +35,7 @@ public class MyPageServlet extends HttpServlet {
 
 			ItemDAO itemDaoObj = new ItemDAO();
 			String sellerId = "" + user.getUserId();
-			ArrayList<Item> itemList = itemDaoObj.select(sellerId, "", "");
+			ArrayList<Item> itemList = itemDaoObj.select(sellerId, "", "","");
 
 			request.setAttribute("itemList", itemList);
 			request.getRequestDispatcher("/view/myPage.jsp").forward(request, response);
