@@ -2,26 +2,25 @@
 <%@page import="java.util.*,bean.*,dao.*"%>
 
 <%
-int userId = (Integer.parseInt(request.getParameter("userId")));
+
 //buyerUserIdで買った商品のArrayListを検索
-ArrayList<Item> boughtItemList = (ArrayList<Item>)request.getAttribute("buyItemList");
+ArrayList<Item> boughtItemList = (ArrayList<Item>)request.getAttribute("boughtItemList");
 
 //sellerUserIdで売った商品のArrayListを検索
-ArrayList<Item> seldItemList = (ArrayList<Item>)request.getAttribute("sellItemList");
+ArrayList<Item> soldItemList = (ArrayList<Item>)request.getAttribute("soldItemList");
 
 int itemSituation = (Integer.parseInt(request.getParameter("itemSituation")));
 
 String strItemSituation = "";
-if(itemSituation == 0) {//これはこのページに表示しない
-	strItemSituation = "出品中";
-} else if (itemSituation == 1) {
-	strItemSituation = "入金待ち";
-} else if (itemSituation == 2) {
-	strItemSituation = "発送待ち";
-} else if (itemSituation == 3) {
-	strItemSituation = "取引済";
+for (int i = 0; i < boughtItemList.size(); i++) {
+	if (boughtItemList.get(i).getItemSituation() == 1) {
+		strItemSituation = "入金待ち";
+	} else if (boughtItemList.get(i).getItemSituation() == 2) {
+		strItemSituation = "発送待ち";
+	} else if (boughtItemList.get(i).getItemSituation() == 3) {
+		strItemSituation = "取引済";
+	}
 }
-
 
 %>
 <html lang="ja">
@@ -35,41 +34,51 @@ if(itemSituation == 0) {//これはこのページに表示しない
     <title>神田雑貨店フリマ</title>
 </head>
 <body>
-    <header>
-        <nav class="nav-normal">
-            <ul>
-                <li class="logo">神田雑貨店</li>
-                <li><a href="#">HOME</a></li>
-                <li><a href="#">商品一覧</a></li>
-                <li><input type="text" name="" id="" class="search" placeholder="なにをお探しですか？"><input type="button" value="🔍" class="search"></li>
-                <li><div class="spacer"></div></li>
-                <li><a href="#">マイページ</a></li>
-                <li><a href="#">ログアウト</a></li>
-            </ul>
-        </nav>
-    </header>
-
+    <%@include file="/common/header.jsp" %>
     <div class="container">
     	<!--購入商品-->
     	<h2>購入商品</h2>
         <div class="update-payment-shipment">
+        	<form action="<%=request.getContextPath()%>/update">
         <%
         	if(boughtItemList != null) {
         		for(int i = 0; i < boughtItemList.size(); i++) {
-        			boughtItemList.get(i).getItemName();
+        %>
+        	<p>商品名：<%=boughtItemList.get(i).getItemName()%></p>
+        	<p>ステータス：<%=strItemSituation%></p><br>
+        	<p>
+        <%	if (boughtItemList.get(i).getItemSituation() == 1) {%>
+        	<input type="hidden" name="itemSituation" value="2">
+        	<input type="hidden" name="itemId" value="<%=boughtItemList.get(i).getItemId()%>">
+        	<input type="submit" name="pay" value="入金しました">
+        <%}
         		}
         	}
         %>
-        	<p>商品名：ネックレス</p>
-        	<p>ステータス：入金済み</p><br>
+			</form>
         </div>
         <!--出品商品のうち売れたもの-->
         <h2>売れた商品</h2>
         <div class="update-payment-shipment">
-        	<p>商品名：ネックレス</p>
-        	<p>ステータス：発送済み</p><br>
+        	<form action="<%=request.getContextPath()%>/UpdatePayAndShip">
+        	<%
+        	if(soldItemList != null) {
+        		for(int i = 0; i < soldItemList.size(); i++) {
+        %>
+        	<p>商品名：<%=soldItemList.get(i).getItemName()%></p>
+        	<p>ステータス：<%=strItemSituation%></p><br>
+        	<p>
+        <%	if (boughtItemList.get(i).getItemSituation() == 2) {%>
+        	<input type="hidden" name="itemSituation" value="3">
+        	<input type="hidden" name="itemId" value="<%=soldItemList.get(i).getItemId()%>">
+        	<input type="submit" name="ship" value="発送しました">
+        <%}
+        		}
+        	}
+        %>
+        	</form>
         </div>
-        <a href="#">マイページ</a>
+        <a href="<%=request.getContextPath()%>/MyPage">マイページ</a>
     </div>
 </body>
 </html>
