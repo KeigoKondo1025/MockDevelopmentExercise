@@ -31,6 +31,8 @@ public class Item {
 		this.image4 = null;
 		this.itemState = 0;
 		this.sellerId = 0;
+		this.sellerMessage = "";
+		this.prefectureId = 0;
 		this.deleteFlag = false;
 		this.itemSituation = 0;
 		this.buyerId = 0;
