@@ -20,6 +20,13 @@ public class UserInfoServlet extends HttpServlet {
 			HttpSession session = request.getSession();
 			User user = (User)session.getAttribute("user");
 
+			//セッション切れの場合
+			if(user == null) {
+				error = "セッション切れの為、ユーザー情報表示は行えません。";
+				cmd = "logout";
+				return;
+			}
+
 			//ユーザー情報をリクエストスコープに格納する
 			request.setAttribute("user", user);
 
