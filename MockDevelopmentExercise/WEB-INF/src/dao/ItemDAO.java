@@ -81,9 +81,9 @@ public class ItemDAO {
 		Connection con = null;
 		Statement smt = null;
 
-		//sql文を文字列で設定
+
 		String sql = "select * from items_tb where seller_user_id like '%" + sellerId +
-				"%' and buyer_user_id like '%" + buyerId + "%' and price like '%" + price +
+				"%' and  (buyer_user_id like '%" + buyerId + "%' or buyer_user_id IS NULL ) and price like '%" + price +
 				"%' and item_situation like '%" + itemSituation + "%'";
 
 		//結果を格納する変数
