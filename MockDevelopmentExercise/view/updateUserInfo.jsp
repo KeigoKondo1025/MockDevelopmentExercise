@@ -48,7 +48,7 @@ User userinfo = (User)request.getAttribute("userInfo");
 					</tr>
 					<tr>
 						<td>都道府県</td>
-						<td><%= userinfo.getPrefectureName() %></td>
+						<!-- userinfo.getPrefectureName() -->
 						<td>
 							<select name="prefectureCode">
 								<option value="" selected>都道府県</option>
