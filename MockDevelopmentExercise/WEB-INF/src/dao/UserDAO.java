@@ -7,26 +7,17 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-/**
- * DB上のユーザ情報を操作するためのDAOクラス
- * @author 関優月
- */
-
 import bean.User;
 
 public class UserDAO {
 
 	private static String RDB_DRIVE = "com.mysql.jdbc.Driver";
-	private static String URL = "jdbc:mysql://localhost/mybookdb";
+	private static String URL = "jdbc:mysql://localhost/vicon_db";
 	private static String USER = "root";
 	private static String PASSWD = "root123";
 
-
 	/*
-	 * ＠メソッド名：getConnection
-	 * ＠説明 ：DBと接続するメソッド
-	 * ＠引数 ：無し
-	 * ＠戻り値 ：－
+	 * ＠メソッド名：getConnection ＠説明 ：DBと接続するメソッド ＠引数 ：無し ＠戻り値 ：－
 	 */
 	public static Connection getConnection() {
 		try {
@@ -39,10 +30,8 @@ public class UserDAO {
 	}
 
 	/*
-	 * ＠メソッド名：selectAll
-	 * ＠説明 ：DBからすべてのユーザ情報を検索するメソッド
-	 * ＠引数 ：無し
-	 * ＠戻り値 ：全件分の書籍情報を格納したUser型ArrayList
+	 * ＠メソッド名：selectAll ＠説明 ：DBからすべてのユーザ情報を検索するメソッド ＠引数 ：無し ＠戻り値
+	 * ：全件分の書籍情報を格納したUser型ArrayList
 	 */
 	public ArrayList<User> selectAll() {
 		// User型オブジェクトを格納するためのArrayListの作成
@@ -90,32 +79,35 @@ public class UserDAO {
 
 		} catch (Exception e) {
 			throw new IllegalStateException(e);
-		}finally{
-			if(smt != null){
-				try{smt.close();}catch(SQLException ignore){}	// オブジェクトsmtからリソースを解放（DBとの接続を切る）
+		} finally {
+			if (smt != null) {
+				try {
+					smt.close();
+				} catch (SQLException ignore) {
+				} // オブジェクトsmtからリソースを解放（DBとの接続を切る）
 			}
-			if(con != null){
-				try{con.close();}catch(SQLException ignore){}	// オブジェクトconからリソースを解放（DBとの接続を切る）
+			if (con != null) {
+				try {
+					con.close();
+				} catch (SQLException ignore) {
+				} // オブジェクトconからリソースを解放（DBとの接続を切る）
 			}
 		}
 		return userList;
 
 	}
 
-
 	/*
-	 * ＠メソッド名：searchByUserId
-	 * ＠説明 ：指定ユーザーIDをもとにDBからユーザ情報を取得するメソッド
-	 * ＠引数 ：ユーザID（String userId)
-	 * ＠戻り値 ：User user(Userオブジェクト）
+	 * ＠メソッド名：search ＠説明 ：DBから指定ユーザーの条件に合致する情報を取得するメソッド ＠引数 ：メールアドレス（String
+	 * mail）とパスワード（String password） ＠戻り値 ：User user(Userオブジェクト）
 	 */
-	public User searchByUserId(String userId){
+	public User search(String mail, String password) {
 		// 変数宣言
-		Connection con = null;	// DBコネクション
-		Statement smt = null;	// SQLステートメント
+		Connection con = null; // DBコネクション
+		Statement smt = null; // SQLステートメント
 
 		// ISBNによる検索用のSQL文を文字列として定義
-		String sql = "SELECT * FROM users_tb WHERE user_id ='" + userId + "'";
+		String sql = "SELECT * FROM users_tb WHERE mail ='" + mail + "' AND password = '" + password + "'";
 
 		// オブジェクト化
 		User user = new User();
@@ -130,102 +122,48 @@ public class UserDAO {
 			// SQL文を発行し、結果セットを取得
 			ResultSet rs = smt.executeQuery(sql);
 
-			// 結果セットから書籍データを取り出し、オブジェクトuserに格納
-			user.setUserId(rs.getInt("user_id"));
-			user.setUserName(rs.getString("user_name"));
-			user.setPassWord(rs.getString("password"));
-			user.setFamilyName(rs.getString("family_name"));
-			user.setFirstName(rs.getString("first_name"));
-			user.setGender(rs.getInt("gender"));
-			user.setPostalCode(rs.getString("postal_code"));
-			user.setPrefectureId(rs.getInt("prefecture_id"));
-			user.setAddress1(rs.getString("address1"));
-			user.setAddress2(rs.getString("address2"));
-			user.setBirthday(rs.getDate("birthday"));
-			user.setPhoneNumber(rs.getString("phone_number"));
-			user.setMail(rs.getString("mail"));
-			user.setAuthority(rs.getInt("authority"));
-			user.setInsertedOn(rs.getDate("inserted_on"));
-			user.setUserDeleted(rs.getBoolean("is_user_deleted"));
-			user.setUserBanned(rs.getBoolean("is_user_banned"));
-
-		}catch (Exception e) {
+			while (rs.next()) {
+				// 結果セットから書籍データを取り出し、オブジェクトuserに格納
+				user.setUserId(rs.getInt("user_id"));
+				user.setUserName(rs.getString("user_name"));
+				user.setPassWord(rs.getString("password"));
+				user.setFamilyName(rs.getString("family_name"));
+				user.setFirstName(rs.getString("first_name"));
+				user.setGender(rs.getInt("gender"));
+				user.setPostalCode(rs.getString("postal_code"));
+				user.setPrefectureId(rs.getInt("prefecture_id"));
+				user.setAddress1(rs.getString("address1"));
+				user.setAddress2(rs.getString("address2"));
+				user.setBirthday(rs.getDate("birthday"));
+				user.setPhoneNumber(rs.getString("phone_number"));
+				user.setMail(rs.getString("mail"));
+				user.setAuthority(rs.getInt("authority"));
+				user.setInsertedOn(rs.getDate("inserted_on"));
+				user.setUserDeleted(rs.getBoolean("is_user_deleted"));
+				user.setUserBanned(rs.getBoolean("is_user_banned"));
+			}
+		} catch (Exception e) {
 			throw new IllegalStateException(e);
 		} finally {
 			if (smt != null) {
-				try {smt.close();} catch (SQLException ignore) {}
+				try {
+					smt.close();
+				} catch (SQLException ignore) {
+				}
 			}
 			if (con != null) {
-				try {con.close();} catch (SQLException ignore) {}
+				try {
+					con.close();
+				} catch (SQLException ignore) {
+				}
 			}
 		}
 		return user;
 	}
 
 	/*
-	 * ＠メソッド名：search
-	 * ＠説明 ：DBから指定ユーザーの条件に合致する情報を取得するメソッド
-	 * ＠引数 ：メールアドレス（String mail）とパスワード（String password）
-	 * ＠戻り値 ：User user(Userオブジェクト）
-	 */
-	public User search(String mail,String password){
-		// 変数宣言
-		Connection con = null;	// DBコネクション
-		Statement smt = null;	// SQLステートメント
-
-		// ISBNによる検索用のSQL文を文字列として定義
-		String sql = "SELECT * FROM users_tb WHERE mail ='" + mail + "',password = '" + password + "'";
-
-		// オブジェクト化
-		User user = new User();
-
-		try {
-			// getConnection()メソッドを利用し、DBに接続
-			con = getConnection();
-
-			// SQL文を送信するための準備
-			smt = con.createStatement();
-
-			// SQL文を発行し、結果セットを取得
-			ResultSet rs = smt.executeQuery(sql);
-
-			// 結果セットから書籍データを取り出し、オブジェクトuserに格納
-			user.setUserId(rs.getInt("user_id"));
-			user.setUserName(rs.getString("user_name"));
-			user.setPassWord(rs.getString("password"));
-			user.setFamilyName(rs.getString("family_name"));
-			user.setFirstName(rs.getString("first_name"));
-			user.setGender(rs.getInt("gender"));
-			user.setPostalCode(rs.getString("postal_code"));
-			user.setPrefectureId(rs.getInt("prefecture_id"));
-			user.setAddress1(rs.getString("address1"));
-			user.setAddress2(rs.getString("address2"));
-			user.setBirthday(rs.getDate("birthday"));
-			user.setPhoneNumber(rs.getString("phone_number"));
-			user.setMail(rs.getString("mail"));
-			user.setAuthority(rs.getInt("authority"));
-			user.setInsertedOn(rs.getDate("inserted_on"));
-			user.setUserDeleted(rs.getBoolean("is_user_deleted"));
-			user.setUserBanned(rs.getBoolean("is_user_banned"));
-
-		}catch (Exception e) {
-			throw new IllegalStateException(e);
-		} finally {
-			if (smt != null) {
-				try {smt.close();} catch (SQLException ignore) {}
-			}
-			if (con != null) {
-				try {con.close();} catch (SQLException ignore) {}
-			}
-		}
-		return user;
-	}
-
-	/*
-	 * ＠メソッド名：insert
-	 * ＠説明 ：新しいユーザ情報をDBに登録するメソッド
-	 * ＠引数 ：登録する書籍データを格納したBookオブジェクト
-	 * ＠戻り値 ：無し
+	 * ＠メソッド名：insert ＠説明 ：新しいユーザ情報をDBに登録するメソッド ＠引数 ：登録する書籍データを格納したBookオブジェクト ＠戻り値
+	 * ：無し
 	 */
 	public void insert(User user) {
 
@@ -235,11 +173,12 @@ public class UserDAO {
 		try {
 
 			// 書籍情報を登録するSQL文を、文字列として変数sqlに格納
-			String sql = "INSERT INTO user_tb VALUES(" + user.getUserId() + ",'" + user.getUserName() + "'," + user.getPassWord() + "','" +
-							user.getFamilyName() + "','" + user.getFirstName() + "'," + user.getGender() + ",'" + user.getPostalCode() + "'," +
-							user.getPrefectureId() + ",'" + user.getAddress1() + "','" + user.getAddress2() + "'," + user.getBirthday() + ",'" +
-							user.getPhoneNumber() + user.getMail() + "'," + user.getAuthority() + "," + user.getInsertedOn() + "," +
-							user.getIsUserDeleted() + "," + user.getIsUserBanned() + ")";
+			String sql = "INSERT INTO user_tb VALUES(" + user.getUserId() + ",'" + user.getUserName() + "',"
+					+ user.getPassWord() + "','" + user.getFamilyName() + "','" + user.getFirstName() + "',"
+					+ user.getGender() + ",'" + user.getPostalCode() + "'," + user.getPrefectureId() + ",'"
+					+ user.getAddress1() + "','" + user.getAddress2() + "'," + user.getBirthday() + ",'"
+					+ user.getPhoneNumber() + user.getMail() + "'," + user.getAuthority() + "," + user.getInsertedOn()
+					+ "," + user.isUserDeleted() + "," + user.isUserBanned() + ")";
 
 			// DBに接続するgetConnectionメソッドの呼び出し
 			con = getConnection();
@@ -254,53 +193,65 @@ public class UserDAO {
 			throw new IllegalStateException(e);
 		} finally {
 			if (smt != null) {
-				try {smt.close();} catch (SQLException ignore) {}	// オブジェクトsmtからリソースを解放（DBとの接続を切る）
+				try {
+					smt.close();
+				} catch (SQLException ignore) {
+				} // オブジェクトsmtからリソースを解放（DBとの接続を切る）
 			}
 			if (con != null) {
-				try {con.close();} catch (SQLException ignore) {}	// オブジェクトconからリソースを解放（DBとの接続を切る）
+				try {
+					con.close();
+				} catch (SQLException ignore) {
+				} // オブジェクトconからリソースを解放（DBとの接続を切る）
 			}
 		}
 	}
 
 	/*
-	 * ＠メソッド名：update
-	 * ＠説明 ：指定されたユーザIDに該当するユーザ情報を更新するメソッド
-	 * ＠引数 ：User型のオブジェクトuser
-	 * ＠戻り値 ：int
+	 * ＠メソッド名：update ＠説明 ：指定されたユーザIDに該当するユーザ情報を更新するメソッド ＠引数 ：User型のオブジェクトuser ＠戻り値
+	 * ：無し
 	 */
-	public int update(User user){
+	public int update(User user) {
 		Connection con = null;
 		Statement smt = null;
 
 		// 更新件数を格納するint型変数の初期化
 		int rowsCount = 0;
 
-		try{
-		// 更新用のSQL文を文字列として格納
-		String sql = "UPDATE user_tb SET user_name='" + user.getUserName() + "',password = '"+ user.getPassWord() + "',family_name = '"+ user.getFamilyName() +
-						"',first_name = '"+ user.getFirstName() + "',gender = "+ user.getGender() + ",postal_code = '"+ user.getPostalCode() +
-				"',prefecture_id = "+ user.getPrefectureId() + ",address1 = '"+ user.getAddress1() + "',address2 = '"+ user.getAddress2() +
-				"',birthday = "+ user.getBirthday() + ",phone_number = '"+ user.getPhoneNumber() + "',mail = '"+ user.getMail() +
-				"',authority = "+ user.getAuthority() + "',inserted_on = "+ user.getInsertedOn() +
-				"',is_user_deleted = " + user.getIsUserDeleted() + ",is_user_banned = " + user.getIsUserBanned() + " WHERE user_id = '" + user.getUserId() + "'";
+		try {
+			// 更新用のSQL文を文字列として格納
+			String sql = "UPDATE user_tb SET user_name='" + user.getUserName() + "',password = '" + user.getPassWord()
+					+ "',family_name = '" + user.getFamilyName() + "',first_name = '" + user.getFirstName()
+					+ "',gender = " + user.getGender() + ",postal_code = '" + user.getPostalCode()
+					+ "',prefecture_id = " + user.getPrefectureId() + ",address1 = '" + user.getAddress1()
+					+ "',address2 = '" + user.getAddress2() + "',birthday = " + user.getBirthday() + ",phone_number = '"
+					+ user.getPhoneNumber() + "',mail = '" + user.getMail() + "',authority = " + user.getAuthority()
+					+ "',inserted_on = " + user.getInsertedOn() + "',is_user_deleted = " + user.isUserDeleted()
+					+ ",is_user_banned = " + user.isUserBanned() + " WHERE user_id = '" + user.getUserId() + "'";
 
-		// メソッドを利用してDBに接続
-		con = getConnection();
+			// メソッドを利用してDBに接続
+			con = getConnection();
 
-		// SQL文作成の準備
-		smt = con.createStatement();
+			// SQL文作成の準備
+			smt = con.createStatement();
 
-		// SQL文を発行し、書籍データを更新
-		rowsCount = smt.executeUpdate(sql);
+			// SQL文を発行し、書籍データを更新
+			rowsCount = smt.executeUpdate(sql);
 
-		}catch(Exception e){
+		} catch (Exception e) {
 			throw new IllegalStateException(e);
-		}finally{
-			if(smt != null){
-				try{smt.close();}catch(SQLException ignore){}
-		}
-			if(con != null){
-				try{con.close();}catch(SQLException ignore){}
+		} finally {
+			if (smt != null) {
+				try {
+					smt.close();
+				} catch (SQLException ignore) {
+				}
+			}
+			if (con != null) {
+				try {
+					con.close();
+				} catch (SQLException ignore) {
+				}
 			}
 		}
 
@@ -308,19 +259,17 @@ public class UserDAO {
 	}
 
 	/*
-	 * ＠メソッド名：delete
-	 * ＠説明 ：DBからユーザデータを削除するメソッド
-	 * ＠引数 ：削除するユーザ情報を格納したUser型オブジェクト
-	 * ＠戻り値 ：無し
+	 * ＠メソッド名：delete ＠説明 ：DBからユーザデータを削除するメソッド ＠引数 ：削除するユーザ情報を格納したUser型オブジェクト ＠戻り値
+	 * ：無し
 	 */
-	public void delete(User user){
+	public void delete(User user) {
 		Connection con = null;
 		Statement smt = null;
 
 		// 削除用のSQL文を文字列として定義
 		String sql = "DELETE FROM bookinfo WHERE user_id = '" + user.getUserId() + "'";
 
-		try{
+		try {
 			// getConnection(Dメソッドを利用し、DBに接続
 			con = getConnection();
 
@@ -334,14 +283,18 @@ public class UserDAO {
 			throw new IllegalStateException(e);
 		} finally {
 			if (smt != null) {
-				try {smt.close();} catch (SQLException ignore) {}
+				try {
+					smt.close();
+				} catch (SQLException ignore) {
+				}
 			}
 			if (con != null) {
-				try {con.close();} catch (SQLException ignore) {}
+				try {
+					con.close();
+				} catch (SQLException ignore) {
+				}
 			}
 		}
 	}
-
-	// UserIDのみでユーザ情報を検索するメソッド
 
 }
