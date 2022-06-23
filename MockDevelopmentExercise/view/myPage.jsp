@@ -2,7 +2,6 @@
 <%@page import="bean.User"%>
 <%@page import="bean.Item"%>
 <%@page import="dao.ItemDAO"%>
-<%@page import="util.MyFormat"%>
 <%@page import="java.util.ArrayList"%>
 
 <%
@@ -49,10 +48,10 @@
 				</p>
 				<!-- listで一覧、addで追加、deleteで削除 -->
 				<p class="updatePayment-Shipment">
-					<a href="/UpdatePayAndShip">入金状況／発送確認</a>
+					<a href="/updatePayAndShip.jsp">入金状況／発送確認</a>
 				</p>
 				<p class="userInfo">
-					<a href="/UserInfo">ユーザ情報</a>
+					<a href="/userInfo.jsp">ユーザ情報</a>
 				</p>
 				<h4>出品商品一覧</h4>
 
@@ -61,6 +60,7 @@
 						ArrayList<Item> itemList = (ArrayList<Item>) request.getAttribute("itemList");
 						if (itemList != null) {
 							for (int i = 0; i < itemList.size(); i++) {
+								if(itemList.get(i).getBuyerId() != 0){
 					%>
 					<div class="recommendation-item" id="item1">
 						<a href="#">
@@ -73,6 +73,7 @@
 						</a>
 					</div>
 					<%
+						}
 						}
 						} else {
 					%>
