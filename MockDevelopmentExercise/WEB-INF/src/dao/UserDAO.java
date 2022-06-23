@@ -96,6 +96,65 @@ public class UserDAO {
 		return userList;
 
 	}
+	
+	/*
+	 * ＠メソッド名：searchByUserId
+	 * ＠説明 ：指定ユーザーIDをもとにDBからユーザ情報を取得するメソッド
+	 * ＠引数 ：ユーザID（String userId)
+	 * ＠戻り値 ：User user(Userオブジェクト）
+	 */
+	public User searchByUserId(Int userId){
+		// 変数宣言
+		Connection con = null;	// DBコネクション
+		Statement smt = null;	// SQLステートメント
+
+		// ISBNによる検索用のSQL文を文字列として定義
+		String sql = "SELECT * FROM users_tb WHERE user_id ='" + userId + "'";
+
+		// オブジェクト化
+		User user = new User();
+
+		try {
+			// getConnection()メソッドを利用し、DBに接続
+			con = getConnection();
+
+			// SQL文を送信するための準備
+			smt = con.createStatement();
+
+			// SQL文を発行し、結果セットを取得
+			ResultSet rs = smt.executeQuery(sql);
+
+			// 結果セットから書籍データを取り出し、オブジェクトuserに格納
+			user.setUserId(rs.getInt("user_id"));
+			user.setUserName(rs.getString("user_name"));
+			user.setPassWord(rs.getString("password"));
+			user.setFamilyName(rs.getString("family_name"));
+			user.setFirstName(rs.getString("first_name"));
+			user.setGender(rs.getInt("gender"));
+			user.setPostalCode(rs.getString("postal_code"));
+			user.setPrefectureId(rs.getInt("prefecture_id"));
+			user.setAddress1(rs.getString("address1"));
+			user.setAddress2(rs.getString("address2"));
+			user.setBirthday(rs.getDate("birthday"));
+			user.setPhoneNumber(rs.getString("phone_number"));
+			user.setMail(rs.getString("mail"));
+			user.setAuthority(rs.getInt("authority"));
+			user.setInsertedOn(rs.getDate("inserted_on"));
+			user.setUserDeleted(rs.getBoolean("is_user_deleted"));
+			user.setUserBanned(rs.getBoolean("is_user_banned"));
+
+		}catch (Exception e) {
+			throw new IllegalStateException(e);
+		} finally {
+			if (smt != null) {
+				try {smt.close();} catch (SQLException ignore) {}
+			}
+			if (con != null) {
+				try {con.close();} catch (SQLException ignore) {}
+			}
+		}
+		return user;
+	}
 
 	/*
 	 * ＠メソッド名：search ＠説明 ：DBから指定ユーザーの条件に合致する情報を取得するメソッド ＠引数 ：メールアドレス（String
