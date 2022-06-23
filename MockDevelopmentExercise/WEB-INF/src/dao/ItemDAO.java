@@ -83,7 +83,7 @@ public class ItemDAO {
 
 		//sql文を文字列で設定
 		String sql = "select * from items_tb where seller_user_id like '%" + sellerId +
-				"%' and  buyer_user_id like '%" + buyerId + "%' and'price like '%" + price +
+				"%' and  buyer_user_id like '%" + buyerId + "%' and price like '%" + price +
 				"%' and item_situation like '%" + itemSituation + "%'";
 
 		//結果を格納する変数
@@ -107,6 +107,8 @@ public class ItemDAO {
 				item.setImage4(rs.getString("image4"));
 				item.setItemState(rs.getInt("item_state"));
 				item.setSellerId(rs.getInt("seller_user_id"));
+				item.setSellerMessage(rs.getString("seller_message"));
+				item.setPrefectureId(rs.getInt("prefwcture_id"));
 				item.setDeleteFlag(rs.getBoolean("is_sent_deleted"));
 				item.setItemSituation(rs.getInt("item_situation"));
 				item.setBuyerId(rs.getInt("buyer_user_id"));
@@ -244,7 +246,7 @@ public class ItemDAO {
 		return count;
 	}
 
-	//指定されたitemidの購入日時と取引の状態を変更するメソッド(
+	//指定されたitemIdの購入日時と取引の状態を変更するメソッド(
 	public int updateBoughtTime(int itemId,int itemSituation,String boughtTime) {
 		//データベース接続に利用する変数
 		Connection con = null;
