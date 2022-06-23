@@ -27,9 +27,9 @@ ArrayList<Item> itemList = (ArrayList<Item>)request.getAttribute("itemList");
 			<div class="userlist_flex">
 				<form action="<%= request.getContextPath() %>/SerchServlet">
 					ユーザー名：<input type=text size="10" name="userName">
-					カテゴリー：<inputtype=text size="10" name="category">
-					購入日時：<input type=text size="10" name="buyer">
-					購入者：<input type=text size="10" name="">
+					カテゴリー：<input type=text size="10" name="category">
+					購入日時：<input type=text size="10" name="boughtTime">
+					購入者：<input type=text size="10" name="buyer">
 					<input type="submit"name="search" value="検索">
 				</form>
 				<form action="<%= request.getContextPath() %>/SerchServlet">
