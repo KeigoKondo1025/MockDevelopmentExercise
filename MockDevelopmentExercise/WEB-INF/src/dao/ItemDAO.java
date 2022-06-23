@@ -76,7 +76,7 @@ public class ItemDAO {
 	}
 
 	//指定された条件の商品を全て検索するメソッド
-	public ArrayList<Item> select(String sellerId, int price, int itemSituation){
+	public ArrayList<Item> select(String sellerId, String price, String itemSituation){
 		//データベース接続に利用する変数
 		Connection con = null;
 		Statement smt = null;
