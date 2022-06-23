@@ -67,8 +67,8 @@ public class UserDAO {
 				user.setFamilyName(rs.getString("family_name"));
 				user.setFirstName(rs.getString("first_name"));
 				user.setGender(rs.getInt("gender"));
-				user.setPostal_code(rs.getString("postal_code"));
-				user.setPrefecture_id(rs.getInt("prefecture_id"));
+				user.setPostalCode(rs.getString("postal_code"));
+				user.setPrefectureId(rs.getInt("prefecture_id"));
 				user.setAddress1(rs.getString("address1"));
 				user.setAddress2(rs.getString("address2"));
 				user.setBirthday(rs.getDate("birthday"));
@@ -132,8 +132,8 @@ public class UserDAO {
 			user.setFamilyName(rs.getString("family_name"));
 			user.setFirstName(rs.getString("first_name"));
 			user.setGender(rs.getInt("gender"));
-			user.setPostal_code(rs.getString("postal_code"));
-			user.setPrefecture_id(rs.getInt("prefecture_id"));
+			user.setPostalCode(rs.getString("postal_code"));
+			user.setPrefectureId(rs.getInt("prefecture_id"));
 			user.setAddress1(rs.getString("address1"));
 			user.setAddress2(rs.getString("address2"));
 			user.setBirthday(rs.getDate("birthday"));
@@ -172,8 +172,8 @@ public class UserDAO {
 
 			// 書籍情報を登録するSQL文を、文字列として変数sqlに格納
 			String sql = "INSERT INTO user_tb VALUES(" + user.getUserId() + ",'" + user.getUserName() + "'," + user.getPassWord() + "','" +
-							user.getFamilyName() + "','" + user.getFirstName() + "'," + user.getGender() + ",'" + user.getPostal_code() + "'," +
-							user.getPrefecture_id() + ",'" + user.getAddress1() + "','" + user.getAddress2() + "'," + user.getBirthday() + ",'" +
+							user.getFamilyName() + "','" + user.getFirstName() + "'," + user.getGender() + ",'" + user.getPostalCode() + "'," +
+							user.getPrefectureId() + ",'" + user.getAddress1() + "','" + user.getAddress2() + "'," + user.getBirthday() + ",'" +
 							user.getPhoneNumber() + user.getMail() + "'," + user.getAuthority() + "," + user.getInsertedOn() + "," +
 							user.isUserDeleted() + "," + user.isUserBanned() + ")";
 
@@ -204,15 +204,18 @@ public class UserDAO {
 	 * ＠引数 ：User型のオブジェクトuser
 	 * ＠戻り値 ：無し
 	 */
-	public void update(User user){
+	public int update(User user){
 		Connection con = null;
 		Statement smt = null;
+
+		// 更新件数を格納するint型変数の初期化
+		int rowsCount = 0;
 
 		try{
 		// 更新用のSQL文を文字列として格納
 		String sql = "UPDATE user_tb SET user_name='" + user.getUserName() + "',password = '"+ user.getPassWord() + "',family_name = '"+ user.getFamilyName() +
-						"',first_name = '"+ user.getFirstName() + "',gender = "+ user.getGender() + ",postal_code = '"+ user.getPostal_code() +
-				"',prefecture_id = "+ user.getPrefecture_id() + ",address1 = '"+ user.getAddress1() + "',address2 = '"+ user.getAddress2() +
+						"',first_name = '"+ user.getFirstName() + "',gender = "+ user.getGender() + ",postal_code = '"+ user.getPostalCode() +
+				"',prefecture_id = "+ user.getPrefectureId() + ",address1 = '"+ user.getAddress1() + "',address2 = '"+ user.getAddress2() +
 				"',birthday = "+ user.getBirthday() + ",phone_number = '"+ user.getPhoneNumber() + "',mail = '"+ user.getMail() +
 				"',authority = "+ user.getAuthority() + "',inserted_on = "+ user.getInsertedOn() +
 				"',is_user_deleted = " + user.isUserDeleted() + ",is_user_banned = " + user.isUserBanned() + " WHERE user_id = '" + user.getUserId() + "'";
@@ -224,7 +227,7 @@ public class UserDAO {
 		smt = con.createStatement();
 
 		// SQL文を発行し、書籍データを更新
-		int rowsCount = smt.executeUpdate(sql);
+		rowsCount = smt.executeUpdate(sql);
 
 		}catch(Exception e){
 			throw new IllegalStateException(e);
@@ -236,6 +239,8 @@ public class UserDAO {
 				try{con.close();}catch(SQLException ignore){}
 			}
 		}
+
+		return rowsCount;
 	}
 
 	/*
@@ -272,6 +277,5 @@ public class UserDAO {
 			}
 		}
 	}
-
 
 }
