@@ -104,11 +104,11 @@ public class ItemDAO {
 				item.setImage1(rs.getString("image_1"));
 				item.setImage2(rs.getString("image_2"));
 				item.setImage3(rs.getString("image_3"));
-				item.setImage4(rs.getString("image4"));
+				item.setImage4(rs.getString("image_4"));
 				item.setItemState(rs.getInt("item_state"));
 				item.setSellerId(rs.getInt("seller_user_id"));
 				item.setSellerMessage(rs.getString("seller_message"));
-				item.setPrefectureId(rs.getInt("prefwcture_id"));
+				item.setPrefectureId(rs.getInt("prefecture_id"));
 				item.setDeleteFlag(rs.getBoolean("is_sent_deleted"));
 				item.setItemSituation(rs.getInt("item_situation"));
 				item.setBuyerId(rs.getInt("buyer_user_id"));
@@ -188,6 +188,39 @@ public class ItemDAO {
 
 		//sql文を文字列で設定
 		String sql = "update items_tb set is_sent_deleted = '" + deleteFlag +
+				"' where item_id = '" + itemId + "'";
+
+		//結果を格納する変数
+		int count = 0;
+
+		try {
+			con = ItemDAO.getConnection();
+			smt = con.createStatement();
+
+			count = smt.executeUpdate(sql);
+
+
+		} catch(Exception e) {
+			throw new IllegalStateException(e);
+		}finally {
+			if(smt != null){
+				try{smt.close();}catch(SQLException ignore){}
+			}
+			if(con != null){
+				try{con.close();}catch(SQLException ignore){}
+			}
+		}
+		return count;
+	}
+
+	//指定されたitemidの購入者idを変更するメソッド
+	public int updateBuyerId(int itemId,int buyerId) {
+		//データベース接続に利用する変数
+		Connection con = null;
+		Statement smt = null;
+
+		//sql文を文字列で設定
+		String sql = "update items_tb set buyer_user_id = '" + buyerId +
 				"' where item_id = '" + itemId + "'";
 
 		//結果を格納する変数
