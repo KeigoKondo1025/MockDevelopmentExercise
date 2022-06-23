@@ -1,39 +1,23 @@
-<%@page contentType="text/html; charset=UTF-8"%>
-<%@page import="bean.User"%>
-<%@page import="bean.Item"%>
-<%@page import="dao.ItemDAO"%>
-<%@page import="java.util.ArrayList"%>
+<%@page contentType="text/html;charset=UTF-8"%>
+<%@page import="java.util.ArrayList,bean.User,bean.Item,dao.ItemDAO,util.MyFormat"%>
 
 <%
-	User user = new User();
-	//User user = (User)session.getAttribute("user");
+	//User user = new User(); // テスト用結合後コメントアウト
+
+	User user = (User)session.getAttribute("user"); // テスト時コメントアウト
 	ItemDAO itemDaoObj = new ItemDAO();
+	MyFormat moneyFormat = new MyFormat();
 %>
 <html>
 <head>
 <meta charset="UTF-8">
-<link rel="stylesheet" href="<%=request.getContextPath()%>css/style.css">
-<link rel="stylesheet" href="<%=request.getContextPath()%>css/menu.css">
-<link rel="recommendation" href="<%=request.getContextPath()%>css/recommendation.css">
-	href="<%=request.getContextPath()%>css/recommendation.css">
-<title>神田雑貨店フリマ マイページ</title>
+<link rel="stylesheet" href="<%=request.getContextPath()%>/common/css/style.css">
+<link rel="stylesheet" href="<%=request.getContextPath()%>/common/css/menu.css">
+<link rel="recommendation"	href="<%=request.getContextPath()%>/common/css/recommendation.css">
+<title>Viconマイぺージ</title>
 </head>
 <body>
-	<!--  ヘッダーをインクルードする -->
-	<header>
-		<nav class="nav-normal">
-			<ul>
-				<li class="logo">神田雑貨店</li>
-				<li><a href="#">HOME</a></li>
-				<li><a href="#">商品一覧</a></li>
-				<li><input type="text" name="" id="" class="search"
-					placeholder="なにをお探しですか？"><input type="button" value="🔍"
-					class="search"></li>
-				<li><div class="spacer"></div></li>
-				<li><a href="#">ログアウト</a></li>
-			</ul>
-		</nav>
-	</header>
+<%@include file="/common/header.jsp"%>
 	<div class="container">
 
 		<h1>マイページ</h1>
@@ -57,24 +41,25 @@
 
 				<div class="item-list">
 					<%
-						ArrayList<Item> itemList = (ArrayList<Item>) request.getAttribute("itemList");
+					//ArrayList<Item> itemList = new ArrayList<Item>();// テスト用結合後コメントアウト
+					//itemList = itemDaoObj.select("1003", "", "", ""); // テスト用結合後コメントアウト
+
+						ArrayList<Item> itemList = (ArrayList<Item>) request.getAttribute("itemList"); // テスト時コメントアウト
 						if (itemList != null) {
 							for (int i = 0; i < itemList.size(); i++) {
-								if(itemList.get(i).getBuyerId() != 0){
 					%>
 					<div class="recommendation-item" id="item1">
-						<a href="#">
+						<a href="<%=request.getContextPath()%>/itemDetail">
 							<div class="picture">
 								<img
 									src="<%=request.getContextPath()%><%=itemList.get(i).getImage1()%>"
-									alt="">
-								<p class="price"><%=itemList.get(i).getPrice()%></p>
+									alt="NO IMAGE">
+								<p class="price"><%=moneyFormat.moneyFormat(itemList.get(i).getPrice())%></p>
 							</div> <span class="item-name"><%=itemList.get(i).getItemName()%></span>
 						</a>
 					</div>
 					<%
-						}
-						}
+							}
 						} else {
 					%>
 					<br> <br>
