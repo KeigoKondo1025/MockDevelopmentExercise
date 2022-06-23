@@ -125,23 +125,25 @@ public class UserDAO {
 			ResultSet rs = smt.executeQuery(sql);
 
 			// 結果セットから書籍データを取り出し、オブジェクトuserに格納
-			user.setUserId(rs.getInt("user_id"));
-			user.setUserName(rs.getString("user_name"));
-			user.setPassWord(rs.getString("password"));
-			user.setFamilyName(rs.getString("family_name"));
-			user.setFirstName(rs.getString("first_name"));
-			user.setGender(rs.getInt("gender"));
-			user.setPostalCode(rs.getString("postal_code"));
-			user.setPrefectureId(rs.getInt("prefecture_id"));
-			user.setAddress1(rs.getString("address1"));
-			user.setAddress2(rs.getString("address2"));
-			user.setBirthday(rs.getDate("birthday"));
-			user.setPhoneNumber(rs.getString("phone_number"));
-			user.setMail(rs.getString("mail"));
-			user.setAuthority(rs.getInt("authority"));
-			user.setInsertedOn(rs.getDate("inserted_on"));
-			user.setUserDeleted(rs.getBoolean("is_user_deleted"));
-			user.setUserBanned(rs.getBoolean("is_user_banned"));
+			if(rs.next()) {
+				user.setUserId(rs.getInt("user_id"));
+				user.setUserName(rs.getString("user_name"));
+				user.setPassWord(rs.getString("password"));
+				user.setFamilyName(rs.getString("family_name"));
+				user.setFirstName(rs.getString("first_name"));
+				user.setGender(rs.getInt("gender"));
+				user.setPostalCode(rs.getString("postal_code"));
+				user.setPrefectureId(rs.getInt("prefecture_id"));
+				user.setAddress1(rs.getString("address1"));
+				user.setAddress2(rs.getString("address2"));
+				user.setBirthday(rs.getDate("birthday"));
+				user.setPhoneNumber(rs.getString("phone_number"));
+				user.setMail(rs.getString("mail"));
+				user.setAuthority(rs.getInt("authority"));
+				user.setInsertedOn(rs.getDate("inserted_on"));
+				user.setUserDeleted(rs.getBoolean("is_user_deleted"));
+				user.setUserBanned(rs.getBoolean("is_user_banned"));
+			}
 
 		}catch (Exception e) {
 			throw new IllegalStateException(e);
