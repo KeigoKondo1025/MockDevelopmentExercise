@@ -1,7 +1,8 @@
 <%@page contentType= "text/html; charset=UTF-8" %>
-<%@page import="bean.User, java.sql.Date, java.text.*" %>
+<%@page import="bean.User, java.sql.Date, java.text.*, dao.IdToNameDAO" %>
 <%
 User userinfo = (User)request.getAttribute("userInfo");
+String prefectureName = null;
 %>
 <html>
 	<head>
@@ -48,7 +49,11 @@ User userinfo = (User)request.getAttribute("userInfo");
 					</tr>
 					<tr>
 						<td>都道府県</td>
-						<!-- userinfo.getPrefectureName() -->
+						<%
+							IdToNameDAO idToNameDao = new IdToNameDAO();
+							prefectureName = idToNameDao.prefectureIdToName(userinfo.getPrefectureId());
+						%>
+						<td><%= prefectureName %></td>
 						<td>
 							<select name="prefectureCode">
 								<option value="" selected>都道府県</option>
