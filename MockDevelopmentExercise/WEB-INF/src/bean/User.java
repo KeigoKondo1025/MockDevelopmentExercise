@@ -3,23 +3,43 @@ package bean;
 import java.util.*;
 
 public class User {
-	private int userId;
-	private String userName;
-	private String passWord;
-	private String familyName;
-	private String firstName;
-	private int gender;
-	private String postal_code;
-	private int prefecture_id;
-	private String address1;
-	private String address2;
-	private Date birthday;
-	private String phoneNumber;
-	private String mail;
-	private int authority;
-	private Date insertedOn;
-	private boolean isUserDeleted;
-	private boolean isUserBanned;
+	private int userId;			//ユーザーid
+	private String userName;		//ユーザー名
+	private String passWord;		//パスワード
+	private String familyName; 	//苗字
+	private String firstName;  	//名前
+	private int gender;			//性別
+	private String postal_code;	//郵便番号
+	private int prefecture_id;		//都道府県id
+	private String address1;		//住所1
+	private String address2;		//住所2
+	private Date birthday;			//生年月日
+	private String phoneNumber;	//電話番号
+	private String mail;			//メールアドレス
+	private int authority;			//権限
+	private Date insertedOn;		//登録日時
+	private boolean isUserDeleted;//ユーザー削除
+	private boolean isUserBanned;//利用停止
+
+	public User() {
+		this.userId = 0;
+		this.userName = null;
+		this.passWord = null;
+		this.familyName = null;
+		this.firstName = null;
+		this.gender = 0;
+		this.postal_code = null;
+		this.prefecture_id = 0;
+		this.address1 = null;
+		this.address2 = null;
+		this.birthday = new Date();
+		this.phoneNumber = null;
+		this.mail = null;
+		this.authority = 0;
+		this.insertedOn = new Date();
+		this.isUserDeleted = true;
+		this.isUserBanned = true;
+	}
 	/**
 	 * @return userId
 	 */
