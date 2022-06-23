@@ -14,7 +14,7 @@
 <meta charset="UTF-8">
 <link rel="stylesheet" href="<%=request.getContextPath()%>css/style.css">
 <link rel="stylesheet" href="<%=request.getContextPath()%>css/menu.css">
-<link rel="recommendation"
+<link rel="recommendation" href="<%=request.getContextPath()%>css/recommendation.css">
 	href="<%=request.getContextPath()%>css/recommendation.css">
 <title>神田雑貨店フリマ マイページ</title>
 </head>
