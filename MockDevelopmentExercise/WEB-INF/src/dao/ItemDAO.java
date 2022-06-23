@@ -76,13 +76,14 @@ public class ItemDAO {
 	}
 
 	//指定された条件の商品を全て検索するメソッド
-	public ArrayList<Item> select(){
+	public ArrayList<Item> select(String sellerId, int price, int itemSituation){
 		//データベース接続に利用する変数
 		Connection con = null;
 		Statement smt = null;
 
 		//sql文を文字列で設定
-		String sql = "select * from items_tb";
+		String sql = "select * from items_tb where seller_user_id like '%" + sellerId +
+				"%' and'price like '%" + price + "%' and item_situation like '%" + itemSituation + "%'";
 
 		//結果を格納する変数
 		ArrayList<Item> itemList = new ArrayList<Item>();
@@ -144,6 +145,112 @@ public class ItemDAO {
 				"'," + item.getItemSituation() + "," + item.getBuyerId() +
 				",'" + item.getBoughtTime() + "','" + item.getInsertedTime() +
 				"')";
+
+		//結果を格納する変数
+		int count = 0;
+
+		try {
+			con = ItemDAO.getConnection();
+			smt = con.createStatement();
+
+			count = smt.executeUpdate(sql);
+
+
+		} catch(Exception e) {
+			throw new IllegalStateException(e);
+		}finally {
+			if(smt != null){
+				try{smt.close();}catch(SQLException ignore){}
+			}
+			if(con != null){
+				try{con.close();}catch(SQLException ignore){}
+			}
+		}
+		return count;
+	}
+
+	//指定されたitemidの削除フラグを変更するメソッド
+	public int updateDelete(int itemId,boolean deleteFlag) {
+		//データベース接続に利用する変数
+		Connection con = null;
+		Statement smt = null;
+
+		//受けとったdeleteFlagを変更する
+		if(deleteFlag == true) {
+			deleteFlag = false;
+		}else {
+			deleteFlag = true;
+		}
+
+		//sql文を文字列で設定
+		String sql = "update items_tb set is_sent_deleted = '" + deleteFlag +
+				"' where item_id = '" + itemId + "'";
+
+		//結果を格納する変数
+		int count = 0;
+
+		try {
+			con = ItemDAO.getConnection();
+			smt = con.createStatement();
+
+			count = smt.executeUpdate(sql);
+
+
+		} catch(Exception e) {
+			throw new IllegalStateException(e);
+		}finally {
+			if(smt != null){
+				try{smt.close();}catch(SQLException ignore){}
+			}
+			if(con != null){
+				try{con.close();}catch(SQLException ignore){}
+			}
+		}
+		return count;
+	}
+
+	//指定されたitemidの取引の状態を変更するメソッド
+	public int updateItemSituation(int itemId,int itemSituation) {
+		//データベース接続に利用する変数
+		Connection con = null;
+		Statement smt = null;
+
+		//sql文を文字列で設定
+		String sql = "update items_tb set item_situation = '" + itemSituation +
+				"' where item_id = '" + itemId + "'";
+
+		//結果を格納する変数
+		int count = 0;
+
+		try {
+			con = ItemDAO.getConnection();
+			smt = con.createStatement();
+
+			count = smt.executeUpdate(sql);
+
+
+		} catch(Exception e) {
+			throw new IllegalStateException(e);
+		}finally {
+			if(smt != null){
+				try{smt.close();}catch(SQLException ignore){}
+			}
+			if(con != null){
+				try{con.close();}catch(SQLException ignore){}
+			}
+		}
+		return count;
+	}
+
+	//指定されたitemidの購入日時と取引の状態を変更するメソッド(
+	public int updateBoughtTime(int itemId,int itemSituation,String boughtTime) {
+		//データベース接続に利用する変数
+		Connection con = null;
+		Statement smt = null;
+
+		//sql文を文字列で設定
+		String sql = "update items_tb set item_situation = '" + itemSituation + "', bought_at = '" + boughtTime +
+				"' where item_id = '" + itemId + "'";
 
 		//結果を格納する変数
 		int count = 0;
