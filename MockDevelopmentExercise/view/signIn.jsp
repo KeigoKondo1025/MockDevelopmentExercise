@@ -27,8 +27,8 @@
             <form action="<%=request.getContextPath()%>/SignInServlet" method="post">
                 <table align = "center">
                     <tr>
-                        <td>ユーザー</td>
-                        <td><input type=text size="20" name="userid"></td> <!--ID入力-->
+                        <td>メールアドレス</td>
+                        <td><input type=text size="20" name="mail"></td> <!--メールアドレス入力-->
                     </tr>
                     <tr>
                         <td>パスワード</td>
