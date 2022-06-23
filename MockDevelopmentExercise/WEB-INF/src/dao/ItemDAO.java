@@ -213,7 +213,7 @@ public class ItemDAO {
 		return count;
 	}
 
-	//指定されたitemidの取引の状態を変更するメソッド
+	//指定されたitemidの取引の状態を変更するメソッド(0:出品中,1:入金待ち,2:発送待ち,3:取引済)
 	public int updateItemSituation(int itemId,int itemSituation) {
 		//データベース接続に利用する変数
 		Connection con = null;
