@@ -11,8 +11,7 @@
 	<nav class="nav-normal <%if(authority == 2){out.print("nav-admin");}%>">
 		<ul>
 			<li class="logo">Vicon</li>
-			<li><a href="<%=request.getContextPath()%>/view/index.jsp">HOME</a></li>
-			<li><a href="<%=request.getContextPath()%>/List">商品一覧</a></li>
+			<li><a href="<%=request.getContextPath()%>/Index">HOME</a></li>
 			<li><input type="text" name="" id="" class="search"
 				placeholder="なにをお探しですか？"><input type="button" value="🔍"
 				class="search"></li>
@@ -22,6 +21,7 @@
 				<li><a href="<%=request.getContextPath()%>/view/signIn.jsp">ログイン</a></li>
 			<%}else { %>
 				<li><a href="<%=request.getContextPath()%>/MyPage">マイページ</a></li>
+				<li><a href="<%=request.getContextPath() %>/SignOut">ログアウト</a></li>
 			<%} %>
 		</ul>
 	</nav>
