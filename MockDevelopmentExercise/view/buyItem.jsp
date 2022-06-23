@@ -25,7 +25,7 @@ Item item = (Item)request.getAttribute("item");
 		<div class="container">
 			<div class="item-detail">
 				<div class="item-img-box">
-					<img src="img/sample.png" alt="" srcset="" class="item-detail">
+					<img src="<%= item.getImage1() %>" alt="" srcset="" class="item-detail">
 				</div>
 				<div class="item-info buy-item-info">
 					<form action="<%= request.getContextPath() %>/BuyItemServlet" method="POST">
