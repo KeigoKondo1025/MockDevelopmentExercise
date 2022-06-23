@@ -44,7 +44,5 @@ public class UserInfoServlet extends HttpServlet {
 				request.getRequestDispatcher("/view/error.jsp").forward(request, response);
 			}
 		}
-
-
 	}
 }
