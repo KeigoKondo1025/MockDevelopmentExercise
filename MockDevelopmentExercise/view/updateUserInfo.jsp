@@ -43,12 +43,12 @@ User userinfo = (User)request.getAttribute("userInfo");
 					</tr>
 					<tr>
 						<td>郵便番号</td>
-						<td>〒<%= userinfo.getPostal_code() %></td>
+						<td>〒<%= userinfo.getPostalCode() %></td>
 						<td>〒<input type="text" name="postalCpde1" size="4"><input type="text" name="postalCode2" size="5"></td>
 					</tr>
 					<tr>
 						<td>都道府県</td>
-						<td><%= userinfo.getPrefecture_name() %></td>
+						<td><%= userinfo.getPrefectureName() %></td>
 						<td>
 							<select name="prefectureCode">
 								<option value="" selected>都道府県</option>
