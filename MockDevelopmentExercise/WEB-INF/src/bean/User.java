@@ -11,6 +11,7 @@ public class User {
 	private int gender;			//性別
 	private String postal_code;	//郵便番号
 	private int prefecture_id;		//都道府県id
+	private String prefecture_name;//都道府県名
 	private String address1;		//住所1
 	private String address2;		//住所2
 	private Date birthday;			//生年月日
@@ -30,6 +31,7 @@ public class User {
 		this.gender = 0;
 		this.postal_code = null;
 		this.prefecture_id = 0;
+		this.prefecture_name = null;
 		this.address1 = null;
 		this.address2 = null;
 		this.birthday = new Date();
@@ -135,6 +137,18 @@ public class User {
 	 */
 	public void setPrefecture_id(int prefecture_id) {
 		this.prefecture_id = prefecture_id;
+	}
+	/**
+	 * @return prefecture_name
+	 */
+	public String getPrefecture_name() {
+		return prefecture_name;
+	}
+	/**
+	 * @param prefecture_name セットする prefecture_name
+	 */
+	public void setPrefecture_name(String prefecture_name) {
+		this.prefecture_name = prefecture_name;
 	}
 	/**
 	 * @return address1
