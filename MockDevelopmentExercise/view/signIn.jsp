@@ -10,17 +10,7 @@
     <link rel="stylesheet" href="css/style.css">
         </head>
         <body>
-         <header>
-	        <nav class="nav-normal">
-	            <ul>
-	                <li class="logo">神田雑貨店</li>
-	                <li><a href="#">トップページ</a></li>
-	                <li><a href="#">商品一覧</a></li>
-	                <li><input type="text" name="" id="" class="search" placeholder="なにをお探しですか？"><input type="button" value="🔍" class="search"></li>
-	                <li><div class="spacer"></div></li>
-	            </ul>
-	    	</nav>
-    	</header>
+        <%@include file="/common/header.jsp"%>
         <div class="container">
         	<h2 align="center">ログイン</h2>
 
