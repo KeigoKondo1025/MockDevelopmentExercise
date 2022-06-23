@@ -1,4 +1,5 @@
 package servlet;
+
 /*
  * 作成者：高徳ちさと
  */
@@ -28,11 +29,11 @@ public class SignInServlet extends HttpServlet {
 			String mail = request.getParameter("mail");
 			String password = request.getParameter("password");
 
-			User user = userDao.search(mail, password);//ここでエラー
+			User user = userDao.search(mail, password);
 
 			if (user.getMail() == null) {
 				message = "入力データが間違っています。";
-				request.setAttribute("message", message);
+
 				return;
 			}
 
@@ -60,7 +61,8 @@ public class SignInServlet extends HttpServlet {
 				request.getRequestDispatcher("/view/error.jsp").forward(request, response);
 			} else if (!message.equals("")) {
 //				User情報が無い場合(入力データが間違っている場合)login.jspへ
-				request.getRequestDispatcher("/view/login.jsp").forward(request, response);
+				request.setAttribute("message", message);
+				request.getRequestDispatcher("/view/signIn.jsp").forward(request, response);
 			} else {
 //				エラーが無ければトップページへ
 				request.getRequestDispatcher("/Index").forward(request, response);
