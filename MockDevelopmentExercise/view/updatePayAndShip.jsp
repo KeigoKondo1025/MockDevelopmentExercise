@@ -9,7 +9,7 @@ ArrayList<Item> boughtItemList = (ArrayList<Item>)request.getAttribute("boughtIt
 //sellerUserIdで売った商品のArrayListを検索
 ArrayList<Item> soldItemList = (ArrayList<Item>)request.getAttribute("soldItemList");
 
-int itemSituation = (Integer.parseInt(request.getParameter("itemSituation")));
+int itemSituation = (Integer.parseInt(request.getParameter("itemSituation")));//NumberFormatException
 
 String strItemSituation = "";
 for (int i = 0; i < boughtItemList.size(); i++) {
