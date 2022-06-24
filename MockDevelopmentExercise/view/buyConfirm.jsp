@@ -1,4 +1,8 @@
 <%@page contentType= "text/html;charset=UTF-8" %>
+<%@page import="bean.Item"%>
+<%
+Item item = (Item)request.getAttribute("item");
+%>
 <html>
 	<head>
 		<title>購入確認</title>
@@ -8,11 +12,20 @@
 	<body>
 		<%@include file="../common/header.jsp" %>
 		<div class="container">
-			<p>ご購入ありがとうございます！<br>
-				メールを送信しましたのでご確認ください。<br>
-			</p>
+			<%
+				if(item != null){
+			%>
+			<p>商品名</p>
+			<%= item.getItemName() %>
+			<p>値段</p>
+			<%= item.getPrice() %>
+			<p>購入日時</p>
+			<%= item.getBoughtTime() %>
+			<%
+				}
+			%>
 			<br>
-			<a href="<%= request.getContextPath() %>/MyPage">トップページ</a>
+			<a href="<%= request.getContextPath() %>/List">トップページ</a>
 		</div>
 	</body>
 </html>

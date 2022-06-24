@@ -1,4 +1,4 @@
-<%@page contentType= "text/html; charset=UTF-8" %>
+<%@page contentType= "text/html;charset=UTF-8" %>
 <%@page import="bean.User, java.sql.Date, java.text.*, dao.IdToNameDAO" %>
 <%
 User userinfo = (User)request.getAttribute("userInfo");
