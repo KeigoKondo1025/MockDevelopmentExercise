@@ -26,9 +26,9 @@ ArrayList<Item> itemList = (ArrayList<Item>)request.getAttribute("itemList");
 			<h2>商品ごとの売上げ一覧</h2>
 			<div class="userlist_flex">
 				<form action="<%= request.getContextPath() %>/Serch" method="get">
-					ユーザー名：<input type="text" name="userName">
+					出品者名：<input type="text" name="userName">
 					カテゴリー：<input type="text" name="category">
-					購入者：<input type="text" name="buyer">
+					購入者名：<input type="text" name="buyer">
 					<input type="submit"name="search" value="検索">
 				</form>
 				<form action="<%= request.getContextPath() %>/Serch" method="get">
