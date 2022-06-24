@@ -31,9 +31,12 @@ public class UpdatePayAndShipServlet extends HttpServlet {
 			ItemDAO itemDao = new ItemDAO();
 			UserDAO userDao = new UserDAO();
 
-//			買った人と売った人のuserIdをリクエストスコープで取得する、このidは商品を検索するときに使う
-			String buyerId = (String)request.getAttribute("buyerId");
-			String sellerId = (String)request.getAttribute("sellerId");
+//			user情報をセッションから取得
+			HttpSession session = request.getSession();
+			User user = (User)session.getAttribute("user");
+
+//			userIdは購入した商品と売った商品をつなぐのに使う
+			int userId = user.getUserId();
 
 //			ボタンを押された商品の商品idを格納する
 			int itemId = (Integer.parseInt(request.getParameter("itemId")));
@@ -41,21 +44,21 @@ public class UpdatePayAndShipServlet extends HttpServlet {
 			//商品の取引情報を格納する変数
 			//出品中→0、入金待ち→1、発送待ち→2、取引済→3
 			int itemSituation = (Integer.parseInt(request.getParameter("itemSituation")));
+			request.setAttribute("itemSituation", itemSituation);
 
 			//商品の取引情報を更新
 			itemDao.updateItemSituation(itemId, itemSituation);
 
-//			buyerUserIdで購入した商品のArrayListを検索
-			ArrayList<Item> boughtItemList = itemDao.select("",buyerId, "", "");
-			request.setAttribute("boughtItemList", boughtItemList);
+//			buyerUserIdで購入した商品のArrayListを検索、jspで購入した商品を表示するのに使う
+			ArrayList<Item> buyItemList = itemDao.selectBuyerId(userId);
+			request.setAttribute("buyItemList", buyItemList);
 
-//			buyerUserIdで売った商品のArrayListを検索
-			ArrayList<Item> soldItemList = itemDao.select(sellerId,"","", "");
-			request.setAttribute("soldItemList", soldItemList);
+//			buyerUserIdで売った商品のArrayListを検索、jspで売った商品を表示するのに使う
+			ArrayList<Item> sellItemList = itemDao.selectSellerId(userId);
+			request.setAttribute("sellItemList", sellItemList);
 
 		} catch (IllegalStateException e) {
 			error = "DB接続エラーの為、更新は出来ません。";
-
 		} finally {
 			if (!error.equals("")) {
 				request.setAttribute("error", error);
