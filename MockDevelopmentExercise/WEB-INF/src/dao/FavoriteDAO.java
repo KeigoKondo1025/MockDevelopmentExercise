@@ -22,13 +22,13 @@ public class FavoriteDAO {
 	}
 
 	//指定されたuserIdのitemIdを検索するメソッド
-	public ArrayList<Integer> selectByItemId(int userId){
+	public ArrayList<Integer> selectByUserId(int userId){
 		//データベース接続に利用する変数
 		Connection con = null;
 		Statement smt = null;
 
 		//sql文を文字列で設定
-		String sql = "select * from favorits_tb where user_id = " + userId + "";
+		String sql = "select * from favorites_tb where user_id = " + userId + "";
 
 		//結果を格納する変数
 		ArrayList<Integer> itemIdList = new ArrayList<Integer>();
@@ -58,17 +58,17 @@ public class FavoriteDAO {
 		return itemIdList;
 	}
 
-	//指定されたuserIdのitemIdを検索するメソッド
-	public String selectFavoriteId(int userId, int itemId){
+	//指定されたuserIdとitemIdのfavoriteIdを検索するメソッド
+	public int selectFavoriteId(int userId, int itemId){
 		//データベース接続に利用する変数
 		Connection con = null;
 		Statement smt = null;
 
 		//sql文を文字列で設定
-		String sql = "select favorite_id from favorits_tb where user_id = " + userId + " and item_id = " + itemId ;
+		String sql = "select favorite_id from favorites_tb where user_id = " + userId + " and item_id = " + itemId ;
 
 		//結果を格納する変数
-		String favoriteId = "";
+		int favoriteId = 0;
 
 		try {
 			con = ItemDAO.getConnection();
@@ -77,7 +77,7 @@ public class FavoriteDAO {
 			ResultSet rs = smt.executeQuery(sql);
 
 			while(rs.next()) {
-				favoriteId = rs.getString("favorite_id");
+				favoriteId = rs.getInt("favorite_id");
 			}
 
 		} catch(Exception e) {
