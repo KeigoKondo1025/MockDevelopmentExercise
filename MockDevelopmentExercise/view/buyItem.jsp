@@ -16,7 +16,7 @@ Item item = (Item)request.getAttribute("item");
 
 <html>
 	<head>
-		<title>購入</title>
+		<title>Vicon</title>
 	</head>
 	<body>
 
