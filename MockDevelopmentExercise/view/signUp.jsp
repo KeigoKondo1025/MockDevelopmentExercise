@@ -11,19 +11,7 @@
  	<title>神田雑貨店フリマ -会員登録-</title>
  </head>
  <body>
- 	<header>
- 		<nav class="nav-normal">
- 			<ul>
- 				<li class="logo">神田雑貨店</li>
- 				<li><a href="index.html">HOME</a></li>
- 				<li><a href="#">商品一覧</a></li>
- 				<li><input type="text" name="" id="" class="search" placeholder="なにをお探しですか？"><input type="button" value="🔍" class="search"></li>
- 				<li><div class="spacer"></div></li>
- 				<li><a href="#">会員登録</a></li>
- 				<li><a href="#">ログイン</a></li>
- 			</ul>
- 		</nav>
- 	</header>
+ 	<%@include file="/common/header.jsp"%>
 
  	<div class="container">
  		<div class="signup-form">
