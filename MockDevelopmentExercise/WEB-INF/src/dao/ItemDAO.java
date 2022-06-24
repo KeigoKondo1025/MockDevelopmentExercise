@@ -183,7 +183,7 @@ public class ItemDAO {
 	}
 
 	//指定されたuserIdと一致するbuyerIdを持つ検索するメソッド
-	public Item selectBuyerId(int userId){
+	public ArrayList<Item> selectBuyerId(int userId){
 		//データベース接続に利用する変数
 		Connection con = null;
 		Statement smt = null;
@@ -192,7 +192,7 @@ public class ItemDAO {
 		String sql = "select * from items_tb where item_id = " + userId + "";
 
 		//結果を格納する変数
-		Item item = new Item();
+		ArrayList<Item> itemList = new ArrayList<Item>();
 
 		try {
 			con = ItemDAO.getConnection();
@@ -201,6 +201,8 @@ public class ItemDAO {
 			ResultSet rs = smt.executeQuery(sql);
 
 			while(rs.next()) {
+				Item item = new Item();
+
 				item.setItemId(rs.getInt("item_id"));
 				item.setItemName(rs.getString("item_name"));
 				item.setCategoryId(rs.getInt("category_id"));
@@ -218,6 +220,8 @@ public class ItemDAO {
 				item.setBuyerId(rs.getInt("buyer_user_id"));
 				item.setBoughtTime(rs.getString("bought_at"));
 				item.setInsertedTime(rs.getString("inserted_at"));
+
+				itemList.add(item);
 			}
 
 		} catch(Exception e) {
@@ -230,11 +234,11 @@ public class ItemDAO {
 				try{con.close();}catch(SQLException ignore){}
 			}
 		}
-		return item;
+		return itemList;
 	}
 
 	//指定されたuserIdと一致するsellerIdを持つ商品を検索するメソッド
-	public Item selectSellerId(int userId){
+	public ArrayList<Item> selectSellerId(int userId){
 		//データベース接続に利用する変数
 		Connection con = null;
 		Statement smt = null;
@@ -243,7 +247,7 @@ public class ItemDAO {
 		String sql = "select * from items_tb where seller_id = " + userId + "";
 
 		//結果を格納する変数
-		Item item = new Item();
+		ArrayList<Item> itemList = new ArrayList<Item>();
 
 		try {
 			con = ItemDAO.getConnection();
@@ -252,6 +256,8 @@ public class ItemDAO {
 			ResultSet rs = smt.executeQuery(sql);
 
 			while(rs.next()) {
+				Item item = new Item();
+
 				item.setItemId(rs.getInt("item_id"));
 				item.setItemName(rs.getString("item_name"));
 				item.setCategoryId(rs.getInt("category_id"));
@@ -269,6 +275,8 @@ public class ItemDAO {
 				item.setBuyerId(rs.getInt("buyer_user_id"));
 				item.setBoughtTime(rs.getString("bought_at"));
 				item.setInsertedTime(rs.getString("inserted_at"));
+
+				itemList.add(item);
 			}
 
 		} catch(Exception e) {
@@ -281,7 +289,7 @@ public class ItemDAO {
 				try{con.close();}catch(SQLException ignore){}
 			}
 		}
-		return item;
+		return itemList;
 	}
 
 	//購入済みの商品を全て検索するメソッド
