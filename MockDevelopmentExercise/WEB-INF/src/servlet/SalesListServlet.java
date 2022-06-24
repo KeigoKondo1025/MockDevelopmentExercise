@@ -21,6 +21,12 @@ public class SalesListServlet extends HttpServlet {
 			//セッション情報の取得
 			HttpSession session = request.getSession();
 			User user = (User)session.getAttribute("user");
+			String sellerName = (String)request.getAttribute("sellerName");
+			String sellerName = (String)request.getAttribute("sellerName");
+
+			//リクエスト情報の受け取り
+			request.setCharacterEncoding("UTF-8");
+			cmd = (String)request.getParameter("cmd");
 
 			//セッション切れの場合
 			if(user == null) {
@@ -29,9 +35,23 @@ public class SalesListServlet extends HttpServlet {
 				return;
 			}
 
-			//購入済みの商品を全て検索するメソッドの呼び出し
-			ItemDAO itemDao = new ItemDAO();
-			ArrayList<Item> itemList = itemDao.selectSales();
+			//検索結果を格納する変数の宣言
+			ArrayList<Item> itemList = new ArrayList<Item>();
+
+			if(!cmd.equals("searchSales")) {
+				//購入済みの商品を全て検索するメソッドの呼び出し
+				ItemDAO itemDao = new ItemDAO();
+				itemList = itemDao.selectSales();
+			}else {
+				UserDAO userDao = new UserDAO();
+				//出品者のuserIdを受け取る
+				ArrayList<String> buyerUser = new ArrayList<String>();
+				userDao.searchbyUserName();
+
+				//購入済みの商品から引数の値で検索するメソッド
+				ItemDAO itemDao = new ItemDAO();
+				itemList = itemDao.selectSales();
+			}
 
 			request.setAttribute("itemList", itemList);
 
