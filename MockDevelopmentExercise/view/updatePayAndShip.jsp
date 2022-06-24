@@ -9,7 +9,7 @@ ArrayList<Item> buyItemList = (ArrayList<Item>)request.getAttribute("buyItemList
 //sellerUserIdで売った商品のArrayListを検索
 ArrayList<Item> sellItemList = (ArrayList<Item>)request.getAttribute("sellItemList");
 
-int itemSituation;//NumberFormatException
+int itemSituation;
 
 String strItemSituation = "";
 
@@ -30,7 +30,7 @@ String strItemSituation = "";
     	<!--購入商品-->
     	<h2>購入商品</h2>
         <div class="update-payment-shipment">
-        	<form action="<%=request.getContextPath()%>/update">
+        	<form action="<%=request.getContextPath()%>/update" metod="post">
         <%
         	if(buyItemList != null) {
         		for(int i = 0; i < buyItemList.size(); i++) {
@@ -58,7 +58,7 @@ String strItemSituation = "";
         <!--出品商品のうち売れたもの-->
         <h2>売れた商品</h2>
         <div class="update-payment-shipment">
-        	<form action="<%=request.getContextPath()%>/UpdatePayAndShip">
+        	<form action="<%=request.getContextPath()%>/UpdatePayAndShip" method="post">
         	<%
         	if(sellItemList != null) {
         		for(int i = 0; i < sellItemList.size(); i++) {
