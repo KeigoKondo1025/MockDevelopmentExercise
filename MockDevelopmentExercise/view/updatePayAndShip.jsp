@@ -4,20 +4,30 @@
 <%
 
 //buyerUserIdで買った商品のArrayListを検索
-ArrayList<Item> boughtItemList = (ArrayList<Item>)request.getAttribute("boughtItemList");
+ArrayList<Item> buyItemList = (ArrayList<Item>)request.getAttribute("buyItemList");
 
 //sellerUserIdで売った商品のArrayListを検索
-ArrayList<Item> soldItemList = (ArrayList<Item>)request.getAttribute("soldItemList");
+ArrayList<Item> sellItemList = (ArrayList<Item>)request.getAttribute("sellItemList");
 
-int itemSituation = (Integer.parseInt(request.getParameter("itemSituation")));//NumberFormatException
+int itemSituation;//NumberFormatException
 
 String strItemSituation = "";
-for (int i = 0; i < boughtItemList.size(); i++) {
-	if (boughtItemList.get(i).getItemSituation() == 1) {
+for (int i = 0; i < buyItemList.size(); i++) {
+	if (buyItemList.get(i).getItemSituation() == 1) {
 		strItemSituation = "入金待ち";
-	} else if (boughtItemList.get(i).getItemSituation() == 2) {
+	} else if (buyItemList.get(i).getItemSituation() == 2) {
 		strItemSituation = "発送待ち";
-	} else if (boughtItemList.get(i).getItemSituation() == 3) {
+	} else if (buyItemList.get(i).getItemSituation() == 3) {
+		strItemSituation = "取引済";
+	}
+}
+
+for (int i = 0; i < sellItemList.size(); i++) {
+	if (sellItemList.get(i).getItemSituation() == 1) {
+		strItemSituation = "入金待ち";
+	} else if (sellItemList.get(i).getItemSituation() == 2) {
+		strItemSituation = "発送待ち";
+	} else if (sellItemList.get(i).getItemSituation() == 3) {
 		strItemSituation = "取引済";
 	}
 }
@@ -41,15 +51,15 @@ for (int i = 0; i < boughtItemList.size(); i++) {
         <div class="update-payment-shipment">
         	<form action="<%=request.getContextPath()%>/update">
         <%
-        	if(boughtItemList != null) {
-        		for(int i = 0; i < boughtItemList.size(); i++) {
+        	if(buyItemList != null) {
+        		for(int i = 0; i < buyItemList.size(); i++) {
         %>
-        	<p>商品名：<%=boughtItemList.get(i).getItemName()%></p>
+        	<p>商品名：<%=buyItemList.get(i).getItemName()%></p>
         	<p>ステータス：<%=strItemSituation%></p><br>
         	<p>
-        <%	if (boughtItemList.get(i).getItemSituation() == 1) {%>
+        <%	if (buyItemList.get(i).getItemSituation() == 1) {%>
         	<input type="hidden" name="itemSituation" value="2">
-        	<input type="hidden" name="itemId" value="<%=boughtItemList.get(i).getItemId()%>">
+        	<input type="hidden" name="itemId" value="<%=buyItemList.get(i).getItemId()%>">
         	<input type="submit" name="pay" value="入金しました">
         <%}
         		}
@@ -62,15 +72,15 @@ for (int i = 0; i < boughtItemList.size(); i++) {
         <div class="update-payment-shipment">
         	<form action="<%=request.getContextPath()%>/UpdatePayAndShip">
         	<%
-        	if(soldItemList != null) {
-        		for(int i = 0; i < soldItemList.size(); i++) {
+        	if(sellItemList != null) {
+        		for(int i = 0; i < sellItemList.size(); i++) {
         %>
-        	<p>商品名：<%=soldItemList.get(i).getItemName()%></p>
+        	<p>商品名：<%=sellItemList.get(i).getItemName()%></p>
         	<p>ステータス：<%=strItemSituation%></p><br>
         	<p>
-        <%	if (boughtItemList.get(i).getItemSituation() == 2) {%>
+        <%	if (sellItemList.get(i).getItemSituation() == 2) {%>
         	<input type="hidden" name="itemSituation" value="3">
-        	<input type="hidden" name="itemId" value="<%=soldItemList.get(i).getItemId()%>">
+        	<input type="hidden" name="itemId" value="<%=sellItemList.get(i).getItemId()%>">
         	<input type="submit" name="ship" value="発送しました">
         <%}
         		}
