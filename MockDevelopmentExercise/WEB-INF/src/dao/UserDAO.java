@@ -224,6 +224,55 @@ public class UserDAO {
 	}
 
 	/*
+	 * ＠メソッド名：searchByUserName
+	 * ＠説明 ：DBからユーザー名であいまい検索をしたuserIdを返すメソッド
+	 * ＠引数 ：String型のuserName
+	 * ＠戻り値：int型のuserId
+	 */
+	public ArrayList<Integer> searchByUserName(String userName) {
+		// 戻り値のuserIdを格納する変数
+		ArrayList<Integer> userIdList = new ArrayList<Integer>();
+
+		Connection con = null;
+		Statement smt = null;
+
+		try {
+			// DBに接続するgetConnectionメソッドの呼び出し
+			con = getConnection();
+
+			// SQL文の作成
+			String sql = "SELECT user_id FROM users_tb while user_name like '%" + userName + "%'";
+
+			// SQL文を送信するための準備
+			smt = con.createStatement();
+
+			ResultSet rs = smt.executeQuery(sql);
+
+			//
+			while (rs.next()) {
+				userIdList.add(rs.getInt("user_id"));
+			}
+
+		} catch (Exception e) {
+			throw new IllegalStateException(e);
+		} finally {
+			if (smt != null) {
+				try {
+					smt.close();
+				} catch (SQLException ignore) {
+				} // オブジェクトsmtからリソースを解放（DBとの接続を切る）
+			}
+			if (con != null) {
+				try {
+					con.close();
+				} catch (SQLException ignore) {
+				} // オブジェクトconからリソースを解放（DBとの接続を切る）
+			}
+		}
+		return userIdList;
+	}
+
+	/*
 	 * ＠メソッド名：insert ＠説明 ：新しいユーザ情報をDBに登録するメソッド ＠引数 ：登録する書籍データを格納したBookオブジェクト ＠戻り値
 	 * ：無し
 	 */
