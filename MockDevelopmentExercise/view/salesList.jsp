@@ -25,14 +25,14 @@ ArrayList<Item> itemList = (ArrayList<Item>)request.getAttribute("itemList");
 		<div class="container">
 			<h2>商品ごとの売上げ一覧</h2>
 			<div class="userlist_flex">
-				<form action="<%= request.getContextPath() %>/Serch">
+				<form action="<%= request.getContextPath() %>/Serch" method="post">
 					ユーザー名：<input type=text size="10" name="userName">
 					カテゴリー：<input type=text size="10" name="category">
 					購入日時：<input type=text size="10" name="boughtTime">
 					購入者：<input type=text size="10" name="buyer">
 					<input type="submit"name="search" value="検索">
 				</form>
-				<form action="<%= request.getContextPath() %>/Serch">
+				<form action="<%= request.getContextPath() %>/Serch" method="post">
 					<input type="submit" name="searchall" value="全件表示">
 				</form>
 			</div>
