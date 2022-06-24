@@ -4,7 +4,7 @@ import java.io.*;
 import javax.servlet.*;
 import javax.servlet.http.*;
 
-import bean.User;
+import bean.*;
 
 public class UserInfoServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -16,6 +16,7 @@ public class UserInfoServlet extends HttpServlet {
 		String cmd = "";
 
 		try {
+
 			//セッション情報の取得
 			HttpSession session = request.getSession();
 			User user = (User)session.getAttribute("user");
