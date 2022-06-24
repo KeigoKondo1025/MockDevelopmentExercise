@@ -71,6 +71,8 @@ public class FavoriteServlet extends HttpServlet {
 				} else if (cmd.equals("delete")) {//削除ボタン押下
 
 					favoriteDaoObj.delete(favoriteDaoObj.selectFavoriteId(user.getUserId(), item.getItemId()));
+					cmd = "list";
+					request.setAttribute("cmd", cmd);
 					request.getRequestDispatcher("/FavotriteList").forward(request, response);
 				}
 
