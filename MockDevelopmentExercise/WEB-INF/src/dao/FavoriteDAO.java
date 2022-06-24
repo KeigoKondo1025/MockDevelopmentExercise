@@ -22,7 +22,7 @@ public class FavoriteDAO {
 	}
 
 	//指定されたuserIdのitemIdを検索するメソッド
-	public ArrayList<Integer> selectByItemId(int userId){
+	public ArrayList<Integer> selectByUserId(int userId){
 		//データベース接続に利用する変数
 		Connection con = null;
 		Statement smt = null;
