@@ -140,14 +140,27 @@ public class ItemDAO {
 		String sql;
 
 		if(category == 0) {
-			sql = "select * from items_tb where item_name = '" + itemName +
-					"', price between " + minPrice + " and " + maxPrice +
-					", prefecture_id = " + prefectureId + ", item_situation = 0";
+			if(prefectureId == 0) {
+				sql = "select * from items_tb where item_name = '" + itemName +
+						"', price between " + minPrice + " and " + maxPrice +
+						", item_situation = 0";
+			} else {
+				sql = "select * from items_tb where item_name = '" + itemName +
+						"', price between " + minPrice + " and " + maxPrice +
+						", prefecture_id = " + prefectureId + ", item_situation = 0";
+			}
 		}else {
-			sql = "select * from items_tb where category_id = " + category +
-					",item_name = '" + itemName +
-					"', price between " + minPrice + " and " + maxPrice +
-					", prefecture_id = " + prefectureId + ", item_situation = 0";
+			if(prefectureId == 0) {
+				sql = "select * from items_tb where category_id = " + category +
+						",item_name = '" + itemName +
+						"', price between " + minPrice + " and " + maxPrice +
+						", item_situation = 0";
+			} else {
+				sql = "select * from items_tb where category_id = " + category +
+						",item_name = '" + itemName +
+						"', price between " + minPrice + " and " + maxPrice +
+						", prefecture_id = " + prefectureId + ", item_situation = 0";
+			}
 		}
 
 		//結果を格納する変数
