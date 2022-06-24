@@ -12,7 +12,7 @@ import bean.User;
 public class IdToNameDAO {
 
 	private static String RDB_DRIVE = "com.mysql.jdbc.Driver";
-	private static String URL = "jdbc:mysql://localhost/mybookdb";
+	private static String URL = "jdbc:mysql://localhost/vicon_db";
 	private static String USER = "root";
 	private static String PASSWD = "root123";
 
