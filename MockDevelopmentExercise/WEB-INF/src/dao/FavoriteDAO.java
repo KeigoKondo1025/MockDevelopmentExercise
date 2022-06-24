@@ -28,7 +28,7 @@ public class FavoriteDAO {
 		Statement smt = null;
 
 		//sql文を文字列で設定
-		String sql = "select * from favorits_tb where user_id = " + userId + "";
+		String sql = "select * from favorites_tb where user_id = " + userId + "";
 
 		//結果を格納する変数
 		ArrayList<Integer> itemIdList = new ArrayList<Integer>();
