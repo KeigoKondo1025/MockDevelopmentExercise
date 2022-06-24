@@ -28,7 +28,6 @@ ArrayList<Item> itemList = (ArrayList<Item>)request.getAttribute("itemList");
 				<form action="<%= request.getContextPath() %>/Serch" method="post">
 					ユーザー名：<input type="text" name="userName">
 					カテゴリー：<input type="text" name="category">
-					購入日時：<input type="text" name="boughtTime">
 					購入者：<input type="text" name="buyer">
 					<input type="submit"name="search" value="検索">
 				</form>
@@ -54,6 +53,7 @@ ArrayList<Item> itemList = (ArrayList<Item>)request.getAttribute("itemList");
 				IdToNameDAO idToNameDao = new IdToNameDAO();
 				for(int i = 0; i < itemList.size(); i++){
 					Item item = itemList.get(i);
+					//出品者、購入者、カテゴリをidから名前に変換する
 					User sellerUser = userDao.searchByUserId(item.getSellerId());
 					User buyerUser = userDao.searchByUserId(item.getBuyerId());
 					String category = idToNameDao.categoryIdToName(item.getCategoryId());
