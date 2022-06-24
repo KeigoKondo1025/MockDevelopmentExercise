@@ -49,7 +49,7 @@ public class ItemEntryServlet extends HttpServlet {
 		} finally {
 			if (cmd.equals("")) {
 				//商品詳細へ遷移
-				request.getRequestDispatcher("/ItemDetail?itemId=1").forward(request, response);
+				request.getRequestDispatcher("/ItemDetail?itemId="+ item.getItemId()).forward(request, response);
 			} else {
 				request.setAttribute("error", error);
 				request.setAttribute("cmd", cmd);
