@@ -132,7 +132,7 @@ public class ItemDAO {
 	}
 
 	//カテゴリ、商品名、値段の最小値、最大値、出品地域で指定した条件の商品を全て検索するメソッド
-	public ArrayList<Item> select(int category, String itemName, int minPrice, int maxPrice, String prefectureId){
+	public ArrayList<Item> select(int category, String itemName, int minPrice, int maxPrice, int prefectureId){
 		//データベース接続に利用する変数
 		Connection con = null;
 		Statement smt = null;
