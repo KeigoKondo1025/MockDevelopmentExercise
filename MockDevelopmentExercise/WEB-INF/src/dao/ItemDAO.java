@@ -141,25 +141,25 @@ public class ItemDAO {
 
 		if(category == 0) {
 			if(prefectureId == 0) {
-				sql = "select * from items_tb where item_name = '" + itemName +
-						"', price between " + minPrice + " and " + maxPrice +
-						", item_situation = 0";
+				sql = "select * from items_tb where item_name like '%" + itemName +
+						"%' and (price between " + minPrice + " and " + maxPrice +
+						") and item_situation = 0";
 			} else {
-				sql = "select * from items_tb where item_name = '" + itemName +
-						"', price between " + minPrice + " and " + maxPrice +
-						", prefecture_id = " + prefectureId + ", item_situation = 0";
+				sql = "select * from items_tb where item_name like '%" + itemName +
+						"%' and (price between " + minPrice + " and " + maxPrice +
+						") and prefecture_id = " + prefectureId + " and item_situation = 0";
 			}
 		}else {
 			if(prefectureId == 0) {
 				sql = "select * from items_tb where category_id = " + category +
-						",item_name = '" + itemName +
-						"', price between " + minPrice + " and " + maxPrice +
-						", item_situation = 0";
+						" and item_name like '%" + itemName +
+						"%' and (price between " + minPrice + " and " + maxPrice +
+						") and item_situation = 0";
 			} else {
 				sql = "select * from items_tb where category_id = " + category +
-						",item_name = '" + itemName +
-						"', price between " + minPrice + " and " + maxPrice +
-						", prefecture_id = " + prefectureId + ", item_situation = 0";
+						" and item_name like '%" + itemName +
+						"%' and (price between " + minPrice + " and " + maxPrice +
+						") and prefecture_id = " + prefectureId + " and item_situation = 0";
 			}
 		}
 
