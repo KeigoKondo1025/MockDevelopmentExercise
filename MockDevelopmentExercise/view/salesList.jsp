@@ -31,7 +31,7 @@ ArrayList<Item> itemList = (ArrayList<Item>)request.getAttribute("itemList");
 					購入者名：<input type="text" name="buyer">
 					<input type="submit"name="search" value="検索">
 				</form>
-				<form action="<%= request.getContextPath() %>/Serch" method="get">
+				<form action="<%= request.getContextPath() %>/SalesList" method="get">
 					<input type="submit" name="searchall" value="全件表示">
 				</form>
 			</div>
