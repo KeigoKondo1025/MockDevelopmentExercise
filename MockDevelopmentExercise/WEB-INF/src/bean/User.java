@@ -37,8 +37,8 @@ public class User {
 		this.mail = null;
 		this.authority = 0;
 		this.insertedOn = new Date();
-		this.isUserDeleted = true;
-		this.isUserBanned = true;
+		this.isUserDeleted = false;
+		this.isUserBanned = false;
 	}
 	/**
 	 * @return userId
