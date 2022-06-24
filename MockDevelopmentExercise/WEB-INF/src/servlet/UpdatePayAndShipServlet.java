@@ -1,4 +1,5 @@
 package servlet;
+
 /*
  * 作成者：高徳ちさと
  */
@@ -15,8 +16,7 @@ import dao.*;
 
 public class UpdatePayAndShipServlet extends HttpServlet {
 
-	public void doPost(HttpServletRequest request, HttpServletResponse response)
-	throws ServletException, IOException {
+	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 //		LocalDateTime nowDate = LocalDateTime.now();
 //		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy年MM月dd日 HH時mm分");
@@ -33,21 +33,27 @@ public class UpdatePayAndShipServlet extends HttpServlet {
 
 //			user情報をセッションから取得
 			HttpSession session = request.getSession();
-			User user = (User)session.getAttribute("user");
+			User user = (User) session.getAttribute("user");
 
 //			userIdは購入した商品と売った商品をつなぐのに使う
 			int userId = user.getUserId();
 
+			if (request.getParameter("itemSituation") != null) {//不正アクセス防止
 //			ボタンを押された商品の商品idを格納する
-			int itemId = (Integer.parseInt(request.getParameter("itemId")));
+				int itemId = (Integer.parseInt(request.getParameter("itemId")));
 
-			//商品の取引情報を格納する変数
-			//出品中→0、入金待ち→1、発送待ち→2、取引済→3
-			int itemSituation = (Integer.parseInt(request.getParameter("itemSituation")));
-			request.setAttribute("itemSituation", itemSituation);
+				// 商品の取引情報を格納する変数
+				// 出品中→0、入金待ち→1、発送待ち→2、取引済→3
+				int itemSituation = (Integer.parseInt(request.getParameter("itemSituation")));
+				request.setAttribute("itemSituation", itemSituation);
 
-			//商品の取引情報を更新
-			itemDao.updateItemSituation(itemId, itemSituation);
+				if (itemSituation != 2) {
+					// 商品の取引情報を更新
+					itemDao.updateItemSituation(itemId, itemSituation);
+				} else {
+					itemDao.updateBoughtTime(itemId, itemSituation);
+				}
+			}
 
 //			buyerUserIdで購入した商品のArrayListを検索、jspで購入した商品を表示するのに使う
 			ArrayList<Item> buyItemList = itemDao.selectBuyerId(userId);
@@ -68,7 +74,6 @@ public class UpdatePayAndShipServlet extends HttpServlet {
 				request.getRequestDispatcher("/view/updatePayAndShip.jsp").forward(request, response);
 			}
 		}
-
 
 	}
 
