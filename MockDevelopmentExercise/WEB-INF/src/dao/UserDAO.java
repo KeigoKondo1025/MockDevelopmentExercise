@@ -5,6 +5,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 import bean.User;
@@ -232,14 +233,15 @@ public class UserDAO {
 		Statement smt = null;
 
 		try {
+			SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 
 			// 書籍情報を登録するSQL文を、文字列として変数sqlに格納
-			String sql = "INSERT INTO user_tb VALUES(" + user.getUserId() + ",'" + user.getUserName() + "',"
+			String sql = "INSERT INTO users_tb VALUES(" + null + ",'" + user.getUserName() + "','"
 					+ user.getPassWord() + "','" + user.getFamilyName() + "','" + user.getFirstName() + "',"
 					+ user.getGender() + ",'" + user.getPostalCode() + "'," + user.getPrefectureId() + ",'"
-					+ user.getAddress1() + "','" + user.getAddress2() + "'," + user.getBirthday() + ",'"
-					+ user.getPhoneNumber() + user.getMail() + "'," + user.getAuthority() + "," + user.getInsertedOn()
-					+ "," + user.getIsUserDeleted() + "," + user.getIsUserBanned() + ")";
+					+ user.getAddress1() + "','" + user.getAddress2() + "','" + dateFormat.format(user.getBirthday()) + "','"
+					+ user.getPhoneNumber() + "','" + user.getMail() + "'," + user.getAuthority() + ", now(),"
+					+ user.getIsUserDeleted() + "," + user.getIsUserBanned() + ")";
 
 			// DBに接続するgetConnectionメソッドの呼び出し
 			con = getConnection();
