@@ -12,25 +12,6 @@ ArrayList<Item> sellItemList = (ArrayList<Item>)request.getAttribute("sellItemLi
 int itemSituation;//NumberFormatException
 
 String strItemSituation = "";
-for (int i = 0; i < buyItemList.size(); i++) {
-	if (buyItemList.get(i).getItemSituation() == 1) {
-		strItemSituation = "入金待ち";
-	} else if (buyItemList.get(i).getItemSituation() == 2) {
-		strItemSituation = "発送待ち";
-	} else if (buyItemList.get(i).getItemSituation() == 3) {
-		strItemSituation = "取引済";
-	}
-}
-
-for (int i = 0; i < sellItemList.size(); i++) {
-	if (sellItemList.get(i).getItemSituation() == 1) {
-		strItemSituation = "入金待ち";
-	} else if (sellItemList.get(i).getItemSituation() == 2) {
-		strItemSituation = "発送待ち";
-	} else if (sellItemList.get(i).getItemSituation() == 3) {
-		strItemSituation = "取引済";
-	}
-}
 
 %>
 <html lang="ja">
@@ -53,6 +34,13 @@ for (int i = 0; i < sellItemList.size(); i++) {
         <%
         	if(buyItemList != null) {
         		for(int i = 0; i < buyItemList.size(); i++) {
+        			if (buyItemList.get(i).getItemSituation() == 1) {
+        				strItemSituation = "入金待ち";
+        			} else if (buyItemList.get(i).getItemSituation() == 2) {
+        				strItemSituation = "発送待ち";
+        			} else if (buyItemList.get(i).getItemSituation() == 3) {
+        				strItemSituation = "取引済";
+        			}
         %>
         	<p>商品名：<%=buyItemList.get(i).getItemName()%></p>
         	<p>ステータス：<%=strItemSituation%></p><br>
@@ -74,6 +62,13 @@ for (int i = 0; i < sellItemList.size(); i++) {
         	<%
         	if(sellItemList != null) {
         		for(int i = 0; i < sellItemList.size(); i++) {
+        			if (sellItemList.get(i).getItemSituation() == 1) {
+        				strItemSituation = "入金待ち";
+        			} else if (sellItemList.get(i).getItemSituation() == 2) {
+        				strItemSituation = "発送待ち";
+        			} else if (sellItemList.get(i).getItemSituation() == 3) {
+        				strItemSituation = "取引済";
+        			}
         %>
         	<p>商品名：<%=sellItemList.get(i).getItemName()%></p>
         	<p>ステータス：<%=strItemSituation%></p><br>
