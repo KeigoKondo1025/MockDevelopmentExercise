@@ -182,6 +182,108 @@ public class ItemDAO {
 		return item;
 	}
 
+	//指定されたuserIdと一致するbuyerIdを持つ検索するメソッド
+	public Item selectBuyerId(int userId){
+		//データベース接続に利用する変数
+		Connection con = null;
+		Statement smt = null;
+
+		//sql文を文字列で設定
+		String sql = "select * from items_tb where item_id = " + userId + "";
+
+		//結果を格納する変数
+		Item item = new Item();
+
+		try {
+			con = ItemDAO.getConnection();
+			smt = con.createStatement();
+
+			ResultSet rs = smt.executeQuery(sql);
+
+			while(rs.next()) {
+				item.setItemId(rs.getInt("item_id"));
+				item.setItemName(rs.getString("item_name"));
+				item.setCategoryId(rs.getInt("category_id"));
+				item.setPrice(rs.getInt("price"));
+				item.setImage1(rs.getString("image_1"));
+				item.setImage2(rs.getString("image_2"));
+				item.setImage3(rs.getString("image_3"));
+				item.setImage4(rs.getString("image_4"));
+				item.setItemState(rs.getInt("item_state"));
+				item.setSellerId(rs.getInt("seller_user_id"));
+				item.setSellerMessage(rs.getString("seller_message"));
+				item.setPrefectureId(rs.getInt("prefecture_id"));
+				item.setDeleteFlag(rs.getBoolean("is_sent_deleted"));
+				item.setItemSituation(rs.getInt("item_situation"));
+				item.setBuyerId(rs.getInt("buyer_user_id"));
+				item.setBoughtTime(rs.getString("bought_at"));
+				item.setInsertedTime(rs.getString("inserted_at"));
+			}
+
+		} catch(Exception e) {
+			throw new IllegalStateException(e);
+		}finally {
+			if(smt != null){
+				try{smt.close();}catch(SQLException ignore){}
+			}
+			if(con != null){
+				try{con.close();}catch(SQLException ignore){}
+			}
+		}
+		return item;
+	}
+
+	//指定されたuserIdと一致するsellerIdを持つ商品を検索するメソッド
+	public Item selectSellerId(int userId){
+		//データベース接続に利用する変数
+		Connection con = null;
+		Statement smt = null;
+
+		//sql文を文字列で設定
+		String sql = "select * from items_tb where seller_id = " + userId + "";
+
+		//結果を格納する変数
+		Item item = new Item();
+
+		try {
+			con = ItemDAO.getConnection();
+			smt = con.createStatement();
+
+			ResultSet rs = smt.executeQuery(sql);
+
+			while(rs.next()) {
+				item.setItemId(rs.getInt("item_id"));
+				item.setItemName(rs.getString("item_name"));
+				item.setCategoryId(rs.getInt("category_id"));
+				item.setPrice(rs.getInt("price"));
+				item.setImage1(rs.getString("image_1"));
+				item.setImage2(rs.getString("image_2"));
+				item.setImage3(rs.getString("image_3"));
+				item.setImage4(rs.getString("image_4"));
+				item.setItemState(rs.getInt("item_state"));
+				item.setSellerId(rs.getInt("seller_user_id"));
+				item.setSellerMessage(rs.getString("seller_message"));
+				item.setPrefectureId(rs.getInt("prefecture_id"));
+				item.setDeleteFlag(rs.getBoolean("is_sent_deleted"));
+				item.setItemSituation(rs.getInt("item_situation"));
+				item.setBuyerId(rs.getInt("buyer_user_id"));
+				item.setBoughtTime(rs.getString("bought_at"));
+				item.setInsertedTime(rs.getString("inserted_at"));
+			}
+
+		} catch(Exception e) {
+			throw new IllegalStateException(e);
+		}finally {
+			if(smt != null){
+				try{smt.close();}catch(SQLException ignore){}
+			}
+			if(con != null){
+				try{con.close();}catch(SQLException ignore){}
+			}
+		}
+		return item;
+	}
+
 	//購入済みの商品を全て検索するメソッド
 	public ArrayList<Item> selectSales(){
 		//データベース接続に利用する変数
