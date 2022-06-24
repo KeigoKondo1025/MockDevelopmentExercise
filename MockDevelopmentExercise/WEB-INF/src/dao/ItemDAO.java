@@ -494,14 +494,14 @@ public class ItemDAO {
 	}
 
 	//指定されたitemIdの購入日時と取引の状態を変更するメソッド(
-	public int updateBoughtTime(int itemId,int itemSituation,String boughtTime) {
+	public int updateBoughtTime(int itemId,int itemSituation) {
 		//データベース接続に利用する変数
 		Connection con = null;
 		Statement smt = null;
 
 		//sql文を文字列で設定
-		String sql = "update items_tb set item_situation = '" + itemSituation + "', bought_at = '" + boughtTime +
-				"' where item_id = '" + itemId + "'";
+		String sql = "update items_tb set item_situation = '" + itemSituation +
+				"', bought_at = cullent_timestamp where item_id = '" + itemId + "'";
 
 		//結果を格納する変数
 		int count = 0;
