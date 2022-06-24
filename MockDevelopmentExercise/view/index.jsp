@@ -182,7 +182,7 @@
 			%>
 			<div class="recommendation-item" id="item<%=count%>">
 				<a
-					href="<%=request.getContextPath()%>/itemDetail?itemId=<%=item.getItemId()%>">
+					href="<%=request.getContextPath()%>/ItemDetail?itemId=<%=item.getItemId()%>">
 					<div class="picture">
 						<img
 							src="<%=request.getContextPath()%>/common/image/<%=item.getImage1()%>"
