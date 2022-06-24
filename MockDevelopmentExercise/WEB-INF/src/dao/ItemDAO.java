@@ -131,6 +131,70 @@ public class ItemDAO {
 		return itemList;
 	}
 
+	//カテゴリ、商品名、値段の最小値、最大値、出品地域で指定した条件の商品を全て検索するメソッド
+	public ArrayList<Item> select(int category, String itemName, int minPrice, int maxPrice, String prefectureId){
+		//データベース接続に利用する変数
+		Connection con = null;
+		Statement smt = null;
+
+		String sql;
+
+		if(category == 0) {
+			sql = "select * from items_tb where item_name = '" + itemName +
+					"', price between " + minPrice + " and " + maxPrice +
+					", prefecture_id = " + prefectureId + ", item_situation = 0";
+		}else {
+			sql = "select * from items_tb where category_id = " + category +
+					",item_name = '" + itemName +
+					"', price between " + minPrice + " and " + maxPrice +
+					", prefecture_id = " + prefectureId + ", item_situation = 0";
+		}
+
+		//結果を格納する変数
+		ArrayList<Item> itemList = new ArrayList<Item>();
+
+		try {
+			con = ItemDAO.getConnection();
+			smt = con.createStatement();
+
+			ResultSet rs = smt.executeQuery(sql);
+
+			while(rs.next()) {
+				Item item = new Item();
+				item.setItemId(rs.getInt("item_id"));
+				item.setItemName(rs.getString("item_name"));
+				item.setCategoryId(rs.getInt("category_id"));
+				item.setPrice(rs.getInt("price"));
+				item.setImage1(rs.getString("image_1"));
+				item.setImage2(rs.getString("image_2"));
+				item.setImage3(rs.getString("image_3"));
+				item.setImage4(rs.getString("image_4"));
+				item.setItemState(rs.getInt("item_state"));
+				item.setSellerId(rs.getInt("seller_user_id"));
+				item.setSellerMessage(rs.getString("seller_message"));
+				item.setPrefectureId(rs.getInt("prefecture_id"));
+				item.setDeleteFlag(rs.getBoolean("is_sent_deleted"));
+				item.setItemSituation(rs.getInt("item_situation"));
+				item.setBuyerId(rs.getInt("buyer_user_id"));
+				item.setBoughtTime(rs.getString("bought_at"));
+				item.setInsertedTime(rs.getString("inserted_at"));
+
+				itemList.add(item);
+			}
+
+		} catch(Exception e) {
+			throw new IllegalStateException(e);
+		}finally {
+			if(smt != null){
+				try{smt.close();}catch(SQLException ignore){}
+			}
+			if(con != null){
+				try{con.close();}catch(SQLException ignore){}
+			}
+		}
+		return itemList;
+	}
+
 	//指定されたitemIdの商品を検索するメソッド
 	public Item selectByItemId(int itemId){
 		//データベース接続に利用する変数
