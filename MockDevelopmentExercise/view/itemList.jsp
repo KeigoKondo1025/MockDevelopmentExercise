@@ -1,8 +1,8 @@
 <%@page contentType="text/html;charset=UTF-8"%>
-<%@page import="bean.*,dao.*,util.*"%>
+<%@page import="bean.*,dao.*,util.*,java.util.*"%>
 
 <%
-//
+ArrayList<Item> itemList = (ArrayList<Item>)request.getAttribute("itemList");
 %>
 
 
