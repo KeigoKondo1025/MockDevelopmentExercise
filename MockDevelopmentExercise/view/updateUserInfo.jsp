@@ -56,7 +56,6 @@ String prefectureName = null;
 						<td><%= prefectureName %></td>
 						<td>
 							<select name="prefectureCode">
-								<option value="" selected>都道府県</option>
 								<option value="1">北海道</option>
 								<option value="2">青森県</option>
 								<option value="3">岩手県</option>
