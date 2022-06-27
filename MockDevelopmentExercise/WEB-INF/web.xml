@@ -61,7 +61,7 @@
 		<servlet-name>UpdatePayAndShipServletMapping</servlet-name>
 		<url-pattern>/UpdatePayAndShip</url-pattern>
 	</servlet-mapping>
-	
+
 	<servlet>
 		<servlet-name>UserBanServletMapping</servlet-name>
 		<servlet-class>servlet.UserBanServlet</servlet-class>
