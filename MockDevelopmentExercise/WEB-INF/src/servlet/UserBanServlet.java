@@ -1,8 +1,6 @@
 package servlet;
 
 import java.io.*;
-import java.util.*;
-import java.sql.Date;
 import javax.servlet.*;
 import javax.servlet.http.*;
 
