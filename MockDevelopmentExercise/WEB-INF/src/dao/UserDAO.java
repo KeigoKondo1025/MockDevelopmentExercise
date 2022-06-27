@@ -165,8 +165,10 @@ public class UserDAO {
 	}
 
 	/*
-	 * ＠メソッド名：search ＠説明 ：DBから指定ユーザーの条件に合致する情報を取得するメソッド ＠引数 ：メールアドレス（String
-	 * mail）とパスワード（String password） ＠戻り値 ：User user(Userオブジェクト）
+	 * ＠メソッド名：search
+	 * ＠説明 ：DBから指定ユーザーの条件に合致する情報を取得するメソッド
+	 * ＠引数 ：メールアドレス（String mail）とパスワード（String password）
+	 * ＠戻り値 ：User user(Userオブジェクト）
 	 */
 	public User search(String mail, String password) {
 		// 変数宣言
@@ -278,8 +280,10 @@ public class UserDAO {
 	}
 
 	/*
-	 * ＠メソッド名：insert ＠説明 ：新しいユーザ情報をDBに登録するメソッド ＠引数 ：登録する書籍データを格納したBookオブジェクト ＠戻り値
-	 * ：無し
+	 * ＠メソッド名：insert
+	 * ＠説明 ：新しいユーザ情報をDBに登録するメソッド
+	 * ＠引数 ：登録する書籍データを格納したBookオブジェクト
+	 * ＠戻り値：無し
 	 */
 	public void insert(User user) {
 
@@ -325,8 +329,10 @@ public class UserDAO {
 	}
 
 	/*
-	 * ＠メソッド名：update ＠説明 ：指定されたユーザIDに該当するユーザ情報を更新するメソッド ＠引数 ：User型のオブジェクトuser ＠戻り値
-	 * ：無し
+	 * ＠メソッド名：update
+	 * ＠説明 ：指定されたユーザIDに該当するユーザ情報を更新するメソッド
+	 * ＠引数 ：User型のオブジェクトuser
+	 * ＠戻り値：変更件数を格納したrowsCount
 	 */
 	public int update(User user) {
 		Connection con = null;
@@ -374,15 +380,63 @@ public class UserDAO {
 	}
 
 	/*
-	 * ＠メソッド名：delete ＠説明 ：DBからユーザデータを削除するメソッド ＠引数 ：削除するユーザ情報を格納したUser型オブジェクト ＠戻り値
-	 * ：無し
+	 * ＠メソッド名：update
+	 * ＠説明 ：指定されたユーザIDに該当するユーザの、利用停止情報を更新するメソッド
+	 * ＠引数 ：int型のuserId、boolean型のisUserBanned
+	 * ＠戻り値：変更件数を格納したrowsCount
+	 */
+	public int update(int userId,boolean isUserBanned) {
+		Connection con = null;
+		Statement smt = null;
+
+		// 更新件数を格納するint型変数の初期化
+		int rowsCount = 0;
+
+		try {
+			// 更新用のSQL文を文字列として格納
+			String sql = "UPDATE users_tb SET isUserBanned = " + isUserBanned + " WHERE user_id = '" + userId + "'";
+
+			// メソッドを利用してDBに接続
+			con = getConnection();
+
+			// SQL文作成の準備
+			smt = con.createStatement();
+
+			// SQL文を発行し、書籍データを更新
+			rowsCount = smt.executeUpdate(sql);
+
+		} catch (Exception e) {
+			throw new IllegalStateException(e);
+		} finally {
+			if (smt != null) {
+				try {
+					smt.close();
+				} catch (SQLException ignore) {
+				}
+			}
+			if (con != null) {
+				try {
+					con.close();
+				} catch (SQLException ignore) {
+				}
+			}
+		}
+
+		return rowsCount;
+	}
+
+	/*
+	 * ＠メソッド名：delete
+	 * ＠説明 ：DBからユーザデータを削除するメソッド
+	 * ＠引数 ：削除するユーザ情報を格納したUser型オブジェクト
+	 * ＠戻り値：無し
 	 */
 	public void delete(User user) {
 		Connection con = null;
 		Statement smt = null;
 
 		// 削除用のSQL文を文字列として定義
-		String sql = "DELETE FROM bookinfo WHERE user_id = '" + user.getUserId() + "'";
+		String sql = "DELETE FROM users_tb WHERE user_id = '" + user.getUserId() + "'";
 
 		try {
 			// getConnection(Dメソッドを利用し、DBに接続
