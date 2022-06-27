@@ -423,13 +423,56 @@ public class ItemDAO {
 	}
 
 	//購入済みの商品から引数の値で検索するメソッド
-	public ArrayList<Item> selectSales(String sellerId, String categoryId, String buyerId){
+	public ArrayList<Item> selectSales(ArrayList<Integer> sellerId, int categoryId, ArrayList<Integer> buyerId){
 		//データベース接続に利用する変数
 		Connection con = null;
 		Statement smt = null;
+		String sql;
 
 		//sql文を文字列で設定
-		String sql = "select * from items_tb where item_situation = 3";
+		if(categoryId != 0) {//カテゴリIDが0以外の場合
+			sql = "select * from items_tb where (";
+			//対象の出品者Idを全てsql文に含む
+			for(int i = 0; i < sellerId.size(); i++) {
+				sql += "seller_user_id = " + sellerId.get(i);
+				if(i != sellerId.size()-1) {
+				sql += " or ";
+				} else {
+					sql += ") and (";
+				}
+			};
+			//対象の購入者IDを全てsql文に含む
+			for(int i = 0; i < buyerId.size(); i++) {
+				sql += "buyer_user_id = " + buyerId.get(i);
+				if(i != sellerId.size()-1) {
+				sql += " or ";
+				} else {
+					sql += ") and ";
+				}
+			};
+			sql += "item_situation = 3 and category_id = " + categoryId;
+		} else {//カテゴリIDが0の場合
+			sql = "select * from items_tb where (";
+			//対象の出品者Idを全てsql文に含む
+			for(int i = 0; i < sellerId.size(); i++) {
+				sql += "seller_user_id = " + sellerId.get(i);
+				if(i != sellerId.size()-1) {
+				sql += " or ";
+				} else {
+					sql += ") and";
+				}
+			};
+			//対象の購入者IDを全てsql文に含む
+			for(int i = 0; i < buyerId.size(); i++) {
+				sql += "buyer_user_id = " + buyerId.get(i);
+				if(i != sellerId.size()-1) {
+				sql += " or ";
+				} else {
+					sql += ") and (";
+				}
+			};
+			sql += " item_situation = 3";
+		};
 		//結果を格納する変数
 		ArrayList<Item> itemList = new ArrayList<Item>();
 
@@ -590,7 +633,7 @@ public class ItemDAO {
 		return count;
 	}
 
-	//指定されたitemidの取引の状態を変更するメソッド(0:出品中,1:入金待ち,2:発送待ち,3:取引済)
+	//指定されたitemidの取引の状態を変更するメソッド(0:出品中,1:入金待ち,2:発送待ち,3:取引済,4:取り下げ)
 	public int updateItemSituation(int itemId,int itemSituation) {
 		//データベース接続に利用する変数
 		Connection con = null;
