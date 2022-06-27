@@ -24,12 +24,12 @@ public class UserBanServlet extends HttpServlet {
 			count = userDao.update(userId,!user.getIsUserBanned());//Banフラグを反転して更新
 
 		} catch (IllegalStateException e) {
-			error = "DB接続エラーのため、ユーザー情報の変更は行えませんでした。";
+			error = "DB接続エラーのため、ユーザーのBanは行えませんでした。";
 			cmd = "error";
 		} finally {
 			if (cmd.equals("")) {
-				//UserInfoServletに遷移する
-				request.getRequestDispatcher("/view/UserInfo").forward(request, response);
+				//UserListServletに遷移する
+				request.getRequestDispatcher("/UserList").forward(request, response);
 			} else {
 				request.setAttribute("error", error);
 				request.setAttribute("cmd", cmd);
