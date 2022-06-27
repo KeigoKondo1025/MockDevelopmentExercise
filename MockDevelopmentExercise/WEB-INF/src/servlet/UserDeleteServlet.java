@@ -14,8 +14,11 @@ public class UserDeleteServlet extends HttpServlet {
 		bean.User user = new bean.User();
 		dao.UserDAO userDao = new dao.UserDAO();
 		try {
+			//ユーザーIdの取得
 			user.setUserId(Integer.parseInt(request.getParameter("userId")));
+			//Itemオブジェクトを引数として、関連メソッドを呼び出す
 			userDao.delete(user);
+			//セッションにuserという名前で格納
 			session.setAttribute("user", user);
 		} catch (IllegalStateException e) {
 			error = "DB接続エラーのため、ユーザの削除は行えませんでした。";
