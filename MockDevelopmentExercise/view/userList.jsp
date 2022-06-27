@@ -62,15 +62,11 @@ ArrayList<User> list = (ArrayList<User>)request.getAttribute("userList");
                 <td><%= gender%></td>
                 <td><%= user.getBirthday()%></td>
                 <td>
-	               	<% if(user.getIsUserBanned() == false){ %>
-						<form action="<%=request.getContextPath()%>/UserBan?userId=<%=user.getUserId()%>" method="get">
-                     		<input type="submit" name="search" value="利用停止">
-						</form>
-					<% }else if(user.getIsUserBanned() == true){%>
-						<form action="<%=request.getContextPath()%>/UserBan" method="get">
-                     		<input type="submit" name="search" value="停止解除">
-						</form>
-					<%} %>
+	               <form action="<%=request.getContextPath()%>/UserBan">
+						 <input type="submit" value="<%if(user.getIsUserBanned() == false){out.print("利用停止");}
+						 else if(user.getIsUserBanned() == true){out.print("停止解除");}%>">
+						 <input type="hidden" name="userId" value=<%=user.getUserId()%>>
+					 </form>
                 </td>
             </tr>
             <%
