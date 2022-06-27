@@ -25,7 +25,7 @@ public class UserDeleteServlet extends HttpServlet {
 			cmd = "logout";
 		} finally {
 			if (cmd.equals("")) {
-				request.getRequestDispatcher("/view/myPage.jsp").forward(request, response);
+				request.getRequestDispatcher("/UserList").forward(request, response);
 			} else {
 				request.setAttribute("error", error);
 				request.setAttribute("cmd", cmd);
