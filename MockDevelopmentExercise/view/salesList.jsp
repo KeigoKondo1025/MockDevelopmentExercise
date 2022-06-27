@@ -5,9 +5,9 @@
 <%@page import="bean.*" %>
 <%@page import="dao.*" %>
 
-<link rel="stylesheet" href="css/menu.css">
-<link rel="stylesheet" href="css/style.css">
-<link rel="stylesheet" href="css/userList.css">
+<link rel="stylesheet" href="<%= request.getContextPath() %>/common/css/menu.css">
+<link rel="stylesheet" href="<%= request.getContextPath() %>/common/css/style.css">
+<link rel="stylesheet" href="<%= request.getContextPath() %>/common/css/userList.css">
 
 <%
 request.setCharacterEncoding("UTF-8");
@@ -25,9 +25,19 @@ ArrayList<Item> itemList = (ArrayList<Item>)request.getAttribute("itemList");
 		<div class="container">
 			<h2>商品ごとの売上げ一覧</h2>
 			<div class="userlist_flex">
-				<form action="<%= request.getContextPath() %>/SaleList" method="get">
+				<form action="<%= request.getContextPath() %>/SalesList" method="get">
 					出品者名：<input type="text" name="sellerName">
-					カテゴリー：<input type="text" name="category">
+					カテゴリー：<select name="category">
+						<option value=0 selected>カテゴリー</option>
+						<option value=1>服</option>
+						<option value=2>本・音楽・ゲーム</option>
+						<option value=3>家具・インテリア</option>
+						<option value=4>食器</option>
+						<option value=5>家電</option>
+						<option value=6>おもちゃ・ホビー・グッズ</option>
+						<option value=7>化粧品・香水</option>
+						<option value=8>その他</option>
+					</select>
 					購入者名：<input type="text" name="buyerName">
 					<input type="hidden" name="cmd" value="sarchSales">
 					<input type="submit" name="search" value="検索">
