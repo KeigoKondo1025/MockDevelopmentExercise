@@ -16,18 +16,18 @@ public class SearchServlet extends HttpServlet {
 		String error = "";
 		String cmd = "";
 
-
+		cmd = (String)request.getParameter("cmd");
 		try {
 
 			request.setCharacterEncoding("UTF-8");//文字コード指定
 			ItemDAO itemDaoObj = new ItemDAO();
-			cmd = (String)request.getAttribute("cmd");
+
 
 			if(cmd.equals("itemSearch")) {//出品一覧からの検索
-				int priceRange = Integer.parseInt(request.getParameter("price-range"));//価格範囲
+				int priceRange = Integer.parseInt(request.getParameter("price"));//価格範囲
 				int minPrice = 0;//最小価格
 				int maxPrice = 99999999;//最大価格
-				int itemSituation = Integer.parseInt(request.getParameter("item-situation"));//価格範囲
+				int itemSituation = Integer.parseInt(request.getParameter("itemSituation"));//価格範囲
 				switch(priceRange) {
 				case 1:
 					minPrice = 0;
@@ -52,7 +52,7 @@ public class SearchServlet extends HttpServlet {
 					break;
 				}
 				ArrayList<Item> itemList = itemDaoObj.select(minPrice,maxPrice,itemSituation);//商品検索
-				request.setAttribute("item_list", itemList);//リクエストスコープに格納
+				request.setAttribute("itemList", itemList);//リクエストスコープに格納
 			} else {
 
 				int categoryId = Integer.parseInt(request.getParameter("category"));//カテゴリー
@@ -95,6 +95,9 @@ public class SearchServlet extends HttpServlet {
 
 		} catch (IllegalStateException e) {
 			error = "DB接続エラーの為、商品検索は出来ません。";
+			cmd = "index";
+		}catch (Exception e) {
+			error = "エラー";
 			cmd = "index";
 		} finally {
 
