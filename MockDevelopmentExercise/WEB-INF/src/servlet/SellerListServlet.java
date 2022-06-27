@@ -55,7 +55,6 @@ public class SellerListServlet extends HttpServlet {
 				request.setAttribute("sellerUserList", sellerUserList);
 			}
 
-
 		}catch (IllegalStateException e){
 			error = "DB接続エラーの為、ユーザー情報は表示出来ません。";
 			cmd = "logout";
