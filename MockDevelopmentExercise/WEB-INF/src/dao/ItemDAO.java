@@ -630,8 +630,8 @@ public class ItemDAO {
 				"," + item.getSellerId() + ",'" + item.getSellerMessage() +
 				"'," + item.getPrefectureId() + "," + item.getDeleteFlag() +
 				"," + item.getItemSituation() + "," + item.getBuyerId() +
-				",'" + item.getBoughtTime() + "','" + item.getInsertedTime() +
-				"')";
+				",now(),now())";
+
 
 		//結果を格納する変数
 		int count = 0;
