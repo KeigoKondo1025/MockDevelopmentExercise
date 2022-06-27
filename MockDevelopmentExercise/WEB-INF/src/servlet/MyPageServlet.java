@@ -1,4 +1,4 @@
-// 出品者のsellerIdと一致する商品情報を取得機能
+// 出品者のsellerIdと一致する商品情報を取得する機能
 // myPage.jspに移動する前に経由
 
 package servlet;
