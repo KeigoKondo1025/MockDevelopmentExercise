@@ -43,6 +43,7 @@ public class ItemEntryServlet extends HttpServlet {
 			//Itemオブジェクトを引数として、関連メソッドを呼び出し、変数countに戻り値を格納する
 			dao.ItemDAO itemDao = new dao.ItemDAO();
 			count = itemDao.insert(item);
+			request.setAttribute("item", item);
 		} catch (IllegalStateException e) {
 			error = "DB接続エラーのため、出品は行えません";
 			cmd = "logout";
