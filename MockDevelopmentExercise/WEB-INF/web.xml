@@ -61,6 +61,10 @@
 		<servlet-name>UpdatePayAndShipServletMapping</servlet-name>
 		<url-pattern>/UpdatePayAndShip</url-pattern>
 	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>UserBanServletMapping</servlet-name>
+		<url-pattern>/UserBan</url-pattern>
+	</servlet-mapping>
 
 	<servlet>
 		<servlet-name>ListServletMapping</servlet-name>
@@ -180,12 +184,12 @@
 	</servlet-mapping>
 
 	<servlet>
-		<servlet-name>UserBanServletMapping</servlet-name>
-		<servlet-class>servlet.UserBanServlet</servlet-class>
+		<servlet-name>UserSearchServletMapping</servlet-name>
+		<servlet-class>servlet.UserSearchServlet</servlet-class>
 	</servlet>
 	<servlet-mapping>
-		<servlet-name>UserBanServletMapping</servlet-name>
-		<url-pattern>/UserBan</url-pattern>
+		<servlet-name>UserSearchServletMapping</servlet-name>
+		<url-pattern>/UserSearch</url-pattern>
 	</servlet-mapping>
 
 </web-app>
