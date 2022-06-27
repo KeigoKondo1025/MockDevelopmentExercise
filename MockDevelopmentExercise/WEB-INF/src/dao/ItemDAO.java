@@ -561,7 +561,7 @@ public class ItemDAO {
 	}
 
 	//指定されたitemidの削除フラグを変更するメソッド
-	public int updateDelete(int itemId,boolean deleteFlag, int itemSituation) {
+	public int updateDelete(int itemId,boolean deleteFlag) {
 		//データベース接続に利用する変数
 		Connection con = null;
 		Statement smt = null;
