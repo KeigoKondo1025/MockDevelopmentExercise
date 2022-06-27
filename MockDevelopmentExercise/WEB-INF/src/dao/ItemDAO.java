@@ -579,8 +579,8 @@ public class ItemDAO {
 		}
 
 		//sql文を文字列で設定
-		String sql = "update items_tb set is_sent_deleted = '" + deleteFlag +
-				"', item_situation = " + itemSituation + "  where item_id = '" + itemId + "'";
+		String sql = "update items_tb set is_sent_deleted = " + deleteFlag +
+				", item_situation = " + itemSituation + " where item_id = " + itemId;
 
 		//結果を格納する変数
 		int count = 0;
