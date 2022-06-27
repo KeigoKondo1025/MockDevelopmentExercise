@@ -1,9 +1,9 @@
 <%@page contentType="text/html;charset=UTF-8"%>
 <%@page
 	import="java.util.ArrayList,bean.User,bean.Item,dao.ItemDAO,dao.FavoriteDAO,util.MyFormat"%>
-<%@page session="true" %>
+<%@page session="true"%>
 <%
-	User user = (User)session.getAttribute("user");
+	User user = (User) session.getAttribute("user");
 	MyFormat moneyFormat = new MyFormat();
 %>
 
@@ -31,10 +31,11 @@
 				if (favoriteList != null) {
 					int count = 0;
 					for (int i = 0; i < favoriteList.size(); i++) {
-					count++;
+						count++;
 			%>
 			<div class="recommendation-item" id="<%=count%>">
-				<a href="<%=request.getContextPath()%>/itemDetail?itemId=<%=favoriteList.get(i).getItemId()%>">
+				<a
+					href="<%=request.getContextPath()%>/ItemDetail?itemId=<%=favoriteList.get(i).getItemId()%>">
 					<div class="picture">
 						<img
 							src="<%=request.getContextPath()%><%=favoriteList.get(i).getImage1()%>"
@@ -42,7 +43,12 @@
 						<p class="price"><%=moneyFormat.moneyFormat(favoriteList.get(i).getPrice())%></p>
 					</div> <span class="item-name"><%=favoriteList.get(i).getItemName()%></span>
 				</a>
-				<a href="<%=request.getContextPath()%>/Favorite?cmd=delete&itemId=<%=favoriteList.get(i).getItemId()%>"></a>
+				<form action="<%=request.getContextPath() %>/Favorite" method="get">
+					<input type="hidden" name="cmd" value="delete"> <input
+						type="hidden" name="itemId"
+						value="<%=favoriteList.get(i).getItemId() %>"> <input
+						type="submit" value="削除" class="favorite">
+					</form>
 			</div>
 		</div>
 		<%
