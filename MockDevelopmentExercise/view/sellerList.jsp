@@ -27,15 +27,9 @@ ArrayList<User> sellerUserList = (ArrayList<User>)request.getAttribute("sellerUs
 
 	<div class="container">
 		<h2>出品者一覧</h2>
-		<div class="userlist_flex">
-			<form action="#">
-				ユーザー名：<input type=text size="10" name="">
-				<input type="submit" name="search" value="検索">
-			</form>
-			<form action="#">
-				<input type="submit" name="searchall" value="全件表示">
-			</form>
-		</div>
+		<form action="<%= request.getContextPath() %>/SellerList">
+			<input type="submit" name="searchall" value="全件表示">
+		</form>
 
 		<table class="sellerlist-table">
 			<tr>
