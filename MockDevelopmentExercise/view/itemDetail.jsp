@@ -26,10 +26,10 @@
           <div class="item-detail">
 
             <div class="item-img-box">
-                <img src="<%=item.getImage1() %>" alt="" class="item-img">
-                <img src="<%=item.getImage2() %>" alt="" class="item-img">
-                <img src="<%=item.getImage3() %>" alt="" class="item-img">
-                <img src="<%=item.getImage4() %>" alt="" class="item-img">
+                <img src="<%=request.getContextPath()%>/common/image/item.getImage1()" alt="" class="item-img">
+                <img src="<%=request.getContextPath()%>/common/image/item.getImage2()" alt="" class="item-img">
+                <img src="<%=request.getContextPath()%>/common/image/item.getImage3()" alt="" class="item-img">
+                <img src="<%=request.getContextPath()%>/common/image/item.getImage4()" alt="" class="item-img">
             </div>
 
             <div class="item-info">
