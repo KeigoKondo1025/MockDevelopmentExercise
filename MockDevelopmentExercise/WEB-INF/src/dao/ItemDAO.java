@@ -375,6 +375,40 @@ public class ItemDAO {
 		return itemList;
 	}
 
+	//最新の商品情報を検索するメソッド
+	public int newItemId(){
+		//データベース接続に利用する変数
+		Connection con = null;
+		Statement smt = null;
+
+		//sql文を文字列で設定
+		String sql = "SELECT item_id FROM items_tb ORDER BY items_id DESC LIMIT 1";
+
+		int itemId = 0;
+
+		try {
+			con = ItemDAO.getConnection();
+			smt = con.createStatement();
+
+			ResultSet rs = smt.executeQuery(sql);
+
+			while(rs.next()) {
+				itemId = rs.getInt("item_id");
+			}
+
+		} catch(Exception e) {
+			throw new IllegalStateException(e);
+		}finally {
+			if(smt != null){
+				try{smt.close();}catch(SQLException ignore){}
+			}
+			if(con != null){
+				try{con.close();}catch(SQLException ignore){}
+			}
+		}
+		return itemId;
+	}
+
 	//指定されたuserIdと一致するsellerIdを持つ商品を検索するメソッド
 	public ArrayList<Item> selectSellerId(int userId){
 		//データベース接続に利用する変数
@@ -382,7 +416,7 @@ public class ItemDAO {
 		Statement smt = null;
 
 		//sql文を文字列で設定
-		String sql = "select * from items_tb where seller_id = " + userId + "";
+		String sql = "select * from items_tb where seller_user_id = " + userId + "";
 
 		//結果を格納する変数
 		ArrayList<Item> itemList = new ArrayList<Item>();
