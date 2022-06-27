@@ -18,6 +18,7 @@ public class ItemListServlet extends HttpServlet {
 		String cmd = "";
 
 		try {
+
 			UserDAO userDao = new UserDAO();
 			ItemDAO itemDao = new ItemDAO();
 
@@ -29,6 +30,14 @@ public class ItemListServlet extends HttpServlet {
 		} catch(IllegalStateException e) {
 			error = "DB接続エラーの為、表示できません。";
 		} finally {
+			if (!error.equals("")) {
+				request.setAttribute("error", error);
+				request.getRequestDispatcher("/view/error.jsp").forward(request, response);
+			} else {
+//				エラーが無ければitemList.jspへ
+				request.getRequestDispatcher("/view/itemList.jsp").forward(request, response);
+			}
+
 
 		}
 
