@@ -35,13 +35,13 @@ public class SendMail {
 			MimeMessage mimeMessage = new MimeMessage(session);
 
 			// 送信元メールアドレスと送信者名を指定
-			mimeMessage.setFrom(new InternetAddress("test.sender@kanda-it-school-system.com", "神田IT School", "iso-2022-jp"));
+			mimeMessage.setFrom(new InternetAddress("system.project.team32@kanda-it-school-system.com", "Vicon", "iso-2022-jp"));
 
 			// 送信先メールアドレスを指定
-			mimeMessage.setRecipients(Message.RecipientType.TO, "keigokondo1025@gmail.com");
+			mimeMessage.setRecipients(Message.RecipientType.TO, "system.project.team32@kanda-it-school-system.com");
 
 			// メールのタイトルを指定
-			mimeMessage.setSubject("書籍ご購入明細", "iso-2022-jp");
+			mimeMessage.setSubject("ご購入明細", "iso-2022-jp");
 
 			// メールの内容を指定
 			mimeMessage.setText(message, "iso-2022-jp");
