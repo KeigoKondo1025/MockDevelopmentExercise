@@ -21,6 +21,7 @@ public class SearchServlet extends HttpServlet {
 
 			request.setCharacterEncoding("UTF-8");//文字コード指定
 			ItemDAO itemDaoObj = new ItemDAO();
+			cmd = (String)request.getAttribute("cmd");
 
 			if(cmd.equals("itemSearch")) {//出品一覧からの検索
 				int priceRange = Integer.parseInt(request.getParameter("price-range"));//価格範囲
