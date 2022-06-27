@@ -483,8 +483,8 @@ public class ItemDAO {
 		return itemList;
 	}
 
-	//購入済みの商品から重複の内容に出品者情報を検索するメソッド
-	public ArrayList<String> selectSellerList(){
+	//購入済みの商品から重複する出品者情報を含まない出品者IDを検索するメソッド
+	public ArrayList<Integer> selectSellerList(){
 		//データベース接続に利用する変数
 		Connection con = null;
 		Statement smt = null;
@@ -492,7 +492,7 @@ public class ItemDAO {
 		//sql文を文字列で設定
 		String sql = "select seller_id from items_tb group by having item_situation = 3";
 		//結果を格納する変数
-		ArrayList<String> sellerIdList = new ArrayList<String>();
+		ArrayList<Integer> sellerIdList = new ArrayList<Integer>();
 
 		try {
 			con = ItemDAO.getConnection();
@@ -501,7 +501,7 @@ public class ItemDAO {
 			ResultSet rs = smt.executeQuery(sql);
 
 			while(rs.next()) {
-				String sellerId = rs.getString("seller_id");
+				int sellerId = rs.getInt("seller_id");
 				sellerIdList.add(sellerId);
 			}
 
@@ -628,8 +628,8 @@ public class ItemDAO {
 				"','" + item.getImage2() + "','" + item.getImage3() +
 				"','" + item.getImage4() + "'," + item.getItemState() +
 				"," + item.getSellerId() + ",'" + item.getSellerMessage() +
-				"'," + item.getPrefectureId() + ",'" + item.getDeleteFlag() +
-				"'," + item.getItemSituation() + "," + item.getBuyerId() +
+				"'," + item.getPrefectureId() + "," + item.getDeleteFlag() +
+				"," + item.getItemSituation() + "," + item.getBuyerId() +
 				",'" + item.getBoughtTime() + "','" + item.getInsertedTime() +
 				"')";
 
