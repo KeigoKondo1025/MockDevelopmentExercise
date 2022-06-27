@@ -26,13 +26,13 @@
 			<div class="container">
 
 				<p class="favorite-list">
-					<a href="/Favorite?cmd=list">お気に入り一覧</a>
+					<a href="<%=request.getContextPath()%>/Favorite?cmd=list">お気に入り一覧</a>
 				</p>
 				<p class="updatePayment-Shipment">
-					<a href="/UpdatePayAndShip">入金状況／発送確認</a>
+					<a href="<%=request.getContextPath()%>/UpdatePayAndShip">入金状況／発送確認</a>
 				</p>
 				<p class="userInfo">
-					<a href="/UserInfo">ユーザ情報</a>
+					<a href="<%=request.getContextPath()%>/UserInfo">ユーザ情報</a>
 				</p>
 				<h4>出品商品一覧</h4>
 
