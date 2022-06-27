@@ -33,11 +33,15 @@ public class FavoriteServlet extends HttpServlet {
 
 			HttpSession session = request.getSession();
 			User user = (User) session.getAttribute("user");
-			Item item = (Item) session.getAttribute("item");
-			cmd = (String) request.getAttribute("cmd"); // cmdの値で操作を分ける
+			String itemId = request.getParameter("itemId");
+			int intItemId = Integer.parseInt(itemId);
+			cmd= request.getParameter("cmd");
+			if(cmd == null) {
+				cmd = request.getParameter("cmd");
+			}
 
 			if (user == null) {// セッション切れ判定
-				request.setAttribute("error", "MyPageServletでのセッション切れ");
+				request.setAttribute("error", "FavoriteServletでのセッション切れ");
 				request.getRequestDispatcher("/view/error.jsp").forward(request, response);
 				return;
 			}
@@ -63,17 +67,17 @@ public class FavoriteServlet extends HttpServlet {
 
 				} else if (cmd.equals("insert")) {//登録ボタン押下
 
-					favoriteDaoObj.insert(user.getUserId(), item.getItemId());
+					favoriteDaoObj.insert(user.getUserId(), intItemId);
 					cmd = "list";
 					request.setAttribute("cmd", cmd);
-					request.getRequestDispatcher("/FavoriteList").forward(request, response);
+					request.getRequestDispatcher("/Favorite").forward(request, response);
 
 				} else if (cmd.equals("delete")) {//削除ボタン押下
 
-					favoriteDaoObj.delete(favoriteDaoObj.selectFavoriteId(user.getUserId(), item.getItemId()));
+					favoriteDaoObj.delete(favoriteDaoObj.selectFavoriteId(user.getUserId(), intItemId));
 					cmd = "list";
 					request.setAttribute("cmd", cmd);
-					request.getRequestDispatcher("/FavotriteList").forward(request, response);
+					request.getRequestDispatcher("/Favotrite").forward(request, response);
 				}
 
 			}
