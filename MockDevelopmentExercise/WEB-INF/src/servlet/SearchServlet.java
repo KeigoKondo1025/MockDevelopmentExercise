@@ -53,7 +53,12 @@ public class SearchServlet extends HttpServlet {
 				}
 				ArrayList<Item> itemList = itemDaoObj.select(minPrice,maxPrice,itemSituation);//商品検索
 				request.setAttribute("itemList", itemList);//リクエストスコープに格納
-			} else {
+			} else if(cmd.equals("userIdSearch")){//出品者一覧からの検索
+				int sellerId = Integer.parseInt(request.getParameter("sellerId"));//GET送信された出品者IDを取得
+				ArrayList<Item> itemList = itemDaoObj.selectSellerId(sellerId);//出品者IDで商品検索
+				request.setAttribute("itemList", itemList);//リクエストスコープに格納
+
+			}else{
 
 				int categoryId = Integer.parseInt(request.getParameter("category"));//カテゴリー
 				String itemName = request.getParameter("item-name");//商品名
@@ -107,7 +112,7 @@ public class SearchServlet extends HttpServlet {
 				request.setAttribute("cmd", cmd);
 				request.getRequestDispatcher("/view/error.jsp").forward(request, response);
 			}else {
-				if(cmd.equals("itemSearch")) {
+				if(cmd.equals("itemSearch") || cmd.equals("userIdSearch")) {
 					request.getRequestDispatcher("/view/itemList.jsp").forward(request, response);
 				}else {
 					//エラーが無ければトップページへ
