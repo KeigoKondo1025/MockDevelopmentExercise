@@ -1,7 +1,7 @@
 <%@page contentType= "text/html;charset=UTF-8" %>
 <%@page import="bean.User, java.sql.Date, java.text.*, dao.IdToNameDAO" %>
 <%
-User userinfo = (User)request.getAttribute("userInfo");
+User userinfo = (User)session.getAttribute("user");
 String prefectureName = null;
 %>
 <html>
@@ -34,18 +34,9 @@ String prefectureName = null;
 						<th><input type="text" name="familyName"><input type="text" name="firstName"></th>
 					</tr>
 					<tr>
-						<td>性別</td>
-						<td><%= userinfo.getGender() %></td>
-						<td>
-							<input type="radio" name="gender" value="1">男
-							<input type="radio" name="gender" value="2">女
-							<input type="radio" name="gender" value="3">その他
-						</td>
-					</tr>
-					<tr>
 						<td>郵便番号</td>
 						<td>〒<%= userinfo.getPostalCode() %></td>
-						<td>〒<input type="text" name="postalCpde1" size="4"><input type="text" name="postalCode2" size="5"></td>
+						<td>〒<input type="text" name="postalCpde" size="4"><input type="text" name="postalCode2" size="5"></td>
 					</tr>
 					<tr>
 						<td>都道府県</td>
@@ -117,15 +108,19 @@ String prefectureName = null;
 						<td><input type="text" name="mail"></td>
 					</tr>
 					<tr>
-						<td>生年月日</td>
-						<% String birthday = new SimpleDateFormat("yyyy年mm月dd").format(userinfo.getBirthday()); %>
-						<td><%= birthday %></td>
-						<td><input type="date" name="birthday"></td>
-					</tr>
 					<tr>
 						<td>電話番号</td>
 						<td><%= userinfo.getPhoneNumber() %></td>
 						<td><input type="text" name="phoneNumber"></td>
+					</tr>
+					<tr>
+						<td><input type="hidden" name="userId" value="<%=userinfo.getUserId() %>"></td>
+						<td><input type="hidden" name="mail" value="<%=userinfo.getMail() %>"></td>
+						<td><input type="hidden" name="authority" value="<%=userinfo.getAuthority() %>">
+					</tr>
+					<tr>
+						<td><input type="hidden" name="userId" value="<%=userinfo.getUserId() %>"></td>
+						<td><input type="hidden" name="pass" value="<%=userinfo.getPassWord() %>"></td>
 					</tr>
 					<%
 						}
