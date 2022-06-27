@@ -21,12 +21,13 @@ public class SalesListServlet extends HttpServlet {
 			//セッション情報の取得
 			HttpSession session = request.getSession();
 			User user = (User)session.getAttribute("user");
-			String sellerName = (String)request.getAttribute("sellerName");
-			String sellerName = (String)request.getAttribute("sellerName");
 
-			//リクエスト情報の受け取り
+			//パラメータ情報の受け取り
 			request.setCharacterEncoding("UTF-8");
-			cmd = (String)request.getParameter("cmd");
+			cmd = request.getParameter("cmd");
+			String sellerName = request.getParameter("sellerName");
+			String buyerName = request.getParameter("buyerName");
+			int categoryId = Integer.parseInt(request.getParameter("category"));
 
 			//セッション切れの場合
 			if(user == null) {
@@ -44,13 +45,15 @@ public class SalesListServlet extends HttpServlet {
 				itemList = itemDao.selectSales();
 			}else {
 				UserDAO userDao = new UserDAO();
-				//出品者のuserIdを受け取る
-				ArrayList<String> buyerUser = new ArrayList<String>();
-				userDao.searchbyUserName();
+				//購入者のuserIdのArrayListを受け取る
+				ArrayList<Integer> buyerId = userDao.searchByUserName(buyerName);
+
+				//出品者のuserIdのArrayListを受け取る
+				ArrayList<Integer> sellerId = userDao.searchByUserName(sellerName);
 
 				//購入済みの商品から引数の値で検索するメソッド
 				ItemDAO itemDao = new ItemDAO();
-				itemList = itemDao.selectSales();
+				itemList = itemDao.selectSales(sellerId, categoryId, buyerId);
 			}
 
 			request.setAttribute("itemList", itemList);
