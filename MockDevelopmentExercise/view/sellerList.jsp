@@ -39,8 +39,8 @@ ArrayList<User> sellerUserList = (ArrayList<User>)request.getAttribute("sellerUs
 
 		<table class="sellerlist-table">
 			<tr>
-				<th>ユーザー名</th>
-				<th>ユーザー一覧へ</th>
+				<th>出品者名</th>
+				<th>出品一覧へ</th>
 			</tr>
 
 			<%
@@ -48,16 +48,19 @@ ArrayList<User> sellerUserList = (ArrayList<User>)request.getAttribute("sellerUs
 			%>
 			<tr>
 				<td><a href="<%= request.getContextPath() %>/UserList"><%= sellerUser.getUserName() %></a></td>
-				<td><a href="<%= request.getContextPath() %>/UserList">出品一覧へ</a></td>
+				<td><a href="<%= request.getContextPath() %>/SearchList?cmd=userIdSearch&sellerId=<%= sellerUser.getUserId() %>">出品一覧</a></td>
+			</tr>
+			<%
+			}else{
+				for(int i = 0; i < sellerUserList.size(); i++){
+			%>
+			<tr>
+				<td><a href="<%= request.getContextPath() %>/UserList"><%= sellerUserList(i).getUserName() %></a></td>
+				<td><a href="<%= request.getContextPath() %>/SearchList?cmd=userIdSearch&sellerId=<%= sellerUserList(i).getUserId() %>">出品一覧</a></td>
 			</tr>
 			<%
 			}
 			%>
-			<tr>
-				<td><a href="#"></a></td>
-				<!-- 仮置きなのでゲッター書いたら削除-->
-				<td><a href="#">ユーザー一覧へ</a></td>
-			</tr>
 		</table>
 	</div>
 </body>
