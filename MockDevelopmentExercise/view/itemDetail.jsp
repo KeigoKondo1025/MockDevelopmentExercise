@@ -7,16 +7,16 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/menu.css">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/itemDetail.css">
+    <link rel="stylesheet" href="<%=request.getContextPath() %>/common/css/menu.css">
+    <link rel="stylesheet" href="<%=request.getContextPath() %>/common/css/style.css">
+    <link rel="stylesheet" href="<%=request.getContextPath() %>/common/css/itemDetail.css">
     <title>商品詳細</title>
 </head>
 <body>
    <%@include file="/common/header.jsp"%>
 
 	<%
-		Item item = (Item)request.getAttribute("item"); 	// リクエストスコープに登録された書籍情報を取得
+		Item item = (Item)request.getAttribute("item"); 	// リクエストスコープに登録された商品情報を取得
 		MyFormat myFormat = new MyFormat(); 		// 金額表示を変えるMyFormatクラスをオブジェクト化
 		IdToNameDAO idToNameDao = new IdToNameDAO();	// カテゴリ名を取得するメソッド利用のため、DAOクラスをオブジェクト化
 	%>
@@ -34,7 +34,10 @@
 
             <div class="item-info">
                 <form action="<%=request.getContextPath() %>/Favorite" method="get">
-                	<span class="price"><%= myFormat.moneyFormat(item.getPrice()) %></span><input type="submit" value="お気に入り" class="favorite">
+                	<span class="price"><%= myFormat.moneyFormat(item.getPrice()) %></span>
+                	<input type="hidden"  name="cmd" value="insert">
+					<input type="hidden"  name="itemId" value="<%=item.getItemId() %>">
+                	<input type="submit" value="お気に入り" class="favorite">
                 </form>
                 <br>
                 <span class="category"><%=idToNameDao.categoryIdToName(item.getCategoryId()) %></span>
