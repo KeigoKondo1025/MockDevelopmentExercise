@@ -101,6 +101,7 @@
 		</h3>
 		<div class="search-box">
 			<form action="<%=request.getContextPath()%>/Search">
+				<input type="hidden" name="cmd" value="">
 				<select name="category">
 					<option value=0 selected>カテゴリー</option>
 					<option value=1>服</option>
