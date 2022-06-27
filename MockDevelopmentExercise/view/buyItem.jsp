@@ -4,10 +4,10 @@
 <%@page import="dao.IdToNameDAO" %>
 
 
-<link rel="stylesheet" href="css/menu.css">
-<link rel="stylesheet" href="css/style.css">
-<link rel="stylesheet" href="css/itemDetail.css">
-<link rel="stylesheet" href="css/buyitem.css">
+<link rel="stylesheet" href="<%= request.getContextPath() %>/common/css/menu.css">
+<link rel="stylesheet" href="<%= request.getContextPath() %>/common/css/style.css">
+<link rel="stylesheet" href="<%= request.getContextPath() %>/common/css/itemDetail.css">
+<link rel="stylesheet" href="<%= request.getContextPath() %>/common/css/buyitem.css">
 
 <%
 request.setCharacterEncoding("UTF-8");

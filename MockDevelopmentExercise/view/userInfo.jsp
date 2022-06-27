@@ -4,9 +4,9 @@
 <%@page import="dao.IdToNameDAO" %>
 
 
-<link rel="stylesheet" href="css/style.css">
-<link rel="stylesheet" href="css/menu.css">
-<link rel="stylesheet" href="css/userInfo.css">
+<link rel="stylesheet" href="<%= request.getContextPath() %>/common/css/style.css">
+<link rel="stylesheet" href="<%= request.getContextPath() %>/common/css/menu.css">
+<link rel="stylesheet" href="<%= request.getContextPath() %>/common/css/userInfo.css">
 
 <%
 request.setCharacterEncoding("UTF-8");
