@@ -561,7 +561,7 @@ public class ItemDAO {
 	}
 
 	//指定されたitemidの削除フラグを変更するメソッド
-	public int updateDelete(int itemId,boolean deleteFlag) {
+	public int updateDelete(int itemId,boolean deleteFlag, int itemSituation) {
 		//データベース接続に利用する変数
 		Connection con = null;
 		Statement smt = null;
@@ -575,7 +575,7 @@ public class ItemDAO {
 
 		//sql文を文字列で設定
 		String sql = "update items_tb set is_sent_deleted = '" + deleteFlag +
-				"' where item_id = '" + itemId + "'";
+				"', item_situation = 4  where item_id = '" + itemId + "'";
 
 		//結果を格納する変数
 		int count = 0;
@@ -600,7 +600,7 @@ public class ItemDAO {
 		return count;
 	}
 
-	//指定されたitemidの購入者idと商品状況を変更するメソッド
+	//指定されたitemIdの購入者idと商品状況を変更するメソッド(商品状況が1になる場合)
 	public int updateBuyerId(int itemId,int buyerId) {
 		//データベース接続に利用する変数
 		Connection con = null;
@@ -608,7 +608,7 @@ public class ItemDAO {
 
 		//sql文を文字列で設定
 		String sql = "update items_tb set buyer_user_id = '" + buyerId +
-				"' , item_situation = 1 where item_id = '" + itemId + "'";
+				"', item_situation = 1 where item_id = '" + itemId + "'";
 
 		//結果を格納する変数
 		int count = 0;
