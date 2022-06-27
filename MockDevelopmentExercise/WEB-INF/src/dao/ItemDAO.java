@@ -566,16 +566,21 @@ public class ItemDAO {
 		Connection con = null;
 		Statement smt = null;
 
+		//itemSituation変更管理用変数
+		int itemSituation = 0;
+
 		//受けとったdeleteFlagを変更する
 		if(deleteFlag == true) {
 			deleteFlag = false;
+			itemSituation = 0;
 		}else {
 			deleteFlag = true;
+			itemSituation = 4;
 		}
 
 		//sql文を文字列で設定
 		String sql = "update items_tb set is_sent_deleted = '" + deleteFlag +
-				"', item_situation = 4  where item_id = '" + itemId + "'";
+				"', item_situation = " + itemSituation + "  where item_id = '" + itemId + "'";
 
 		//結果を格納する変数
 		int count = 0;
