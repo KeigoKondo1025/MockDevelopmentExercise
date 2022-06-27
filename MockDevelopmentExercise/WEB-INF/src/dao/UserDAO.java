@@ -18,7 +18,10 @@ public class UserDAO {
 	private static String PASSWD = "root123";
 
 	/*
-	 * ＠メソッド名：getConnection ＠説明 ：DBと接続するメソッド ＠引数 ：無し ＠戻り値 ：－
+	 * ＠メソッド名：getConnection
+	 * ＠説明 ：DBと接続するメソッド
+	 * ＠引数 ：無し
+	 * ＠戻り値 ：－
 	 */
 	public static Connection getConnection() {
 		try {
@@ -31,8 +34,10 @@ public class UserDAO {
 	}
 
 	/*
-	 * ＠メソッド名：selectAll ＠説明 ：DBからすべてのユーザ情報を検索するメソッド ＠引数 ：無し ＠戻り値
-	 * ：全件分の書籍情報を格納したUser型ArrayList
+	 * ＠メソッド名：selectAll
+	 * ＠説明 ：DBからすべてのユーザ情報を検索するメソッド
+	 * ＠引数 ：無し
+	 * ＠戻り値：全件分の書籍情報を格納したUser型ArrayList
 	 */
 	public ArrayList<User> selectAll() {
 		// User型オブジェクトを格納するためのArrayListの作成
@@ -334,12 +339,10 @@ public class UserDAO {
 			// 更新用のSQL文を文字列として格納
 			String sql = "UPDATE user_tb SET user_name='" + user.getUserName() + "',password = '" + user.getPassWord()
 					+ "',family_name = '" + user.getFamilyName() + "',first_name = '" + user.getFirstName()
-					+ "',gender = " + user.getGender() + ",postal_code = '" + user.getPostalCode()
-					+ "',prefecture_id = " + user.getPrefectureId() + ",address1 = '" + user.getAddress1()
-					+ "',address2 = '" + user.getAddress2() + "',birthday = " + user.getBirthday() + ",phone_number = '"
-					+ user.getPhoneNumber() + "',mail = '" + user.getMail() + "',authority = " + user.getAuthority()
-					+ "',inserted_on = " + user.getInsertedOn() + "',is_user_deleted = " + user.getIsUserDeleted()
-					+ ",is_user_banned = " + user.getIsUserBanned() + " WHERE user_id = '" + user.getUserId() + "'";
+					+ "',postal_code = '" + user.getPostalCode() + "',prefecture_id = " + user.getPrefectureId()
+					+ ",address1 = '" + user.getAddress1() + "',address2 = '" + user.getAddress2()
+					+ "',phone_number = '"+ user.getPhoneNumber() + "',mail = '" + user.getMail()
+					+ "' WHERE user_id = '" + user.getUserId() + "'";
 
 			// メソッドを利用してDBに接続
 			con = getConnection();
