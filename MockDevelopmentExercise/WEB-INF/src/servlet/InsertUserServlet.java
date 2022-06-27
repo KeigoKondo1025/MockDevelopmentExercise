@@ -47,7 +47,7 @@ public class InsertUserServlet extends HttpServlet {
 				gender = Integer.parseInt(strGender);
 			} catch (NumberFormatException e) {
 				error = "性別の値が不正の為、会員登録処理は行えませんでした。";
-				cmd = "list";
+				cmd = "index";
 				return;
 			}
 
@@ -56,7 +56,7 @@ public class InsertUserServlet extends HttpServlet {
 				prefectureId = Integer.parseInt(strPrefectureId);
 			} catch (NumberFormatException e) {
 				error = "都道府県の値が不正の為、会員登録処理は行えませんでした。";
-				cmd = "list";
+				cmd = "index";
 				return;
 			}
 
@@ -65,18 +65,18 @@ public class InsertUserServlet extends HttpServlet {
 				authority = Integer.parseInt(strAuthority);
 			} catch (NumberFormatException e) {
 				error = "権限の値が不正の為、会員登録処理は行えませんでした。";
-				cmd = "list";
+				cmd = "index";
 				return;
 			}
 
 			// String型で受け取った生年月日データを、Date型にキャスト
-			Date birthday = new Date();
+			Date birthday = null;
 			try {
 				SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-				Date date = format.parse(strBirthday);
+				birthday = format.parse(strBirthday);
 			}catch (ParseException e) {
 				error = "生年月日の値が不正の為、会員登録処理は行えませんでした。";
-				cmd = "list";
+				cmd = "index";
 				return;
 			}
 
