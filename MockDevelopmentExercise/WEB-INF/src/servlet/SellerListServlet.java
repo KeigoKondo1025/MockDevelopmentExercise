@@ -43,7 +43,7 @@ public class SellerListServlet extends HttpServlet {
 				sellerUser = userDao.searchByUserId(userId);
 				request.setAttribute("sellerUser",sellerUser);
 			}else {
-				//購入済みの商品から重複の内容に出品者情報を検索するメソッドの呼び出し
+				//購入済みの商品から重複する出品者が存在しない出品者情報を検索するメソッドの呼び出し
 				ArrayList<Integer> sellerUserId = itemDao.selectSellerList();
 				//ユーザーの一覧を格納する変数
 				ArrayList<User> sellerUserList = new ArrayList<User>();
