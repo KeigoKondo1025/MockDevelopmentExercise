@@ -29,10 +29,10 @@
 					<a href="/Favorite?cmd=list">お気に入り一覧</a>
 				</p>
 				<p class="updatePayment-Shipment">
-					<a href="/updatePayAndShip.jsp">入金状況／発送確認</a>
+					<a href="/UpdatePayAndShip">入金状況／発送確認</a>
 				</p>
 				<p class="userInfo">
-					<a href="/userInfo.jsp">ユーザ情報</a>
+					<a href="/UserInfo">ユーザ情報</a>
 				</p>
 				<h4>出品商品一覧</h4>
 
@@ -40,9 +40,12 @@
 					<%
 						ArrayList<Item> itemList = (ArrayList<Item>) request.getAttribute("itemList");
 						if (itemList != null) {
+							int count = 0; //真似して入れてみました
 							for (int i = 0; i < itemList.size(); i++) {
+
+								count++;
 					%>
-					<div class="recommendation-item" id="item1">
+					<div class="recommendation-item" id="<%=count%>">
 						<a href="<%=request.getContextPath()%>/ItemDetail?itemId=<%=itemList.get(i).getItemId()%>">
 							<div class="picture">
 								<img
