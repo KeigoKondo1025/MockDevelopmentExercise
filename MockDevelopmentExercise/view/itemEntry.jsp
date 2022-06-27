@@ -1,5 +1,8 @@
 <%@page contentType= "text/html;charset=UTF-8" %>
-<%@page import="java.sql.Timestamp, java.text.SimpleDateFormat" %>
+<%@page import="java.util.Date, java.text.SimpleDateFormat, bean.User" %>
+<%
+User user = (User)session.getAttribute("user");
+%>
 <html>
 	<head>
 		<title>商品出品</title>
@@ -11,12 +14,17 @@
 		<%@include file="../common/header.jsp" %>
 		<div class="container">
 			<div class="itemEntry">
-				<form action="<%=request.getContextPath() %>/ItemEntry" method="post">
+				<%
+				if (user == null){
+					request.getRequestDispatcher("/view/signIn.jsp").forward(request, response);
+				}
+				%>
+				<form action="<%=request.getContextPath() %>/ItemEntry">
 				<p>商品のアップロード</p>
-				<input type="file" name="image1"><br><br>
-				<input type="file" name="image2"><br><br>
-				<input type="file" name="image3"><br><br>
-				<input type="file" name="image4">
+				<input type="file" name="image1" accept="image/*"><br><br>
+				<input type="file" name="image2" accept="image/*"><br><br>
+				<input type="file" name="image3" accept="image/*"><br><br>
+				<input type="file" name="image4" accept="image/*">
 				<p>商品名</p>
 				<input type="text" name="itemName">
 				<p>カテゴリ</p>
@@ -92,12 +100,7 @@
 					<option value="47">沖縄県</option>
 				</select>
 				<input type="hidden" name="itemSituation" value="0">
-				<%
-					Timestamp insertedTime = new Timestamp(System.currentTimeMillis());
-					SimpleDateFormat sdf = new SimpleDateFormat("yyyy年mm月dd日");
-					String strInsertedTime = sdf.format(insertedTime);
-				%>
-				<input type="hidden" name="insertedTime" value="<%=strInsertedTime %>">
+				<input type="hidden" name="deleteFlag" value="false">
 				<br><br>
 				<input type="submit" value="出品">
 				</form>
