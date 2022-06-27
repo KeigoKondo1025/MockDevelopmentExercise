@@ -382,7 +382,7 @@ public class ItemDAO {
 		Statement smt = null;
 
 		//sql文を文字列で設定
-		String sql = "SELECT item_id FROM items_tb ORDER BY items_id DESC LIMIT 1";
+		String sql = "SELECT item_id FROM items_tb ORDER BY item_id DESC LIMIT 1";
 
 		int itemId = 0;
 
