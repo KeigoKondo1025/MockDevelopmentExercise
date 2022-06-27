@@ -59,14 +59,11 @@
 <title>Vicon</title>
 <meta charset="UTF-8">
 <link rel="stylesheet"
-	href="<%=request.getContextPath()%>/common/css/style.css">
-<!-- 共通CSS -->
+	href="<%=request.getContextPath()%>/common/css/style.css"><!-- 共通CSS -->
 <link rel="stylesheet"
-	href="<%=request.getContextPath()%>/common/css/menu.css">
-<!-- ヘッダーCSS -->
+	href="<%=request.getContextPath()%>/common/css/menu.css"><!-- ヘッダーCSS -->
 <link rel="stylesheet"
-	href="<%=request.getContextPath()%>/common/css/recommendation.css">
-<!-- 商品一覧CSS -->
+	href="<%=request.getContextPath()%>/common/css/recommendation.css"><!-- 商品一覧CSS -->
 </head>
 <body>
 	<%@include file="/common/header.jsp"%>
@@ -194,6 +191,9 @@
 			<%
 				}
 			%>
+		</div>
+		<div>
+			<a href="<%=request.getContextPath()%>/view/itemEntry.jsp">出品</a>
 		</div>
 	</div>
 </body>
