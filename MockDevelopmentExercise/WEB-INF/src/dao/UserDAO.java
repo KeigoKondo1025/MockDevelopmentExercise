@@ -337,7 +337,7 @@ public class UserDAO {
 
 		try {
 			// 更新用のSQL文を文字列として格納
-			String sql = "UPDATE user_tb SET user_name='" + user.getUserName() + "',password = '" + user.getPassWord()
+			String sql = "UPDATE users_tb SET user_name='" + user.getUserName() + "',password = '" + user.getPassWord()
 					+ "',family_name = '" + user.getFamilyName() + "',first_name = '" + user.getFirstName()
 					+ "',postal_code = '" + user.getPostalCode() + "',prefecture_id = " + user.getPrefectureId()
 					+ ",address1 = '" + user.getAddress1() + "',address2 = '" + user.getAddress2()
