@@ -2,9 +2,7 @@
 <%@page import="java.util.ArrayList,bean.User,bean.Item,dao.ItemDAO,util.MyFormat"%>
 
 <%
-	//User user = new User(); // テスト用結合後コメントアウト
-
-	User user = (User)session.getAttribute("user"); // テスト時コメントアウト
+	User user = (User)session.getAttribute("user");
 	ItemDAO itemDaoObj = new ItemDAO();
 	MyFormat moneyFormat = new MyFormat();
 %>
@@ -28,9 +26,8 @@
 			<div class="container">
 
 				<p class="favorite-list">
-					<a href="/favorite?cmd=list">お気に入り一覧</a>
+					<a href="/Favorite?cmd=list">お気に入り一覧</a>
 				</p>
-				<!-- listで一覧、addで追加、deleteで削除 -->
 				<p class="updatePayment-Shipment">
 					<a href="/updatePayAndShip.jsp">入金状況／発送確認</a>
 				</p>
@@ -41,15 +38,12 @@
 
 				<div class="item-list">
 					<%
-					//ArrayList<Item> itemList = new ArrayList<Item>();// テスト用結合後コメントアウト
-					//itemList = itemDaoObj.select("1003", "", "", ""); // テスト用結合後コメントアウト
-
-						ArrayList<Item> itemList = (ArrayList<Item>) request.getAttribute("itemList"); // テスト時コメントアウト
+						ArrayList<Item> itemList = (ArrayList<Item>) request.getAttribute("itemList");
 						if (itemList != null) {
 							for (int i = 0; i < itemList.size(); i++) {
 					%>
 					<div class="recommendation-item" id="item1">
-						<a href="<%=request.getContextPath()%>/itemDetail">
+						<a href="<%=request.getContextPath()%>/ItemDetail?itemId=<%=itemList.get(i).getItemId()%>">
 							<div class="picture">
 								<img
 									src="<%=request.getContextPath()%><%=itemList.get(i).getImage1()%>"
