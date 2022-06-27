@@ -68,7 +68,7 @@
 					} else if (user.getAuthority() == 2) {
 				%>
 				<p class="">
-					<a href="/ItemList">出品一覧</a>
+					<a href="<%=request.getContextPath()%>/ItemList">出品一覧</a>
 				</p>
 				<p class="">
 					<a href="<%=request.getContextPath()%>/SalesList">商品ごとの売り上げ一覧</a>
