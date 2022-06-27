@@ -64,7 +64,7 @@
 	
 	<servlet>
 		<servlet-name>UserBanServletMapping</servlet-name>
-		<servlet-class>servlet.UserBanServletMapping</servlet-class>
+		<servlet-class>servlet.UserBanServlet</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>UserBanServletMapping</servlet-name>
