@@ -629,7 +629,7 @@ public class ItemDAO {
 				"','" + item.getImage4() + "'," + item.getItemState() +
 				"," + item.getSellerId() + ",'" + item.getSellerMessage() +
 				"'," + item.getPrefectureId() + "," + item.getDeleteFlag() +
-				"," + item.getItemSituation() + "," + item.getBuyerId() +
+				"," + item.getItemSituation() + ",null" +
 				",now(),now())";
 
 
