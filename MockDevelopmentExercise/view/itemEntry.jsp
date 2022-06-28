@@ -43,9 +43,9 @@ User user = (User)session.getAttribute("user");
 				<p>商品状態</p>
 				<select name="itemState">
 					<option value="1" selected>新品</option>
-					<option value="2"></option>
-					<option value="3"></option>
-					<option value="4"></option>
+					<option value="2">中古</option>
+					<option value="3">汚れあり</option>
+					<option value="4">破損あり</option>
 				</select>
 				<p>出品者メッセージ</p>
 				<textarea name="sellerMessage" rows="3" cols="30"></textarea>
