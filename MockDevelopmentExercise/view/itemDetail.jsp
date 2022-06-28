@@ -26,10 +26,10 @@
           <div class="item-detail">
 
             <div class="item-img-box">
-                <img src="<%=request.getContextPath()%>/common/image/<%=item.getImage1()%>" alt="" class="item-img">
-                <img src="<%=request.getContextPath()%>/common/image/<%=item.getImage2()%>" alt="" class="item-img">
-                <img src="<%=request.getContextPath()%>/common/image/<%=item.getImage3()%>" alt="" class="item-img">
-                <img src="<%=request.getContextPath()%>/common/image/<%=item.getImage4()%>" alt="" class="item-img">
+                <img src="<%=request.getContextPath()%>/common/image/<%= item.getImage1() %>" alt="" class="item-img">
+                <img src="<%=request.getContextPath()%>/common/image/<%= item.getImage2() %>" alt="" class="item-img">
+                <img src="<%=request.getContextPath()%>/common/image/<%= item.getImage3() %>" alt="" class="item-img">
+                <img src="<%=request.getContextPath()%>/common/image/<%= item.getImage4() %>" alt="" class="item-img">
             </div>
 
             <div class="item-info">
@@ -44,7 +44,7 @@
                 <div class="item-text">
                     <p class="text"><%=item.getSellerMessage() %></p>
                 </div>
-                <form action="<%=request.getContextPath() %>/BuyItem" method="get">
+                <form action="<%=request.getContextPath() %>/view/buyItem.jsp" method="get">
                 	<input type="submit" value="購入する" class="buy-btn">
 			<input type="hidden"  name="itemId" value="<%=item.getItemId() %>">
                 </form>
