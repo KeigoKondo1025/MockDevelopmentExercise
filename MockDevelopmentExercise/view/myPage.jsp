@@ -14,7 +14,7 @@
 	href="<%=request.getContextPath()%>/common/css/style.css">
 <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/common/css/menu.css">
-<link rel="recommendation"
+<link rel="stylesheet"
 	href="<%=request.getContextPath()%>/common/css/recommendation.css">
 <title>Viconマイぺージ</title>
 </head>
@@ -54,7 +54,7 @@
 							href="<%=request.getContextPath()%>/ItemDetail?itemId=<%=itemList.get(i).getItemId()%>">
 							<div class="picture">
 								<img
-									src="<%=request.getContextPath()%><%=itemList.get(i).getImage1()%>"
+									src="<%=request.getContextPath()%>/common/image/<%=itemList.get(i).getImage1()%>"
 									alt="NO IMAGE">
 								<p class="price"><%=moneyFormat.moneyFormat(itemList.get(i).getPrice())%></p>
 							</div> <span class="item-name"><%=itemList.get(i).getItemName()%></span>
@@ -74,7 +74,7 @@
 					<a href="<%=request.getContextPath()%>/SalesList">商品ごとの売り上げ一覧</a>
 				</p>
 				<p class="">
-					<a href="<%=request.getContextPath()%>/UserList">ユーザ一覧</a>
+					<a href="<%=request.getContextPath()%>/UserInfo">ユーザ一覧</a>
 				</p>
 				<p class="">
 					<a href="<%=request.getContextPath()%>/SellerList">出品者一覧</a>
