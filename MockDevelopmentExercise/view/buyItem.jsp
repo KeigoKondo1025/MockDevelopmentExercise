@@ -1,7 +1,7 @@
 <%@page contentType="text/html;charset=UTF-8" %>
 
 <%@page import="bean.*" %>
-<%@page import="dao.IdToNameDAO" %>
+<%@page import="dao.*" %>
 
 
 <link rel="stylesheet" href="<%= request.getContextPath() %>/common/css/menu.css">
@@ -11,7 +11,9 @@
 
 <%
 request.setCharacterEncoding("UTF-8");
-Item item = (Item)request.getAttribute("item");
+int itemId = Integer.parseInt(request.getParameter("itemId"));
+ItemDAO itemDao = new ItemDAO();
+Item item = itemDao.selectByItemId(itemId);
 %>
 
 <html>
@@ -28,7 +30,7 @@ Item item = (Item)request.getAttribute("item");
 					<img src="<%= item.getImage1() %>" alt="" srcset="" class="item-detail">
 				</div>
 				<div class="item-info buy-item-info">
-					<form action="<%= request.getContextPath() %>/BuyItem" method="POST">
+					<form action="<%= request.getContextPath() %>/BuyItem" method="get">
 						<p>商品名 <%= item.getItemName() %></p>
 						<p>値段 <%= item.getPrice() %></p>
 						<p>商品詳細 <%= item.getSellerMessage() %></p>
