@@ -1,5 +1,10 @@
 <%@page contentType= "text/html;charset=UTF-8" %>
 <%@page import="bean.User, java.sql.Date, java.text.*, dao.IdToNameDAO" %>
+
+<link rel="stylesheet" href="<%=request.getContextPath() %>/common/css/style.css">
+<link rel="stylesheet" href="<%=request.getContextPath() %>/common/css/menu.css">
+<link rel="stylesheet" href="<%=request.getContextPath() %>/common/css/userInfo.css">
+
 <%
 User userinfo = (User)session.getAttribute("user");
 String prefectureName = null;
@@ -7,16 +12,16 @@ String prefectureName = null;
 <html>
 	<head>
 		<title>ユーザー情報変更</title>
-		<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/common/css/style.css">
-		<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/common/css/menu.css">
+		
 	</head>
 	<body>
 		<%@include file="../common/header.jsp" %>
 		<div class="container">
 			<h2>ユーザー情報変更</h2>
 			<form action="<%=request.getContextPath() %>/UpdateUserInfo" method="post">
-				<table>
+				<table class="userinfo-table">
 					<tr>
+						<th></th>
 						<td>変更前</td>
 						<td>変更後</td>
 					</tr>
@@ -24,22 +29,22 @@ String prefectureName = null;
 						if(userinfo != null){
 					%>
 					<tr>
-						<td>ユーザー名</td>
+						<th>ユーザー名</th>
 						<td><%= userinfo.getUserName() %></td>
 						<td><input type="text" name="userName"></td>
 					</tr>
 					<tr>
-						<td>本名</td>
+						<th>本名</th>
 						<td><%= userinfo.getFamilyName() %><%= userinfo.getFirstName() %></td>
 						<th><input type="text" name="familyName"><input type="text" name="firstName"></th>
 					</tr>
 					<tr>
-						<td>郵便番号</td>
+						<th>郵便番号</th>
 						<td>〒<%= userinfo.getPostalCode() %></td>
 						<td>〒<input type="text" name="postalCpde" size="4"><input type="text" name="postalCode2" size="5"></td>
 					</tr>
 					<tr>
-						<td>都道府県</td>
+						<th>都道府県</th>
 						<%
 							IdToNameDAO idToNameDao = new IdToNameDAO();
 							prefectureName = idToNameDao.prefectureIdToName(userinfo.getPrefectureId());
@@ -98,18 +103,18 @@ String prefectureName = null;
 						</td>
 					</tr>
 					<tr>
-						<td></td>
+						<th>住所1</th>
 						<td><%= userinfo.getAddress1() %></td>
 						<td><input type="text" name="address1"></td>
 					</tr>
 					<tr>
-						<td>メールアドレス</td>
+						<th>メールアドレス</th>
 						<td><%= userinfo.getMail() %></td>
 						<td><input type="text" name="mail"></td>
 					</tr>
 					<tr>
 					<tr>
-						<td>電話番号</td>
+						<th>電話番号</th>
 						<td><%= userinfo.getPhoneNumber() %></td>
 						<td><input type="text" name="phoneNumber"></td>
 					</tr>
