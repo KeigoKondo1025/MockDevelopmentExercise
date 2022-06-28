@@ -28,7 +28,7 @@ public class SendMail {
 			Session session = Session.getInstance(props, new javax.mail.Authenticator() {
 				protected PasswordAuthentication getPasswordAuthentication() {
 					// メールサーバにログインするメールアドレスとパスワードを設定
-					return new PasswordAuthentication("test.sender@kanda-it-school-system.com", "kandaSender");
+					return new PasswordAuthentication("test.sender@kanda-it-school-system.com", "kandaSender2022");
 				}
 			});
 
