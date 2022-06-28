@@ -44,7 +44,7 @@
                 <div class="item-text">
                     <p class="text"><%=item.getSellerMessage() %></p>
                 </div>
-                <form action="<%=request.getContextPath() %>/BuyItem" method="post">
+                <form action="<%=request.getContextPath() %>/view/buyItem.jsp" method="get">
                 	<input type="hidden" name="itemId" value="<%=item.getItemId()%>">
                 	<input type="submit" value="購入する" class="buy-btn">
                 </form>
