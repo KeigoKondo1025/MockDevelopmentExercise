@@ -50,10 +50,9 @@
 						value="<%=favoriteList.get(i).getItemId() %>"> <input
 						type="submit" value="削除" class="favorite">
 					</form>
-
+			<%} %>
 		</div>
 		<%
-			}
 			} else {
 		%>
 		<br>NO Item <br>
