@@ -742,8 +742,8 @@ public class ItemDAO {
 		Statement smt = null;
 
 		//sql文を文字列で設定
-		String sql = "update items_tb set buyer_user_id = '" + buyerId +
-				"', item_situation = 1 where item_id = '" + itemId + "'";
+		String sql = "update items_tb set buyer_user_id = " + buyerId +
+				", item_situation = 1 where item_id = " + itemId;
 
 		//結果を格納する変数
 		int count = 0;
@@ -775,8 +775,8 @@ public class ItemDAO {
 		Statement smt = null;
 
 		//sql文を文字列で設定
-		String sql = "update items_tb set item_situation = '" + itemSituation +
-				"' where item_id = '" + itemId + "'";
+		String sql = "update items_tb set item_situation = " + itemSituation +
+				" where item_id = " + itemId;
 
 		//結果を格納する変数
 		int count = 0;
@@ -808,8 +808,8 @@ public class ItemDAO {
 		Statement smt = null;
 
 		//sql文を文字列で設定
-		String sql = "update items_tb set item_situation = '" + itemSituation +
-				"', bought_at = current_timestamp where item_id = '" + itemId + "'";
+		String sql = "update items_tb set item_situation = " + itemSituation +
+				", bought_at = current_timestamp where item_id = '" + itemId + "'";
 
 		//結果を格納する変数
 		int count = 0;
