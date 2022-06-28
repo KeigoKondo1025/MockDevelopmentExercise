@@ -25,7 +25,7 @@ Item item = (Item)request.getAttribute("item");
 				}
 			%>
 			<br>
-			<a href="<%= request.getContextPath() %>/List">トップページ</a>
+			<a href="<%= request.getContextPath() %>/Index">トップページ</a>
 		</div>
 	</body>
 </html>
