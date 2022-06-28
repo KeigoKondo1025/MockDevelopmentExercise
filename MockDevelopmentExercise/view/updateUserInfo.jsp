@@ -129,12 +129,16 @@ String prefectureName = null;
 						<td><%= userinfo.getPhoneNumber() %></td>
 						<td><input type="text" name="phoneNumber"></td>
 					</tr>
+					<tr>
+						<th>パスワード</th>
+						<td><%= userinfo.getPassWord() %></td>
+						<td><input type="text" name="pass"></td>
+					</tr>
 				</table>
 				<input type="hidden" name="userId" value="<%=userinfo.getUserId() %>">
 				<input type="hidden" name="mail" value="<%=userinfo.getMail() %>">
 				<input type="hidden" name="authority" value="<%=userinfo.getAuthority() %>">
 				<input type="hidden" name="userId" value="<%=userinfo.getUserId() %>">
-				<input type="hidden" name="pass" value="<%=userinfo.getPassWord() %>">
 				<%
 					}
 				%>
