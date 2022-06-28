@@ -43,13 +43,15 @@ String strItemSituation = "";
         			}
         %>
         	<p>商品名：<%=buyItemList.get(i).getItemName()%></p>
-        	<p>ステータス：<%=strItemSituation%></p><br>
+        	<p>ステータス：<%=strItemSituation%></p>
         	<p>
         <%	if (buyItemList.get(i).getItemSituation() == 1) {%>
         	<input type="hidden" name="itemSituation" value="2">
         	<input type="hidden" name="itemId" value="<%=buyItemList.get(i).getItemId()%>">
         	<input type="submit" name="pay" value="入金しました">
-        <%}
+        <%}%>
+        </p>
+        <%
         		}
         	}
         %>
@@ -77,13 +79,14 @@ String strItemSituation = "";
         	<input type="hidden" name="itemSituation" value="3">
         	<input type="hidden" name="itemId" value="<%=sellItemList.get(i).getItemId()%>">
         	<input type="submit" name="ship" value="発送しました">
-        <%}
-        		}
+        <%}%>
+        </p>
+        <%
+        }
         	}
         %>
         	</form>
         </div>
-        <a href="<%=request.getContextPath()%>/MyPage">マイページ</a>
     </div>
 </body>
 </html>
