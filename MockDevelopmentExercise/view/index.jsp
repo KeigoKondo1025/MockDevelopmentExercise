@@ -193,7 +193,7 @@
 				}
 			%>
 		</div>
-		<div>
+		<div class="entry-btn">
 			<a href="<%=request.getContextPath()%>/view/itemEntry.jsp">出品</a>
 		</div>
 	</div>

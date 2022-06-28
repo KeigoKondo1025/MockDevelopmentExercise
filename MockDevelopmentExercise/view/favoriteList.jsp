@@ -15,7 +15,7 @@
 	href="<%=request.getContextPath()%>/common/css/style.css">
 <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/common/css/menu.css">
-<link rel="recommendation"
+<link rel="stylesheet"
 	href="<%=request.getContextPath()%>/common/css/recommendation.css">
 <title>Vicon</title>
 </head>
@@ -38,18 +38,19 @@
 					href="<%=request.getContextPath()%>/ItemDetail?itemId=<%=favoriteList.get(i).getItemId()%>">
 					<div class="picture">
 						<img
-							src="<%=request.getContextPath()%><%=favoriteList.get(i).getImage1()%>"
+							src="<%=request.getContextPath()%>/common/image/<%=favoriteList.get(i).getImage1()%>"
 							alt="NO IMAGE">
 						<p class="price"><%=moneyFormat.moneyFormat(favoriteList.get(i).getPrice())%></p>
 					</div> <span class="item-name"><%=favoriteList.get(i).getItemName()%></span>
 				</a>
+			</div>
 				<form action="<%=request.getContextPath() %>/Favorite" method="get">
 					<input type="hidden" name="cmd" value="delete"> <input
 						type="hidden" name="itemId"
 						value="<%=favoriteList.get(i).getItemId() %>"> <input
 						type="submit" value="削除" class="favorite">
 					</form>
-			</div>
+
 		</div>
 		<%
 			}
