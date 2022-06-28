@@ -62,16 +62,16 @@ ArrayList<User> list = (ArrayList<User>)request.getAttribute("userList");
                 <td><%= user.getBirthday()%></td>
                 <td>
                 	<div class="userlist_flex">
-						<form action="<%=request.getContextPath()%>/UserDelete">
-							<input type="submit" value="削除">
-							<input type="hidden" name="userId" value=<%=user.getUserId()%>>
-						</form>
+				<form action="<%=request.getContextPath()%>/UserDelete">
+					<input type="submit" value="削除">
+					<input type="hidden" name="userId" value=<%=user.getUserId()%>>
+				</form>
 
-						<form  action="<%=request.getContextPath()%>/UserBan">
-							<input type="submit" value="<%if(user.getIsUserBanned() == false){out.print("利用停止");}
-							else if(user.getIsUserBanned() == true){out.print("停止解除");}%>">
-							<input type="hidden" name="userId" value=<%=user.getUserId()%>>
-						</form>
+				<form  action="<%=request.getContextPath()%>/UserBan">
+					<input type="submit" value="<%if(user.getIsUserBanned() == false){out.print("利用停止");}
+					else if(user.getIsUserBanned() == true){out.print("停止解除");}%>">
+					<input type="hidden" name="userId" value=<%=user.getUserId()%>>
+				</form>
                 	</div>
                 </td>
             </tr>
