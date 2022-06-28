@@ -71,10 +71,10 @@
 					<a href="<%=request.getContextPath()%>/ItemList">出品一覧</a>
 				</p>
 				<p class="">
-					<a href="<%=request.getContextPath()%>/SalesList">商品ごとの売り上げ一覧</a>
+					<a href="<%=request.getContextPath()%>/SalesList?cmd=">商品ごとの売り上げ一覧</a>
 				</p>
 				<p class="">
-					<a href="<%=request.getContextPath()%>/UserInfo">ユーザ一覧</a>
+					<a href="<%=request.getContextPath()%>/UserList">ユーザ一覧</a>
 				</p>
 				<p class="">
 					<a href="<%=request.getContextPath()%>/SellerList">出品者一覧</a>
