@@ -17,6 +17,11 @@ public class SalesListServlet extends HttpServlet {
 		String error = "";
 		String cmd = "";
 
+		//使用する変数
+		String sellerName = "";
+		String buyerName = "";
+		int categoryId = 0;
+
 		try {
 			//セッション情報の取得
 			HttpSession session = request.getSession();
@@ -25,9 +30,11 @@ public class SalesListServlet extends HttpServlet {
 			//パラメータ情報の受け取り
 			request.setCharacterEncoding("UTF-8");
 			cmd = request.getParameter("cmd");
-			String sellerName = request.getParameter("sellerName");
-			String buyerName = request.getParameter("buyerName");
-			int categoryId = Integer.parseInt(request.getParameter("category"));
+			if(!cmd.equals("sales")) {
+				sellerName = request.getParameter("sellerName");
+				buyerName = request.getParameter("buyerName");
+				categoryId = Integer.parseInt(request.getParameter("category"));
+			}
 
 			//セッション切れの場合
 			if(user == null) {
