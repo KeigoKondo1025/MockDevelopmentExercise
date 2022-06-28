@@ -25,6 +25,7 @@ public class UpdateUserInfoServlet extends HttpServlet {
 			user.setPostalCode(request.getParameter("postalCpde"));
 			user.setPrefectureId(Integer.parseInt(request.getParameter("prefectureCode")));
 			user.setAddress1(request.getParameter("address1"));
+			user.setAddress2(request.getParameter("address2"));
 			user.setMail(request.getParameter("mail"));
 			user.setPhoneNumber(request.getParameter("phoneNumber"));
 			count = userDao.update(user);
