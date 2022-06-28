@@ -32,7 +32,7 @@ public class UpdateUserInfoServlet extends HttpServlet {
 			session.setAttribute("user", user);
 		} catch (IllegalStateException e) {
 			error = "DB接続エラーのため、ユーザー情報の変更は行えませんでした。";
-			cmd = "error";
+			cmd = "logout";
 		} finally {
 			if (cmd.equals("")) {
 				//UserInfoServletに遷移する
