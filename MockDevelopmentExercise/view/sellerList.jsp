@@ -5,7 +5,7 @@
 <%@page import="bean.*" %>
 <%@page import="dao.*" %>
 
-<link rel="stylesheet" href="css/menu.css">
+<link rel="stylesheet" href="<%= request.getContextPath() %>/common/css/menu.css">
 <link rel="stylesheet" href="<%= request.getContextPath() %>/common/css/style.css">
 <link rel="stylesheet" href="<%= request.getContextPath() %>/common/css/userList.css">
 <link rel="stylesheet" href="<%= request.getContextPath() %>/common/css/sellerList.css">
@@ -14,7 +14,6 @@
 request.setCharacterEncoding("UTF-8");
 User sellerUser = (User)request.getAttribute("sellerUser");
 ArrayList<User> sellerUserList = (ArrayList<User>)request.getAttribute("sellerUserList");
-
 %>
 
 <html>
@@ -46,13 +45,16 @@ ArrayList<User> sellerUserList = (ArrayList<User>)request.getAttribute("sellerUs
 			</tr>
 			<%
 			}else{
+
 				for(int i = 0; i < sellerUserList.size(); i++){
+					User user = sellerUserList.get(i);
 			%>
 			<tr>
-				<td><a href="<%= request.getContextPath() %>/UserList"><%= sellerUserList(i).getUserName() %></a></td>
-				<td><a href="<%= request.getContextPath() %>/SearchList?cmd=userIdSearch&sellerId=<%= sellerUserList(i).getUserId() %>">出品一覧</a></td>
+				<td><a href="<%= request.getContextPath() %>/UserList"><%= user.getUserName() %></a></td>
+				<td><a href="<%= request.getContextPath() %>/SearchList?cmd=userIdSearch&sellerId=<%= user.getUserId() %>">出品一覧</a></td>
 			</tr>
 			<%
+				}
 			}
 			%>
 		</table>
