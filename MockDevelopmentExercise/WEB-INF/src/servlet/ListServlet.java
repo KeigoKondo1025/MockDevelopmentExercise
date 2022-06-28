@@ -50,7 +50,7 @@ public class ListServlet extends HttpServlet {
 
 
 		try {
-			ArrayList<Item> itemList = itemDaoObj.selectAll();
+			ArrayList<Item> itemList = itemDaoObj.select("","", "", "0");//出品中の商品のみ検索
 			request.setAttribute("item_list", itemList);
 
 		} catch (IllegalStateException e) {
