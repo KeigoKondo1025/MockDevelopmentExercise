@@ -43,7 +43,7 @@ public class BuyItemServlet extends HttpServlet {
 
 			if(count == 0) {
 				error = "クエリの生成に失敗しました";
-				cmd = "";
+				cmd = "index";
 			}
 
 			//itemIdを元に商品情報を取得するメソッドの呼び出し
