@@ -8,6 +8,7 @@
 <link rel="stylesheet" href="<%= request.getContextPath() %>/common/css/menu.css">
 <link rel="stylesheet" href="<%= request.getContextPath() %>/common/css/style.css">
 <link rel="stylesheet" href="<%= request.getContextPath() %>/common/css/userList.css">
+<link rel="stylesheet" href="<%= request.getContextPath() %>/common/css/salesList.css">
 
 <%
 request.setCharacterEncoding("UTF-8");
@@ -47,7 +48,7 @@ ArrayList<Item> itemList = (ArrayList<Item>)request.getAttribute("itemList");
 				</form>
 			</div>
 
-			<table class="userlist-table">
+			<table class="saleslist-table">
 				<tr>
 					<th>ユーザー名</th>
 					<th>商品名</th>
@@ -60,14 +61,15 @@ ArrayList<Item> itemList = (ArrayList<Item>)request.getAttribute("itemList");
 
 				<!-- 繰り返し処理 -->
 				<%
-				UserDAO userDao = new UserDAO();
-				IdToNameDAO idToNameDao = new IdToNameDAO();
-				for(int i = 0; i < itemList.size(); i++){
-					Item item = itemList.get(i);
-					//出品者、購入者、カテゴリをidから名前に変換する
-					User sellerUser = userDao.searchByUserId(item.getSellerId());
-					User buyerUser = userDao.searchByUserId(item.getBuyerId());
-					String category = idToNameDao.categoryIdToName(item.getCategoryId());
+				if(itemList != null){
+					UserDAO userDao = new UserDAO();
+					IdToNameDAO idToNameDao = new IdToNameDAO();
+					for(int i = 0; i < itemList.size(); i++){
+						Item item = itemList.get(i);
+						//出品者、購入者、カテゴリをidから名前に変換する
+						User sellerUser = userDao.searchByUserId(item.getSellerId());
+						User buyerUser = userDao.searchByUserId(item.getBuyerId());
+						String category = idToNameDao.categoryIdToName(item.getCategoryId());
 				%>
 				<tr>
 					<td><%= buyerUser.getUserName() %></td>
@@ -80,6 +82,7 @@ ArrayList<Item> itemList = (ArrayList<Item>)request.getAttribute("itemList");
 				</tr>
 
 				<%
+					}
 				}
 				%>
 			</table>
