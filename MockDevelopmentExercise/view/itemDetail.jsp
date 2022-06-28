@@ -46,7 +46,6 @@
                 </div>
                 <form action="<%=request.getContextPath() %>/BuyItem" method="get">
                 	<input type="submit" value="購入する" class="buy-btn">
-                	<
                 </form>
             </div>
 
