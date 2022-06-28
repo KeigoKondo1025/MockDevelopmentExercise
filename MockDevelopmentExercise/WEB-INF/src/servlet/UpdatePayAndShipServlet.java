@@ -78,7 +78,7 @@ public class UpdatePayAndShipServlet extends HttpServlet {
 		}
 
 	}
-	
+
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 //		LocalDateTime nowDate = LocalDateTime.now();
@@ -103,11 +103,11 @@ public class UpdatePayAndShipServlet extends HttpServlet {
 
 			if (request.getParameter("itemSituation") != null) {//不正アクセス防止
 //			ボタンを押された商品の商品idを格納する
-				int itemId = (Integer.parseInt(request.getParameter("itemId")));
+				int itemId = Integer.parseInt(request.getParameter("itemId"));
 
 				// 商品の取引情報を格納する変数
 				// 出品中→0、入金待ち→1、発送待ち→2、取引済→3
-				int itemSituation = (Integer.parseInt(request.getParameter("itemSituation")));
+				int itemSituation = Integer.parseInt(request.getParameter("itemSituation"));
 				request.setAttribute("itemSituation", itemSituation);
 
 				if (itemSituation != 2) {
