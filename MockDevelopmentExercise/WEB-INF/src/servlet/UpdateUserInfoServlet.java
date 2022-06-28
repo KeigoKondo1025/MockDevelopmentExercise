@@ -22,7 +22,10 @@ public class UpdateUserInfoServlet extends HttpServlet {
 			user.setUserName(request.getParameter("userName"));
 			user.setFamilyName(request.getParameter("familyName"));
 			user.setFirstName(request.getParameter("firstName"));
-			user.setPostalCode(request.getParameter("postalCpde"));
+			String positelCode1 = request.getParameter("postalCpde");
+			String positelCode2 = request.getParameter("postalCpde2");
+			String positelCode = positelCode1 + positelCode2;
+			user.setPostalCode(positelCode);
 			user.setPrefectureId(Integer.parseInt(request.getParameter("prefectureCode")));
 			user.setAddress1(request.getParameter("address1"));
 			user.setAddress2(request.getParameter("address2"));
