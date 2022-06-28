@@ -1,5 +1,7 @@
 package servlet;
-
+/*
+ * 作成者：高徳ちさと
+ */
 import java.io.*;
 import java.util.*;
 import javax.servlet.*;
@@ -26,11 +28,13 @@ public class UserSearchServlet extends HttpServlet {
 
 		} catch (IllegalStateException e) {
 			error = "DB接続エラーの為、検索出来ません。";
+			cmd = "logout";
 		} finally {
 
 			if (!error.equals("")) {
 //				エラーがあればerror.jspへ
 				request.setAttribute("error", error);
+				request.setAttribute("cmd", cmd);
 				request.getRequestDispatcher("/view/error.jsp").forward(request, response);
 			}else {
 //				エラーが無ければトップページへ

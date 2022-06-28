@@ -65,9 +65,11 @@ public class UpdatePayAndShipServlet extends HttpServlet {
 
 		} catch (IllegalStateException e) {
 			error = "DB接続エラーの為、更新は出来ません。";
+			cmd = "logout";
 		} finally {
 			if (!error.equals("")) {
 				request.setAttribute("error", error);
+				request.setAttribute("cmd", cmd);
 				request.getRequestDispatcher("/view/error.jsp").forward(request, response);
 			} else {
 //				エラーが無ければupdatePayAndShip.jspへ

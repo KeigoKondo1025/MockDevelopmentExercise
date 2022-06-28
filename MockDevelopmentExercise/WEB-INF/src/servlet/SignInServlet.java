@@ -53,12 +53,13 @@ public class SignInServlet extends HttpServlet {
 
 		} catch (IllegalStateException e) {
 			error = "DB接続エラーの為、ログインは出来ません。";
-			cmd = "logout";
+			cmd = "index";
 		} finally {
 
 			if (!error.equals("")) {
 //				エラーがあればerror.jspへ
 				request.setAttribute("error", error);
+				request.setAttribute("cmd", cmd);
 				request.getRequestDispatcher("/view/error.jsp").forward(request, response);
 			} else if (!message.equals("")) {
 //				User情報が無い場合(入力データが間違っている場合)login.jspへ

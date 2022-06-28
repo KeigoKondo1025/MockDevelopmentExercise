@@ -29,9 +29,11 @@ public class ItemListServlet extends HttpServlet {
 
 		} catch(IllegalStateException e) {
 			error = "DB接続エラーの為、表示できません。";
+			cmd = "logout";
 		} finally {
 			if (!error.equals("")) {
 				request.setAttribute("error", error);
+				request.setAttribute("cmd", cmd);
 				request.getRequestDispatcher("/view/error.jsp").forward(request, response);
 			} else {
 //				エラーが無ければitemList.jspへ
