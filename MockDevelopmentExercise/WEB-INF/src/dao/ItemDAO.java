@@ -524,7 +524,7 @@ public class ItemDAO {
 		Statement smt = null;
 
 		//sql文を文字列で設定
-		String sql = "select seller_id from items_tb group by having item_situation = 3";
+		String sql = "select item_situation,seller_user_id from items_tb group by item_situation,seller_user_id having item_situation = 3";
 		//結果を格納する変数
 		ArrayList<Integer> sellerIdList = new ArrayList<Integer>();
 
@@ -535,7 +535,7 @@ public class ItemDAO {
 			ResultSet rs = smt.executeQuery(sql);
 
 			while(rs.next()) {
-				int sellerId = rs.getInt("seller_id");
+				int sellerId = rs.getInt("seller_user_id");
 				sellerIdList.add(sellerId);
 			}
 
