@@ -22,14 +22,14 @@
 	%>
 
     <div class="container">
-        <h1>商品名</h1>
+        <h1><%=item.getItemName()%></h1>
           <div class="item-detail">
 
             <div class="item-img-box">
-                <img src="<%=request.getContextPath()%>/common/image/<%=item.getImage1()%>" alt="" class="item-img">
-                <img src="<%=request.getContextPath()%>/common/image/<%=item.getImage2()%>" alt="" class="item-img">
-                <img src="<%=request.getContextPath()%>/common/image/<%=item.getImage3()%>" alt="" class="item-img">
-                <img src="<%=request.getContextPath()%>/common/image/<%=item.getImage4()%>" alt="" class="item-img">
+                <img src="<%=request.getContextPath()%>/common/image/item.getImage1()" alt="" class="item-img">
+                <img src="<%=request.getContextPath()%>/common/image/item.getImage2()" alt="" class="item-img">
+                <img src="<%=request.getContextPath()%>/common/image/item.getImage3()" alt="" class="item-img">
+                <img src="<%=request.getContextPath()%>/common/image/item.getImage4()" alt="" class="item-img">
             </div>
 
             <div class="item-info">
@@ -44,9 +44,9 @@
                 <div class="item-text">
                     <p class="text"><%=item.getSellerMessage() %></p>
                 </div>
-                <form action="<%=request.getContextPath() %>/view/buyItem.jsp" method="get">
-                	<input type="hidden" name="itemId" value="<%=item.getItemId()%>">
+                <form action="<%=request.getContextPath() %>/BuyItem" method="get">
                 	<input type="submit" value="購入する" class="buy-btn">
+                	<
                 </form>
             </div>
 
