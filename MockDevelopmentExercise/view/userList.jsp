@@ -18,9 +18,8 @@ ArrayList<User> list = (ArrayList<User>)request.getAttribute("userList");
 <body>
 	<%@include file="/common/header.jsp" %>
     <div class="container">
-    	<div class="userList">
 			<h2>ユーザー一覧</h2>
-			<div class="userSearch">
+			<div class="userlist_flex">
 				<form action="<%= request.getContextPath() %>/UserSearch" method="get">
 					ユーザー名：<input type=text size="10" name="">
                      <input type="submit" name="search" value="検索">
@@ -37,7 +36,7 @@ ArrayList<User> list = (ArrayList<User>)request.getAttribute("userList");
                 <th>ユーザー名</th>
                 <th>性別</th>
                 <th>生年月日</th>
-                <th>利用停止/停止解除</th>
+                <th>削除/利用停止</th>
             </tr>
 
             <%
@@ -62,11 +61,18 @@ ArrayList<User> list = (ArrayList<User>)request.getAttribute("userList");
                 <td><%= gender%></td>
                 <td><%= user.getBirthday()%></td>
                 <td>
-	               <form action="<%=request.getContextPath()%>/UserBan">
-						 <input type="submit" value="<%if(user.getIsUserBanned() == false){out.print("利用停止");}
-						 else if(user.getIsUserBanned() == true){out.print("停止解除");}%>">
-						 <input type="hidden" name="userId" value=<%=user.getUserId()%>>
-					 </form>
+                	<div class="userlist_flex">
+						<form action="<%=request.getContextPath()%>/UserDelete">
+							<input type="submit" value="削除">
+							<input type="hidden" name="userId" value=<%=user.getUserId()%>>
+						</form>
+
+						<form  action="<%=request.getContextPath()%>/UserBan">
+							<input type="submit" value="<%if(user.getIsUserBanned() == false){out.print("利用停止");}
+							else if(user.getIsUserBanned() == true){out.print("停止解除");}%>">
+							<input type="hidden" name="userId" value=<%=user.getUserId()%>>
+						</form>
+                	</div>
                 </td>
             </tr>
             <%
