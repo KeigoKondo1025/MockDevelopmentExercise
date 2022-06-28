@@ -16,7 +16,6 @@ public class ListServlet extends HttpServlet {
 
 		String error = "";
 		String cmd = "";
-		String message = "";// 入力データが間違っていた場合ログイン画面に表示する
 
 		ItemDAO itemDaoObj = new ItemDAO();
 
@@ -26,13 +25,14 @@ public class ListServlet extends HttpServlet {
 			request.setAttribute("item_list", itemList);
 
 		} catch (IllegalStateException e) {
-			error = "DB接続エラーの為、ログインは出来ません。";
-			cmd = "logout";
+			error = "DB接続エラーの為、一覧表示は出来ません。";
+			cmd = "index";
 		} finally {
 
 			if (!error.equals("")) {
 //				エラーがあればerror.jspへ
 				request.setAttribute("error", error);
+				request.setAttribute("cmd", cmd);
 				request.getRequestDispatcher("/view/error.jsp").forward(request, response);
 //			エラーが無ければトップページへ
 			} else {
@@ -45,7 +45,6 @@ public class ListServlet extends HttpServlet {
 
 		String error = "";
 		String cmd = "";
-		String message = "";// 入力データが間違っていた場合ログイン画面に表示する
 
 		ItemDAO itemDaoObj = new ItemDAO();
 
@@ -55,13 +54,14 @@ public class ListServlet extends HttpServlet {
 			request.setAttribute("item_list", itemList);
 
 		} catch (IllegalStateException e) {
-			error = "DB接続エラーの為、ログインは出来ません。";
-			cmd = "logout";
+			error = "DB接続エラーの為、一覧表示は出来ません。";
+			cmd = "cmd";
 		} finally {
 
 			if (!error.equals("")) {
 //				エラーがあればerror.jspへ
 				request.setAttribute("error", error);
+				request.setAttribute("cmd", cmd);
 				request.getRequestDispatcher("/view/error.jsp").forward(request, response);
 //			エラーが無ければトップページへ
 			} else {
