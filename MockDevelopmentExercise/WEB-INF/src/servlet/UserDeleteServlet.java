@@ -1,14 +1,14 @@
 package servlet;
 
 import java.io.*;
+import java.util.*;
 import java.sql.Date;
 import javax.servlet.*;
 import javax.servlet.http.*;
 
 public class UserDeleteServlet extends HttpServlet {
-	public void doPost(HttpServletRequest request, HttpServletResponse response)
+	public void doGet(HttpServletRequest request, HttpServletResponse response)
 	throws ServletException, IOException {
-		HttpSession session = request.getSession();
 		String error = "";
 		String cmd = "";
 		bean.User user = new bean.User();
@@ -18,8 +18,6 @@ public class UserDeleteServlet extends HttpServlet {
 			user.setUserId(Integer.parseInt(request.getParameter("userId")));
 			//Itemオブジェクトを引数として、関連メソッドを呼び出す
 			userDao.delete(user);
-			//セッションにuserという名前で格納
-			session.setAttribute("user", user);
 		} catch (IllegalStateException e) {
 			error = "DB接続エラーのため、ユーザの削除は行えませんでした。";
 			cmd = "logout";
