@@ -19,6 +19,8 @@ public class SellerListServlet extends HttpServlet {
 		String error = "";
 		String cmd = "";
 
+		String strUserId = "";
+
 		try {
 			//セッション情報の取得
 			HttpSession session = request.getSession();
@@ -33,12 +35,15 @@ public class SellerListServlet extends HttpServlet {
 
 			//パラメータ情報の受け取り
 			request.setCharacterEncoding("UTF-8");
-			String strUserId = request.getParameter("userId");
+			cmd = request.getParameter("cmd");
+			if(!cmd.equals("allSeller")) {
+				strUserId = request.getParameter("userId");
+			}
 
 			UserDAO userDao = new UserDAO();
 			ItemDAO itemDao = new ItemDAO();
 			User sellerUser = new User();
-			if(strUserId != null) {
+			if(!cmd.equals("allSeller")) {
 				int userId =Integer.parseInt(strUserId);
 				sellerUser = userDao.searchByUserId(userId);
 				request.setAttribute("sellerUser",sellerUser);
@@ -60,7 +65,7 @@ public class SellerListServlet extends HttpServlet {
 			cmd = "logout";
 		}finally {
 			if(error.equals("")) {
-				request.getRequestDispatcher("/view/salesList.jsp").forward(request, response);
+				request.getRequestDispatcher("/view/sellerList.jsp").forward(request, response);
 			}else {
 				request.setAttribute("error", error);
 				request.setAttribute("cmd", cmd);
