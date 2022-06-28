@@ -5,7 +5,7 @@
 .userlist-table{
 	width: 100%;
 	text-align: center;
-	
+
 }
 
 .userlist-table th{
@@ -14,7 +14,10 @@
 }
 
 .userlist_flex{
-	display: inline-flex;
+	display: flex;
+	justify-content:space-around;
 }
 
-
+.mergin-left-10{
+	margin-left: 10px;
+}
