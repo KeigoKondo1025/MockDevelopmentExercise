@@ -1,0 +1,10 @@
+.saleslist-table{
+	width: 100%;
+	text-align: center;
+
+}
+
+.saleslist-table th{
+	width: 14%;
+	background-color: dimgray;
+}
