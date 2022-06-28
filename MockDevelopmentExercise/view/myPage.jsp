@@ -48,7 +48,6 @@
 							int count = 0; //真似して入れてみました
 							for (int i = 0; i < itemList.size(); i++) {
 								count++;
-								if(itemList.get(i).getItemSituation() !=4){// 出品停止商品を表示しない
 					%>
 					<div class="recommendation-item" id="<%=count%>">
 						<a
@@ -62,7 +61,6 @@
 						</a>
 					</div>
 					<%
-								}
 						}
 					%>
 				</div>
@@ -73,7 +71,7 @@
 					<a href="<%=request.getContextPath()%>/ItemList">出品一覧</a>
 				</p>
 				<p class="">
-					<a href="<%=request.getContextPath()%>/SalesList">商品ごとの売り上げ一覧</a>
+					<a href="<%=request.getContextPath()%>/SalesList?cmd=sales">商品ごとの売り上げ一覧</a>
 				</p>
 				<p class="">
 					<a href="<%=request.getContextPath()%>/UserList">ユーザ一覧</a>
