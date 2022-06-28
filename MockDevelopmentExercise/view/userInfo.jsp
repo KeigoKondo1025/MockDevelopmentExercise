@@ -77,7 +77,7 @@ String prefecture = idToNameDao.prefectureIdToName(user.getPrefectureId());
 			</table>
 
 			<p><a href="<%= request.getContextPath() %>/MyPage">マイページ</a></p>
-			<p><a href="<%= request.getContextPath() %>/view/changeUserInfo.jsp">ユーザ情報変更</a></p>
+			<p><a href="<%= request.getContextPath() %>/view/updateUserInfo.jsp">ユーザ情報変更</a></p>
 
 		</div>
 	</body>
