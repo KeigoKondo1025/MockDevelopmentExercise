@@ -19,6 +19,25 @@
 		Item item = (Item)request.getAttribute("item"); 	// リクエストスコープに登録された商品情報を取得
 		MyFormat myFormat = new MyFormat(); 		// 金額表示を変えるMyFormatクラスをオブジェクト化
 		IdToNameDAO idToNameDao = new IdToNameDAO();	// カテゴリ名を取得するメソッド利用のため、DAOクラスをオブジェクト化
+		
+		int itemState = item.getItemState();//商品状態
+		String stateText = "";
+		switch (itemState){
+			case 1:
+				stateText = "新品";
+				break;
+			case 2:
+				stateText = "中古";
+				break;
+			case 3:
+				stateText = "汚れあり";
+				break;
+			case 4:
+				stateText = "破損あり";
+			default:
+				stateText = "新品";
+				break;
+		}
 	%>
 
     <div class="container">
@@ -41,6 +60,7 @@
                 </form>
                 <br>
                 <span class="category"><%=idToNameDao.categoryIdToName(item.getCategoryId()) %></span>
+		    <span><%=stateText %></span>
                 <div class="item-text">
                     <p class="text"><%=item.getSellerMessage() %></p>
                 </div>
