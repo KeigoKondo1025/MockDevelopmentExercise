@@ -1,4 +1,5 @@
  <%@page contentType="text/html;charset=UTF-8"%>
+ <%@page import="java.util.Date,java.text.SimpleDateFormat"%>
 
  <html lang="ja">
  <head>
@@ -7,8 +8,13 @@
  	<meta name="viewport" content="width=device-width, initial-scale=1.0">
  	<link rel="stylesheet" href="<%=request.getContextPath() %>/common/css/menu.css">
  	<link rel="stylesheet" href="<%=request.getContextPath() %>/common/css/style.css">
- 	<script src="https://yubinbango.github.io/yubinbango/yubinbango.js" charset="UTF-8"></script>
- 	<title>神田雑貨店フリマ -会員登録-</title>
+ 	<link rel="stylesheet" href="<%=request.getContextPath() %>/common/css/signUp.css">
+ 	<script src="<%=request.getContextPath() %>/common/js/signUp.js" charset="UTF-8"></script>
+ 	<title>Vicon -会員登録-</title>
+ 	<%
+ 		Date date = new Date();
+ 		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+ 	%>
  </head>
  <body>
  	<%@include file="/common/header.jsp"%>
@@ -16,29 +22,71 @@
  	<div class="container">
  		<div class="signup-form">
  			<h1>会員登録</h1>
- 		<form action="<%=request.getContextPath()%>/InsertUser" method="post" class="h-adr">
+ 		<form action="<%=request.getContextPath()%>/InsertUser" method="post" class="h-adr" name="signUpForm">
  			<input type="hidden" name="" value="Japan" class="p-country-name">
  			<p>会員情報</p>
- 			<input type="text" name="user-name" id="" placeholder="ユーザー名" required>
- 			<input type="email" name="email" id="" placeholder="メールアドレス" required>
- 			<input type="password" name="password" id="" placeholder="パスワード" required>
- 			<input type="password" name="again-password" id="" placeholder="パスワード(確認用)" required>
+ 			<table>
+ 				<tr>
+ 					<td><span class="err-msg-user-name"></span></td>
+ 					<td><span class="err-msg-email"></span></td>
+ 					<td><span class="err-msg-password"></span></td>
+ 					<td><span class="err-msg-again-password"></span></td>
+ 				</tr>
+ 				<tr>
+ 					<td><input type="text" name="user-name" id="user-name" placeholder="ユーザー名" required></td>
+ 					<td><input type="email" name="email" id="email" placeholder="メールアドレス" required></td>
+ 					<td><input type="password" name="password" id="password" placeholder="パスワード(5文字以上の英数字)" required></td>
+ 					<td><input type="password" name="again-password" id="again-password" placeholder="パスワード(確認用)" required></td>
+ 				</tr>
+ 			</table>
+
+
+
  			<p>個人情報</p>
- 			<input type="text" name="family-name" id="" placeholder="苗字" required>
- 			<input type="text" name="first-name" id="" placeholder="名前" required>
- 			<select name="gender" id="">
- 				<option value="1">1.男性</option>
- 				<option value="2">2.女性</option>
- 				<option value="3">3.その他</option>
- 			</select>
+ 			<table>
+ 				<tr>
+ 					<td><span class="err-msg-family-name"></span></td>
+ 					<td><span class="err-msg-given-name"></span></td>
+ 					<td></td>
+ 				</tr>
+ 				<tr>
+ 					<td><input type="text" name="family-name" id="family-name" placeholder="苗字" required></td>
+ 					<td><input type="text" name="first-name" id="given-name" placeholder="名前" required></td>
+ 					<td><select name="gender" id="">
+ 						<option value="1">1.男性</option>
+ 						<option value="2">2.女性</option>
+ 						<option value="3">3.その他</option>
+ 						</select>
+ 					</td>
+ 				</tr>
+ 			</table>
+ 			<table>
+ 				<tr>
+ 					<td><span class="err-msg-birthday"></span></td>
+ 					<td><span class="err-msg-tel"></span></td>
+ 				</tr>
+ 				<tr>
+ 					<td><span>生年月日</span>
+ 			<input type="date" name="birthday" id="birthday" max="<%=format.format(date) %>" required></td>
+ 			<td><input type="tel" name="phone-number" id="tel" placeholder="電話番号" min="0" required></td>
+ 				</tr>
+ 			</table>
+
+
+
  			<br>
- 			<span>生年月日</span>
- 			<input type="date" name="birthday" id="" required>
+
  			<br>
- 			<input type="tel" name="phone-number" id="" placeholder="電話番号" min="0" required>
+
  			<p>住所</p>
- 			<input type="number" name="postal-code" id="" placeholder="郵便番号" class="p-postal-code" maxlength="8" required>
- 			<br>
+ 			<table>
+ 				<tr>
+ 					<td><span class="err-msg-postal-code"></span></td>
+ 				</tr>
+ 				<tr>
+ 					<td><input type="number" name="postal-code" id="postal-code" placeholder="郵便番号" class="p-postal-code" maxlength="7" required></td>
+ 				</tr>
+ 			</table>
  			<select name="prefecture-id" id="">
  				<option value="1">1.北海道</option>
  				<option value="2">2.青森県</option>
@@ -89,16 +137,24 @@
  				<option value="47">47.沖縄県</option>
  			</select>
  			<br>
- 			<input type="text" name="address1" id="" placeholder="住所1" class="address1" required>
+ 			<table>
+ 				<tr>
+ 					<td><span class="err-msg-address1"></span></td>
+ 				</tr>
+ 				<tr>
+ 					<td><input type="text" name="address1" id="address1" placeholder="市区町村" class="address1" required></td>
+ 				</tr>
+ 			</table>
+
  			<br>
- 			<input type="text" name="address2" id="" placeholder="住所2" class="address2" required>
+ 			<input type="text" name="address2" id="" placeholder="建物名・部屋番号" class="address2">
  			<br>
  			<select name="authority">
  				<option value="1">1.一般ユーザー</option>
  				<option value="2">2.管理者</option>
  			</select>
  			<br>
- 			<input type="submit" value="登録">
+ 			<input type="submit" value="登録" class="submit">
 
  		</form>
  		</div>
