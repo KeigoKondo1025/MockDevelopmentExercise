@@ -12,31 +12,37 @@ String prefectureName = null;
 <html>
 	<head>
 		<title>ユーザー情報変更</title>
-		
+
 	</head>
 	<body>
 		<%@include file="../common/header.jsp" %>
 		<div class="container">
 			<h2>ユーザー情報変更</h2>
 			<form action="<%=request.getContextPath() %>/UpdateUserInfo" method="post">
+				<%
+					if(userinfo != null){
+				%>
 				<table class="userinfo-table">
 					<tr>
 						<th></th>
 						<td>変更前</td>
 						<td>変更後</td>
 					</tr>
-					<%
-						if(userinfo != null){
-					%>
+
 					<tr>
 						<th>ユーザー名</th>
 						<td><%= userinfo.getUserName() %></td>
 						<td><input type="text" name="userName"></td>
 					</tr>
 					<tr>
-						<th>本名</th>
-						<td><%= userinfo.getFamilyName() %><%= userinfo.getFirstName() %></td>
-						<th><input type="text" name="familyName"><input type="text" name="firstName"></th>
+						<th>苗字</th>
+						<td><%= userinfo.getFamilyName() %></td>
+						<th><input type="text" name="familyName"></th>
+					</tr>
+					<tr>
+						<th>名前</th>
+						<td><%= userinfo.getFirstName() %></td>
+						<td><input type="text" name="firstName"></td>
 					</tr>
 					<tr>
 						<th>郵便番号</th>
@@ -108,6 +114,11 @@ String prefectureName = null;
 						<td><input type="text" name="address1"></td>
 					</tr>
 					<tr>
+						<th>住所2</th>
+						<td><%=userinfo.getAddress2() %></td>
+						<td><input type="text" name="address2"></td>
+					</tr>
+					<tr>
 						<th>メールアドレス</th>
 						<td><%= userinfo.getMail() %></td>
 						<td><input type="text" name="mail"></td>
@@ -118,19 +129,15 @@ String prefectureName = null;
 						<td><%= userinfo.getPhoneNumber() %></td>
 						<td><input type="text" name="phoneNumber"></td>
 					</tr>
-					<tr>
-						<td><input type="hidden" name="userId" value="<%=userinfo.getUserId() %>"></td>
-						<td><input type="hidden" name="mail" value="<%=userinfo.getMail() %>"></td>
-						<td><input type="hidden" name="authority" value="<%=userinfo.getAuthority() %>">
-					</tr>
-					<tr>
-						<td><input type="hidden" name="userId" value="<%=userinfo.getUserId() %>"></td>
-						<td><input type="hidden" name="pass" value="<%=userinfo.getPassWord() %>"></td>
-					</tr>
-					<%
-						}
-					%>
 				</table>
+				<input type="hidden" name="userId" value="<%=userinfo.getUserId() %>">
+				<input type="hidden" name="mail" value="<%=userinfo.getMail() %>">
+				<input type="hidden" name="authority" value="<%=userinfo.getAuthority() %>">
+				<input type="hidden" name="userId" value="<%=userinfo.getUserId() %>">
+				<input type="hidden" name="pass" value="<%=userinfo.getPassWord() %>">
+				<%
+					}
+				%>
 				<input type="submit" value="確定">
 			</form>
 		</div>
