@@ -46,7 +46,8 @@ public class FavoriteServlet extends HttpServlet {
 			}
 
 			if (user == null) {// セッション切れ判定
-				request.setAttribute("error", "FavoriteServletでのセッション切れ");
+				request.setAttribute("error", "セッション切れのためお気に入りリストを表示できません。");
+				request.setAttribute("cmd", "logout");
 				request.getRequestDispatcher("/view/error.jsp").forward(request, response);
 				return;
 			}
@@ -91,13 +92,15 @@ public class FavoriteServlet extends HttpServlet {
 		} catch (
 
 		IllegalStateException e) {
-			error = "DB接続エラー";
+			error = "DB接続エラーのため、お気に入りリストを表示できません。";
 			request.setAttribute("error", error);
+			request.setAttribute("cmd", "logout");
 			request.getRequestDispatcher("/view/error.jsp").forward(request, response);
 
 		} catch (Exception e) {
 			error = "予期せぬエラーが発生しました。<br>" + e;
 			request.setAttribute("error", error);
+			request.setAttribute("cmd", "logout");
 			request.getRequestDispatcher("/view/error.jsp").forward(request, response);
 
 		}

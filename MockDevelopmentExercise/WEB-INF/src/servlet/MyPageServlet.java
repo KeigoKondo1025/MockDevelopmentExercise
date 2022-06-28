@@ -28,7 +28,8 @@ public class MyPageServlet extends HttpServlet {
 			User user = (User) session.getAttribute("user");
 
 			if (user == null) {//セッション切れ判定
-				request.setAttribute("error", "MyPageServletでのセッション切れ");
+				request.setAttribute("error", "セッション切れのためログインできませんでした。");
+				request.setAttribute("cmd", "logout");
 				request.getRequestDispatcher("/view/error.jsp").forward(request, response);
 				return;
 			}
@@ -52,7 +53,7 @@ public class MyPageServlet extends HttpServlet {
 
 		}
 	}
-	
+
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		String error = "";
@@ -65,7 +66,8 @@ public class MyPageServlet extends HttpServlet {
 			User user = (User) session.getAttribute("user");
 
 			if (user == null) {//セッション切れ判定
-				request.setAttribute("error", "MyPageServletでのセッション切れ");
+				request.setAttribute("error", "セッション切れのためログインできませんでした。");
+				request.setAttribute("cmd", "logout");
 				request.getRequestDispatcher("/view/error.jsp").forward(request, response);
 				return;
 			}
@@ -80,11 +82,13 @@ public class MyPageServlet extends HttpServlet {
 		} catch (IllegalStateException e) {
 			error = "DB接続エラー";
 			request.setAttribute("error", error);
+			request.setAttribute("cmd", "logout");
 			request.getRequestDispatcher("/view/error.jsp").forward(request, response);
 
 		} catch (Exception e) {
 			error = "予期せぬエラーが発生しました。<br>" + e;
 			request.setAttribute("error", error);
+			request.setAttribute("cmd", "logout");
 			request.getRequestDispatcher("/view/error.jsp").forward(request, response);
 
 		}
