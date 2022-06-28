@@ -36,7 +36,6 @@
                 <form action="<%=request.getContextPath() %>/Favorite" method="get">
                 	<span class="price"><%= myFormat.moneyFormat(item.getPrice()) %></span>
                 	<input type="hidden"  name="cmd" value="insert">
-					<input type="hidden"  name="itemId" value="<%=item.getItemId() %>">
                 	<input type="submit" value="お気に入り" class="favorite">
                 </form>
                 <br>
@@ -46,6 +45,7 @@
                 </div>
                 <form action="<%=request.getContextPath() %>/BuyItem" method="get">
                 	<input type="submit" value="購入する" class="buy-btn">
+			<input type="hidden"  name="itemId" value="<%=item.getItemId() %>">
                 </form>
             </div>
 
