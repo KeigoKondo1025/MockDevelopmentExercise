@@ -32,3 +32,14 @@
     position: relative;
     top: -80px;
 }
+
+.entry-btn {
+	position: absolute;
+	top:80vh;
+	left:80vw;
+	font-size:2rem;
+	border:red solid 2px;
+	padding:4px;
+	border-radius:16px;
+	background-color:white;
+}
