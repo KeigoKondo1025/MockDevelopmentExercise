@@ -48,6 +48,7 @@
 							int count = 0; //真似して入れてみました
 							for (int i = 0; i < itemList.size(); i++) {
 								count++;
+								if(itemList.get(i).getItemSituation() !=4){// 出品停止商品を表示しない
 					%>
 					<div class="recommendation-item" id="<%=count%>">
 						<a
@@ -61,6 +62,7 @@
 						</a>
 					</div>
 					<%
+								}
 						}
 					%>
 				</div>
