@@ -37,7 +37,7 @@ ArrayList<User> list = (ArrayList<User>)request.getAttribute("userList");
                 <th>ユーザー名</th>
                 <th>性別</th>
                 <th>生年月日</th>
-                <th>ユーザーの利用停止/停止解除</th>
+                <th>利用停止/停止解除</th>
             </tr>
 
             <%
