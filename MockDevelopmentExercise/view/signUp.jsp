@@ -149,10 +149,7 @@
  			<br>
  			<input type="text" name="address2" id="" placeholder="建物名・部屋番号" class="address2">
  			<br>
- 			<select name="authority">
- 				<option value="1">1.一般ユーザー</option>
- 				<option value="2">2.管理者</option>
- 			</select>
+ 				<input type="hidden" name="authority" value="1">
  			<br>
  			<input type="submit" value="登録" class="submit">
 
