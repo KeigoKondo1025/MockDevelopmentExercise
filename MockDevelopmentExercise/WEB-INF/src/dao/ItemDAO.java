@@ -561,18 +561,24 @@ public class ItemDAO {
 
 		//sql文を文字列で設定
 		if(categoryId != 0) {//カテゴリIDが0以外の場合
-			sql = "select * from items_tb where (";
+			sql = "select * from items_tb where ";
 			//対象の出品者Idを全てsql文に含む
 			for(int i = 0; i < sellerId.size(); i++) {
+				if(i == 0) {
+					sql += "(";
+				}
 				sql += "seller_user_id = " + sellerId.get(i);
 				if(i != sellerId.size()-1) {
 				sql += " or ";
 				} else {
-					sql += ") and (";
+					sql += ") and ";
 				}
 			};
 			//対象の購入者IDを全てsql文に含む
 			for(int i = 0; i < buyerId.size(); i++) {
+				if(i == 0) {
+					sql += "(";
+				}
 				sql += "buyer_user_id = " + buyerId.get(i);
 				if(i != sellerId.size()-1) {
 				sql += " or ";
@@ -582,20 +588,26 @@ public class ItemDAO {
 			};
 			sql += "item_situation = 3 and category_id = " + categoryId;
 		} else {//カテゴリIDが0の場合
-			sql = "select * from items_tb where (";
+			sql = "select * from items_tb where ";
 			//対象の出品者Idを全てsql文に含む
 			for(int i = 0; i < sellerId.size(); i++) {
+				if(i == 0) {
+					sql += "(";
+				}
 				sql += "seller_user_id = " + sellerId.get(i);
 				if(i != sellerId.size()-1) {
 				sql += " or ";
 				} else {
-					sql += ") and (";
+					sql += ") and ";
 				}
 			};
 			//対象の購入者IDを全てsql文に含む
 			for(int i = 0; i < buyerId.size(); i++) {
+				if(i == 0) {
+					sql += "(";
+				}
 				sql += "buyer_user_id = " + buyerId.get(i);
-				if(i != sellerId.size()-1) {
+				if(i != buyerId.size()-1) {
 				sql += " or ";
 				} else {
 					sql += ") and ";
