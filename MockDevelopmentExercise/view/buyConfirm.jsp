@@ -1,8 +1,9 @@
 <%@page contentType= "text/html;charset=UTF-8" %>
-<%@page import="bean.Item"%>
+<%@page import="bean.Item, util.MyFormat"%>
 
 <%
 Item item = (Item)request.getAttribute("item");
+MyFormat moneyFormat = new MyFormat();
 %>
 <html>
 	<head>
@@ -24,7 +25,7 @@ Item item = (Item)request.getAttribute("item");
 			</tr>
 			<tr>
 				<th>値段</th>
-				<td><%= item.getPrice() %></td>
+				<td><%= moneyFormat.moneyFormat(item.getPrice()) %></td>
 			</tr>
 			<tr>
 				<th>購入日時</th>
