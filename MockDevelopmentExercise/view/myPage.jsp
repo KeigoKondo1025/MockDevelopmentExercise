@@ -41,7 +41,7 @@
 				</p>
 				<h4>出品商品一覧</h4>
 
-				<div class="item-list">
+				<div class="recommendation">
 					<!-- 出品している商品を一覧で表示 -->
 					<%
 						ArrayList<Item> itemList = (ArrayList<Item>) request.getAttribute("itemList");
