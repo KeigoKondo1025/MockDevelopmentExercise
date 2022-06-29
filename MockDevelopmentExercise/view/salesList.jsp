@@ -50,7 +50,7 @@ ArrayList<Item> itemList = (ArrayList<Item>)request.getAttribute("itemList");
 
 			<table class="saleslist-table">
 				<tr>
-					<th>ユーザー名</th>
+					<th>出品者名</th>
 					<th>商品名</th>
 					<th>カテゴリー</th>
 					<th>金額</th>
@@ -72,12 +72,12 @@ ArrayList<Item> itemList = (ArrayList<Item>)request.getAttribute("itemList");
 						String category = idToNameDao.categoryIdToName(item.getCategoryId());
 				%>
 				<tr>
-					<td><%= buyerUser.getUserName() %></td>
+					<td><%= sellerUser.getUserName() %></td>
 					<td><%= item.getItemName() %></td>
 					<td><%= category %></td>
 					<td><%= item.getPrice() %></td>
 					<td><%= item.getBoughtTime() %></td>
-					<td><%= sellerUser.getUserName() %></td>
+					<td><%= buyerUser.getUserName() %></td>
 					<td><%= item.getInsertedTime() %></td>
 				</tr>
 
