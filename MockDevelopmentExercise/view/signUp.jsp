@@ -9,6 +9,7 @@
  	<link rel="stylesheet" href="<%=request.getContextPath() %>/common/css/menu.css">
  	<link rel="stylesheet" href="<%=request.getContextPath() %>/common/css/style.css">
  	<link rel="stylesheet" href="<%=request.getContextPath() %>/common/css/signUp.css">
+  <link rel="stylesheet" href="<%=request.getContextPath() %>/common/css/footer.css">
  	<script src="<%=request.getContextPath() %>/common/js/signUp.js" charset="UTF-8"></script>
  	<title>Vicon 会員登録</title>
  	<%
