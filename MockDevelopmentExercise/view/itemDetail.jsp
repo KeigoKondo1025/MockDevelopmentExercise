@@ -20,7 +20,7 @@
 		Item item = (Item)request.getAttribute("item"); 	// リクエストスコープに登録された商品情報を取得
 		MyFormat myFormat = new MyFormat(); 		// 金額表示を変えるMyFormatクラスをオブジェクト化
 		IdToNameDAO idToNameDao = new IdToNameDAO();	// カテゴリ名を取得するメソッド利用のため、DAOクラスをオブジェクト化
-		
+
 		int itemState = item.getItemState();//商品状態
 		String stateText = "";
 		switch (itemState){
@@ -66,7 +66,7 @@
                     <p class="text"><%=item.getSellerMessage() %></p>
                 </div>
                 <form action="<%=request.getContextPath() %>/view/buyItem.jsp" method="get">
-                	<input type="submit" value="購入する" class="buy-btn">
+                	<input type="submit" value=<%if(item.getItemSituation() == 0){ %>"購入する"<%}else{ %>"売り切れ" disabled<%} %> class="buy-btn">
 			<input type="hidden"  name="itemId" value="<%=item.getItemId() %>">
                 </form>
             </div>
