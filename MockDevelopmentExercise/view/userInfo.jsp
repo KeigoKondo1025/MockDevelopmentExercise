@@ -80,6 +80,7 @@ String prefecture = idToNameDao.prefectureIdToName(user.getPrefectureId());
 			<p><a href="<%= request.getContextPath() %>/view/updateUserInfo.jsp">ユーザ情報変更</a></p>
 
 		</div>
+		<%@include file="/common/footer.jsp" %>
 	</body>
 
 </html>
