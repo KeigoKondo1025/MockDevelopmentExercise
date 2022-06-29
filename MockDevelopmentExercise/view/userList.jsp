@@ -85,5 +85,6 @@ ArrayList<User> list = (ArrayList<User>)request.getAttribute("userList");
 			%>
         </table>
     </div>
+	<%@include file="/common/footer.jsp" %>
     </body>
 </html>
