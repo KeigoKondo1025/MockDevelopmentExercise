@@ -22,6 +22,7 @@ String strItemSituation = "";
     <link rel="stylesheet" href="<%=request.getContextPath() %>/common/css/menu.css">
     <link rel="stylesheet" href="<%=request.getContextPath() %>/common/css/style.css">
     <link rel="stylesheet" href="<%=request.getContextPath() %>/common/css/updatePayment_Shipment.css">
+<link rel="stylesheet" href="<%=request.getContextPath() %>/common/css/footer.css">
     <title>Vicon 入金・発送確認</title>
 </head>
 <body>
