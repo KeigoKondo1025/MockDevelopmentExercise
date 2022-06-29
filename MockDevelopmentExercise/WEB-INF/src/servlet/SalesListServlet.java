@@ -46,18 +46,24 @@ public class SalesListServlet extends HttpServlet {
 			//検索結果を格納する変数の宣言
 			ArrayList<Item> itemList = new ArrayList<Item>();
 
-			if(!cmd.equals("searchSales")) {
+			if(cmd.equals("sales")) {
 				//購入済みの商品を全て検索するメソッドの呼び出し
 				ItemDAO itemDao = new ItemDAO();
 				itemList = itemDao.selectSales();
 			}else {
 				UserDAO userDao = new UserDAO();
-				//購入者のuserIdのArrayListを受け取る
-				ArrayList<Integer> buyerId = userDao.searchByUserName(buyerName);
+				ArrayList<Integer> sellerId = new ArrayList<Integer>();
+				ArrayList<Integer> buyerId = new ArrayList<Integer>();
 
 				//出品者のuserIdのArrayListを受け取る
-				ArrayList<Integer> sellerId = userDao.searchByUserName(sellerName);
+				if(!sellerName.equals("")) {
+				sellerId = userDao.searchByUserName(sellerName);
+				}
 
+				//購入者のuserIdのArrayListを受け取る
+				if(!buyerName.equals("")) {
+				buyerId = userDao.searchByUserName(buyerName);
+				}
 				//購入済みの商品から引数の値で検索するメソッド
 				ItemDAO itemDao = new ItemDAO();
 				itemList = itemDao.selectSales(sellerId, categoryId, buyerId);
