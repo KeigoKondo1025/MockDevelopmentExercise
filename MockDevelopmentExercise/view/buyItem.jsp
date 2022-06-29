@@ -18,7 +18,7 @@ Item item = itemDao.selectByItemId(itemId);
 
 <html>
 	<head>
-		<title>Vicon</title>
+		<title>Vicon 購入</title>
 	</head>
 	<body>
 
