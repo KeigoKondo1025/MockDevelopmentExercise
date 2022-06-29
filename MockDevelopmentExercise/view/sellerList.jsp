@@ -18,7 +18,7 @@ ArrayList<User> sellerUserList = (ArrayList<User>)request.getAttribute("sellerUs
 
 <html>
 <head>
-<title>Vicon</title>
+<title>Vicon 出品者一覧</title>
 </head>
 <body>
 
