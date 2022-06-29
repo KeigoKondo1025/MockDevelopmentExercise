@@ -32,7 +32,7 @@ String prefecture = idToNameDao.prefectureIdToName(user.getPrefectureId());
 
 <html>
 	<head>
-		<title>Vicon</title>
+		<title>Vicon ユーザー情報</title>
 	</head>
 	<body>
 
