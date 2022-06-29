@@ -11,13 +11,10 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet"
-	href="<%=request.getContextPath()%>/common/css/style.css">
-<link rel="stylesheet"
-	href="<%=request.getContextPath()%>/common/css/menu.css">
-<link rel="stylesheet"
-	href="<%=request.getContextPath()%>/common/css/recommendation.css">
-<title>Vicon</title>
+<link rel="stylesheet" href="<%=request.getContextPath()%>/common/css/style.css">
+<link rel="stylesheet" href="<%=request.getContextPath()%>/common/css/menu.css">
+<link rel="stylesheet" href="<%=request.getContextPath()%>/common/css/recommendation.css">
+<title>Vicon お気に入り</title>
 </head>
 <body>
 	<%@include file="/common/header.jsp"%>
