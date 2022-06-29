@@ -327,7 +327,7 @@ public class ItemDAO {
 		Statement smt = null;
 
 		//sql文を文字列で設定
-		String sql = "select * from items_tb where item_id = " + userId + "";
+		String sql = "select * from items_tb where buyer_user_id = " + userId + "";
 
 		//結果を格納する変数
 		ArrayList<Item> itemList = new ArrayList<Item>();
