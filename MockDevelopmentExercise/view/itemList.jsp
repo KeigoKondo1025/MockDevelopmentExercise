@@ -20,7 +20,6 @@ String strItemSituation = "";
 	<%@include file="/common/header.jsp" %>
     <div class="container">
 	<h2>出品一覧</h2>
-    <table align = "center">
     	<div class="userlist_flex">
              <form action="<%=request.getContextPath()%>/Search">
                  金額：<select name="price">
@@ -56,6 +55,7 @@ String strItemSituation = "";
 
             <!-- 繰り返し処理ここから-->
             <%
+            UserDAO userDao = new UserDAO();
             if (itemList != null) {
             	for(int i = 0; i < itemList.size(); i++) {
 
@@ -70,10 +70,11 @@ String strItemSituation = "";
         			} else if (itemList.get(i).getItemSituation() == 4) {
 						strItemSituation = "出品停止";
         			}
+            		User sellerUser = userDao.searchByUserId(itemList.get(i).getSellerId());
             %>
             <tr>
                 <td>
-                	<a href="<%= request.getContextPath() %>/SellerList?userId=<%= itemList.get(i).getSellerId() %>"><%=itemList.get(i).getSellerId() %></a>
+                	<a href="<%= request.getContextPath() %>/SellerList?userId=<%= itemList.get(i).getSellerId() %>"><%= sellerUser.getUserName() %></a>
                 </td>
                 <td><a href="<%=request.getContextPath()%>/SalesList"><%=itemList.get(i).getItemName() %></a></td>
                 <td><%=itemList.get(i).getPrice() %></td>
