@@ -145,5 +145,6 @@ String prefectureName = null;
 				<input type="submit" value="確定">
 			</form>
 		</div>
+		<%@include file="/common/footer.jsp" %>
 	</body>
 </html>
