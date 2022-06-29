@@ -394,7 +394,7 @@ public class UserDAO {
 
 		try {
 			// 更新用のSQL文を文字列として格納
-			String sql = "UPDATE users_tb SET isUserBanned = " + isUserBanned + " WHERE user_id = '" + userId + "'";
+			String sql = "UPDATE users_tb SET is_user_banned = " + isUserBanned + " WHERE user_id = '" + userId + "'";
 
 			// メソッドを利用してDBに接続
 			con = getConnection();
