@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="<%=request.getContextPath() %>/common/css/menu.css">
     <link rel="stylesheet" href="<%=request.getContextPath() %>/common/css/style.css">
     <link rel="stylesheet" href="<%=request.getContextPath() %>/common/css/itemDetail.css">
-    <title>商品詳細</title>
+    <title>Vicon 商品詳細</title>
 </head>
 <body>
    <%@include file="/common/header.jsp"%>
