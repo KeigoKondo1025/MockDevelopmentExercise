@@ -21,8 +21,8 @@ ArrayList<User> list = (ArrayList<User>)request.getAttribute("userList");
 			<h2>ユーザー一覧</h2>
 			<div class="userlist_flex">
 				<form action="<%= request.getContextPath() %>/UserSearch" method="get">
-					ユーザー名：<input type=text size="10" name="">
-                     <input type="submit" name="search" value="検索">
+					ユーザー名：<input type=text size="10" name="userName">
+                     			<input type="submit" value="検索">
 				</form>
 
                  <form action="<%= request.getContextPath() %>/UserList" method="get">
