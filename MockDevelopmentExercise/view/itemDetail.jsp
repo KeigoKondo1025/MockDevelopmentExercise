@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="<%=request.getContextPath() %>/common/css/menu.css">
     <link rel="stylesheet" href="<%=request.getContextPath() %>/common/css/style.css">
     <link rel="stylesheet" href="<%=request.getContextPath() %>/common/css/itemDetail.css">
+	<link rel="stylesheet" href="<%=request.getContextPath() %>/common/css/footer.css">
     <title>Vicon 商品詳細</title>
 </head>
 <body>
