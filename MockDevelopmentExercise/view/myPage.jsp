@@ -21,7 +21,7 @@
 <body>
 	<%@include file="/common/header.jsp"%>
 	<div class="container">
-		<h1>マイページ</h1>
+		<h1>vicon マイページ</h1>
 		<div class="menu">
 			<h3 class="user-name"><%=user.getUserName()%>さん
 			</h3>
