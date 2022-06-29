@@ -9,6 +9,10 @@
 
 	//商品名取得
 	String itemName = request.getParameter("item-name");
+	if(itemName != null){
+		itemName = new String(request.getParameter("item-name").getBytes("ISO-8859-1"), "UTF-8");
+
+	}
 
 	//カテゴリー名取得
 	String category = null;
