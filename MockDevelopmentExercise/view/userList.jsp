@@ -13,6 +13,7 @@ ArrayList<User> list = (ArrayList<User>)request.getAttribute("userList");
     	<link rel="stylesheet" href="<%=request.getContextPath() %>/common/css/menu.css">
     	<link rel="stylesheet" href="<%=request.getContextPath() %>/common/css/itemEntry.css">
     	<link rel="stylesheet" href="<%=request.getContextPath() %>/common/css/userList.css">
+	   <link rel="stylesheet" href="<%=request.getContextPath() %>/common/css/footer.css">
         <title>Vicon ユーザ一覧</title>
 </head>
 <body>
