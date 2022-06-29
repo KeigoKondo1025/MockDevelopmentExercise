@@ -12,9 +12,16 @@
 		<ul>
 			<li class="logo">Vicon</li>
 			<li><a href="<%=request.getContextPath()%>/Index">HOME</a></li>
-			<li><input type="text" name="" id="" class="search"
-				placeholder="なにをお探しですか？"><input type="button" value="🔍"
-				class="search"></li>
+			<li>
+				<form action="<%=request.getContextPath() %>/Search" method = "get">
+					<input type="text" name="item-name" id="" class="search" placeholder="なにをお探しですか？">
+					<input type="submit" value="🔍" class="search">
+					<input type="hidden" name="cmd" value="">
+					<input type="hidden" name="category" value="0">
+					<input type="hidden" name="price-range" value="0">
+					<input type="hidden" name="prefecture-id" value="0">
+				</form>
+			</li>
 			<li><div class="spacer"></div></li>
 			<%if(authority == 0){ %>
 				<li><a href="<%=request.getContextPath()%>/view/signUp.jsp">会員登録</a></li>
