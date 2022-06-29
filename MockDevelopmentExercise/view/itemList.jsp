@@ -14,6 +14,7 @@ String strItemSituation = "";
     <link rel="stylesheet" href="<%=request.getContextPath() %>/common/css/menu.css">
     <link rel="stylesheet" href="<%=request.getContextPath() %>/common/css/style.css">
     <link rel="stylesheet" href="<%=request.getContextPath() %>/common/css/userList.css">
+	<link rel="stylesheet" href="<%=request.getContextPath() %>/common/css/footer.css">
     <title>Vicon 商品一覧</title>
 </head>
 <body>
