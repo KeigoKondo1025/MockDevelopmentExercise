@@ -9,7 +9,7 @@ public class UpdateUserInfoServlet extends HttpServlet {
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 	throws ServletException, IOException {
 		HttpSession session = request.getSession();
-		bean.User user = new bean.User();
+		bean.User user = (bean.User)session.getAttribute("user");
 		String error = "";
 		String cmd = "";
 		int count = 0;
@@ -22,10 +22,7 @@ public class UpdateUserInfoServlet extends HttpServlet {
 			user.setUserName(request.getParameter("userName"));
 			user.setFamilyName(request.getParameter("familyName"));
 			user.setFirstName(request.getParameter("firstName"));
-			String positelCode1 = request.getParameter("postalCpde");
-			String positelCode2 = request.getParameter("postalCpde2");
-			String positelCode = positelCode1 + positelCode2;
-			user.setPostalCode(positelCode);
+			user.setPostalCode(request.getParameter("postalCpde"));
 			user.setPrefectureId(Integer.parseInt(request.getParameter("prefectureCode")));
 			user.setAddress1(request.getParameter("address1"));
 			user.setAddress2(request.getParameter("address2"));
