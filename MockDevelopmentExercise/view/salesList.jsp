@@ -40,7 +40,7 @@ ArrayList<Item> itemList = (ArrayList<Item>)request.getAttribute("itemList");
 						<option value=8>その他</option>
 					</select>
 					購入者名：<input type="text" name="buyerName">
-					<input type="hidden" name="cmd" value="sarchSales">
+					<input type="hidden" name="cmd" value="searchSales">
 					<input type="submit" name="search" value="検索">
 				</form>
 				<form action="<%= request.getContextPath() %>/SalesList" method="get">
