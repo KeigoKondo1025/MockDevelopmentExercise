@@ -176,7 +176,7 @@ public class UserDAO {
 		Statement smt = null; // SQLステートメント
 
 		// ISBNによる検索用のSQL文を文字列として定義
-		String sql = "SELECT * FROM users_tb WHERE mail ='" + mail + "' AND password = '" + password + "'";
+		String sql = "SELECT * FROM users_tb WHERE mail ='" + mail + "' AND password = '" + password + "' AND is_user_deleted = false AND is_user_banned = false" ;
 
 		// オブジェクト化
 		User user = new User();
@@ -436,7 +436,7 @@ public class UserDAO {
 		Statement smt = null;
 
 		// 削除用のSQL文を文字列として定義
-		String sql = "DELETE FROM users_tb WHERE user_id = " + user.getUserId();
+		String sql = "UPDATE users_tb SET is_user_deleted = true WHERE user_id =" + user.getUserId();
 
 		try {
 			// getConnection(Dメソッドを利用し、DBに接続
