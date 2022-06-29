@@ -63,6 +63,7 @@ String strItemSituation = "";
         	<form action="<%=request.getContextPath()%>/UpdatePayAndShip" method="post">
         	<%
         	if(sellItemList != null) {
+
         		for(int i = 0; i < sellItemList.size(); i++) {
         			if (sellItemList.get(i).getItemSituation() == 1) {
         				strItemSituation = "入金待ち";
@@ -71,11 +72,13 @@ String strItemSituation = "";
         			} else if (sellItemList.get(i).getItemSituation() == 3) {
         				strItemSituation = "取引済";
         			}
+        		if (sellItemList.get(i).getItemSituation() != 0) {
         %>
         	<p>商品名：<%=sellItemList.get(i).getItemName()%></p>
         	<p>ステータス：<%=strItemSituation%></p><br>
         	<p>
-        <%	if (sellItemList.get(i).getItemSituation() == 2) {%>
+        <%		}
+        	if (sellItemList.get(i).getItemSituation() == 2) {%>
         	<input type="hidden" name="itemSituation" value="3">
         	<input type="hidden" name="itemId" value="<%=sellItemList.get(i).getItemId()%>">
         	<input type="submit" name="ship" value="発送しました">
