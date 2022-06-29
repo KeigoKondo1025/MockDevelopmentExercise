@@ -10,7 +10,7 @@
  	<link rel="stylesheet" href="<%=request.getContextPath() %>/common/css/style.css">
  	<link rel="stylesheet" href="<%=request.getContextPath() %>/common/css/signUp.css">
  	<script src="<%=request.getContextPath() %>/common/js/signUp.js" charset="UTF-8"></script>
- 	<title>Vicon -会員登録-</title>
+ 	<title>Vicon 会員登録</title>
  	<%
  		Date date = new Date();
  		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
