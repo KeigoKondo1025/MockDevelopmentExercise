@@ -74,7 +74,11 @@ String strItemSituation = "";
         				strItemSituation = "発送待ち";
         			} else if (sellItemList.get(i).getItemSituation() == 3) {
         				strItemSituation = "取引済";
+        			} else {
+        				strItemSituation = "";
         			}
+
+        			if (!strItemSituation.equals("")) {
         %>
         	<div class="update-payment-shipment">
 	        	<p>商品名：<%=sellItemList.get(i).getItemName()%></p>
@@ -87,7 +91,9 @@ String strItemSituation = "";
 	        	<input type="hidden" name="itemId" value="<%=sellItemList.get(i).getItemId()%>">
 	        	<input type="submit" name="ship" value="発送しました">
         	</form>
-        <%		}
+        <%
+        			}
+        		}
         	}
         }
         %>
