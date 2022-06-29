@@ -1,6 +1,6 @@
 <%@page contentType="text/html;charset=UTF-8" %>
 
-<%@page import="java.util.ArrayList" %>
+<%@page import="java.util.ArrayList, util.MyFormat" %>
 
 <%@page import="bean.*" %>
 <%@page import="dao.*" %>
@@ -13,6 +13,7 @@
 <%
 request.setCharacterEncoding("UTF-8");
 ArrayList<Item> itemList = (ArrayList<Item>)request.getAttribute("itemList");
+MyFormat moneyFormat = new MyFormat();
 %>
 
 <html>
@@ -75,7 +76,7 @@ ArrayList<Item> itemList = (ArrayList<Item>)request.getAttribute("itemList");
 					<td><%= sellerUser.getUserName() %></td>
 					<td><%= item.getItemName() %></td>
 					<td><%= category %></td>
-					<td><%= item.getPrice() %></td>
+					<td><%= moneyFormat.moneyFormat(item.getPrice()) %></td>
 					<td><%= item.getBoughtTime() %></td>
 					<td><%= buyerUser.getUserName() %></td>
 					<td><%= item.getInsertedTime() %></td>
