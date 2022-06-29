@@ -4,18 +4,19 @@
     margin-right: 10%;
     margin-top: 5%;
     display: flex;
+    flex-wrap:wrap;
     justify-content: center;
     align-items: center;
 }
 
 .recommendation-item {
-    width: 200px;
+    width: 25%;
     height: 300px;
     margin-right: 2.5%;
     margin-left: 2.5%;
 }
 .recommendation img {
-    width: 200px;
+    width: 100%;
     height: 200px;
 }
 
@@ -34,7 +35,7 @@
 }
 
 .entry-btn {
-	position: absolute;
+	position: fixed;
 	top:80vh;
 	left:80vw;
 	font-size:2rem;
@@ -42,4 +43,5 @@
 	padding:4px;
 	border-radius:16px;
 	background-color:white;
+	x-index:1;
 }
