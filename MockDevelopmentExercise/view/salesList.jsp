@@ -43,10 +43,10 @@ MyFormat moneyFormat = new MyFormat();
 					</select>
 					購入者名：<input type="text" name="buyerName">
 					<input type="hidden" name="cmd" value="searchSales">
-					<input type="submit" name="search" value="検索">
+					<input type="submit" value="検索">
 				</form>
 				<form action="<%= request.getContextPath() %>/SalesList" method="get">
-					<input type="submit" name="searchall" value="全件表示">
+					<input type="submit" value="全件表示">
 				</form>
 			</div>
 
