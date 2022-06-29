@@ -27,6 +27,7 @@ ArrayList<User> sellerUserList = (ArrayList<User>)request.getAttribute("sellerUs
 	<div class="container">
 		<h2>出品者一覧</h2>
 		<form action="<%= request.getContextPath() %>/SellerList">
+			<input type="hidden" name="cmd" value="allSeller">
 			<input type="submit" name="searchall" value="全件表示">
 		</form>
 

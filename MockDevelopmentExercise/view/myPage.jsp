@@ -47,8 +47,7 @@
 						ArrayList<Item> itemList = (ArrayList<Item>) request.getAttribute("itemList");
 							int count = 0; //真似して入れてみました
 							for (int i = 0; i < itemList.size(); i++) {
-								if (itemList.get(i).getItemSituation() != 4) {
-									count++;
+								count++;
 					%>
 					<div class="recommendation-item" id="<%=count%>">
 						<a
@@ -63,7 +62,6 @@
 					</div>
 					<%
 						}
-							}
 					%>
 				</div>
 				<%
@@ -79,7 +77,7 @@
 					<a href="<%=request.getContextPath()%>/UserList">ユーザ一覧</a>
 				</p>
 				<p class="">
-					<a href="<%=request.getContextPath()%>/SellerList">出品者一覧</a>
+					<a href="<%=request.getContextPath()%>/SellerList?cmd=allSeller">出品者一覧</a>
 				</p>
 				<%
 					}
