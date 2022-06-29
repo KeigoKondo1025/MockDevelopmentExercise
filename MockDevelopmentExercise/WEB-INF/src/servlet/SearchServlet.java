@@ -62,6 +62,7 @@ public class SearchServlet extends HttpServlet {
 
 				int categoryId = Integer.parseInt(request.getParameter("category"));//カテゴリー
 				String itemName = request.getParameter("item-name");//商品名
+				itemName = new String(itemName.getBytes("ISO-8859-1"), "UTF-8");
 				int priceRange = Integer.parseInt(request.getParameter("price-range"));//価格範囲
 				int prefectureId = Integer.parseInt(request.getParameter("prefecture-id"));//都道府県ID
 				int minPrice = 0;//最小価格
