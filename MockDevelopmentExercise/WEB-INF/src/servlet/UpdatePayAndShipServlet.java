@@ -13,6 +13,7 @@ import javax.servlet.http.*;
 
 import bean.*;
 import dao.*;
+import util.SendMail;
 
 public class UpdatePayAndShipServlet extends HttpServlet {
 
@@ -50,6 +51,19 @@ public class UpdatePayAndShipServlet extends HttpServlet {
 				if (itemSituation != 2) {
 					// 商品の取引情報を更新
 					itemDao.updateItemSituation(itemId, itemSituation);
+
+					//itemIdを元に商品情報を取得するメソッドの呼び出し
+					Item item = itemDao.selectByItemId(itemId);
+
+					//メールの文章を格納する変数
+					String message = user.getUserName() + "様\n購入ありがとうございます。\n\n商品情報\n商品名 : "
+							+ item.getItemName() + "\n金額 : " + item.getPrice() + "円\n購入日時 : " +
+							item.getBoughtTime() + "\n商品が発送されました。"
+									+ "数日後にはお手元に商品が届きます。";
+
+					//メールを送信するメソッドの呼び出し
+					SendMail sendMail = new SendMail();
+					sendMail.MailSetup(message);
 				} else {
 					itemDao.updateBoughtTime(itemId, itemSituation);
 				}
