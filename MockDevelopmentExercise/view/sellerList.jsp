@@ -42,7 +42,7 @@ ArrayList<User> sellerUserList = (ArrayList<User>)request.getAttribute("sellerUs
 			%>
 			<tr>
 				<td><a href="<%= request.getContextPath() %>/UserList"><%= sellerUser.getUserName() %></a></td>
-				<td><a href="<%= request.getContextPath() %>/SearchList?cmd=userIdSearch&sellerId=<%= sellerUser.getUserId() %>">出品一覧</a></td>
+				<td><a href="<%= request.getContextPath() %>/Search?cmd=userIdSearch&sellerId=<%= sellerUser.getUserId() %>">出品一覧</a></td>
 			</tr>
 			<%
 			}else{
@@ -52,7 +52,7 @@ ArrayList<User> sellerUserList = (ArrayList<User>)request.getAttribute("sellerUs
 			%>
 			<tr>
 				<td><a href="<%= request.getContextPath() %>/UserList"><%= user.getUserName() %></a></td>
-				<td><a href="<%= request.getContextPath() %>/SearchList?cmd=userIdSearch&sellerId=<%= user.getUserId() %>">出品一覧</a></td>
+				<td><a href="<%= request.getContextPath() %>/Search?cmd=userIdSearch&sellerId=<%= user.getUserId() %>">出品一覧</a></td>
 			</tr>
 			<%
 				}
