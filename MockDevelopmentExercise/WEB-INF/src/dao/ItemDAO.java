@@ -589,7 +589,7 @@ public class ItemDAO {
 				if(i != sellerId.size()-1) {
 				sql += " or ";
 				} else {
-					sql += ") and";
+					sql += ") and (";
 				}
 			};
 			//対象の購入者IDを全てsql文に含む
@@ -598,7 +598,7 @@ public class ItemDAO {
 				if(i != sellerId.size()-1) {
 				sql += " or ";
 				} else {
-					sql += ") and (";
+					sql += ") and ";
 				}
 			};
 			sql += " item_situation = 3";

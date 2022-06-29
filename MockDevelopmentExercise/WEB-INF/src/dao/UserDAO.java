@@ -248,7 +248,7 @@ public class UserDAO {
 			con = getConnection();
 
 			// SQL文の作成
-			String sql = "SELECT user_id FROM users_tb while user_name like '%" + userName + "%'";
+			String sql = "SELECT user_id FROM users_tb where user_name like '%" + userName + "%'";
 
 			// SQL文を送信するための準備
 			smt = con.createStatement();
