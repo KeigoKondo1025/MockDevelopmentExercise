@@ -8,6 +8,7 @@
 <link rel="stylesheet" href="<%= request.getContextPath() %>/common/css/style.css">
 <link rel="stylesheet" href="<%= request.getContextPath() %>/common/css/itemDetail.css">
 <link rel="stylesheet" href="<%= request.getContextPath() %>/common/css/buyitem.css">
+<link rel="stylesheet" href="<%=request.getContextPath() %>/common/css/footer.css">
 
 <%
 request.setCharacterEncoding("UTF-8");
