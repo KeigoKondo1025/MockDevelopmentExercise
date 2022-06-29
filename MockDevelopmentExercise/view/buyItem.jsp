@@ -36,7 +36,14 @@ Item item = itemDao.selectByItemId(itemId);
 						<p>値段 <%= item.getPrice() %></p>
 						<p>商品詳細 <%= item.getSellerMessage() %></p>
 						<input type="hidden" name="itemId" value=<%= item.getItemId() %>>
+						
+						<%
+						if(item.getItemSituation == 0){
+						%>
 						<br> <br> <input type="submit" value="購入する" class="buy-btn">
+						<%
+						}
+						%>
 					</form>
 				</div>
 			</div>
