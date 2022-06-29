@@ -264,7 +264,8 @@ window.addEventListener('DOMContentLoaded', () => {
 		}
 
 
-		console.log("clear");
+		document.signUpForm.submit();
+		console.log("clear!");
 
 
 	}, false);
