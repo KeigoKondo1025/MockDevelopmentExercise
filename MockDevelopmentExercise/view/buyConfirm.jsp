@@ -11,6 +11,7 @@ MyFormat moneyFormat = new MyFormat();
 		<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/common/css/style.css">
 		<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/common/css/menu.css">
 		<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/common/css/userInfo.css">
+		<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/common/css/footer.css">
 	</head>
 	<body>
 		<%@include file="/common/header.jsp" %>
@@ -38,5 +39,7 @@ MyFormat moneyFormat = new MyFormat();
 			<br>
 			<a href="<%= request.getContextPath() %>/Index">トップページ</a>
 		</div>
+		
+		<%@include file="/common/footer.jsp" %>
 	</body>
 </html>
