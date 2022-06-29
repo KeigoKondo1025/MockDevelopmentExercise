@@ -38,7 +38,7 @@ Item item = itemDao.selectByItemId(itemId);
 						<input type="hidden" name="itemId" value=<%= item.getItemId() %>>
 						
 						<%
-						if(item.getItemSituation == 0){
+						if(item.getItemSituation() == 0){
 						%>
 						<br> <br> <input type="submit" value="購入する" class="buy-btn">
 						<%
