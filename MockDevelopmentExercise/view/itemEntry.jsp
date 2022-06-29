@@ -9,6 +9,7 @@ User user = (User)session.getAttribute("user");
 		<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/common/css/style.css">
 		<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/common/css/menu.css">
 		<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/common/css/itemEntry.css">
+		<link rel="stylesheet" href="<%=request.getContextPath() %>/common/css/footer.css">
 	</head>
 	<body>
 		<%@include file="../common/header.jsp" %>
