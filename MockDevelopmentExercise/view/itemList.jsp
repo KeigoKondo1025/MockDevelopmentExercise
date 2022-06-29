@@ -14,7 +14,7 @@ String strItemSituation = "";
     <link rel="stylesheet" href="<%=request.getContextPath() %>/common/css/menu.css">
     <link rel="stylesheet" href="<%=request.getContextPath() %>/common/css/style.css">
     <link rel="stylesheet" href="<%=request.getContextPath() %>/common/css/userList.css">
-    <title>神田雑貨店フリマ</title>
+    <title>Vicon 商品一覧</title>
 </head>
 <body>
 	<%@include file="/common/header.jsp" %>
