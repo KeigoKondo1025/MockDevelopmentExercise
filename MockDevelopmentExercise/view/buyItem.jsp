@@ -41,5 +41,6 @@ Item item = itemDao.selectByItemId(itemId);
 				</div>
 			</div>
 		</div>
+		<%@include file="/common/footer.jsp" %>
 	</body>
 </html>
