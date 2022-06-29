@@ -7,7 +7,7 @@ MyFormat moneyFormat = new MyFormat();
 %>
 <html>
 	<head>
-		<title>購入確認</title>
+		<title>Vicon 購入確認</title>
 		<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/common/css/style.css">
 		<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/common/css/menu.css">
 		<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/common/css/userInfo.css">
