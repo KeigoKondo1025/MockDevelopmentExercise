@@ -2,6 +2,7 @@
 
 <%@page import="bean.*" %>
 <%@page import="dao.*" %>
+<%@page import="util.MyFormat" %>
 
 
 <link rel="stylesheet" href="<%= request.getContextPath() %>/common/css/menu.css">
@@ -15,6 +16,7 @@ request.setCharacterEncoding("UTF-8");
 int itemId = Integer.parseInt(request.getParameter("itemId"));
 ItemDAO itemDao = new ItemDAO();
 Item item = itemDao.selectByItemId(itemId);
+MyFormat myFormat = new MyFormat();
 %>
 
 <html>
@@ -33,7 +35,7 @@ Item item = itemDao.selectByItemId(itemId);
 				<div class="item-info buy-item-info">
 					<form action="<%= request.getContextPath() %>/BuyItem" method="get">
 						<p>商品名 <%= item.getItemName() %></p>
-						<p>値段 <%= item.getPrice() %></p>
+						<p>値段 <%= myFormat.moneyFormat(item.getPrice()) %></p>
 						<p>商品詳細 <%= item.getSellerMessage() %></p>
 						<input type="hidden" name="itemId" value=<%= item.getItemId() %>>
 						
