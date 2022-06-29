@@ -115,7 +115,7 @@ public class UserDAO {
 		Statement smt = null;	// SQLステートメント
 
 		// ISBNによる検索用のSQL文を文字列として定義
-		String sql = "SELECT * FROM users_tb WHERE user_id ='" + userId + "'";
+		String sql = "SELECT * FROM users_tb WHERE user_id =" + userId;
 
 		// オブジェクト化
 		User user = new User();
@@ -348,7 +348,7 @@ public class UserDAO {
 					+ "',postal_code = '" + user.getPostalCode() + "',prefecture_id = " + user.getPrefectureId()
 					+ ",address1 = '" + user.getAddress1() + "',address2 = '" + user.getAddress2()
 					+ "',phone_number = '"+ user.getPhoneNumber() + "',mail = '" + user.getMail()
-					+ "' WHERE user_id = '" + user.getUserId() + "'";
+					+ "' WHERE user_id = " + user.getUserId() ;
 
 			// メソッドを利用してDBに接続
 			con = getConnection();
@@ -394,7 +394,7 @@ public class UserDAO {
 
 		try {
 			// 更新用のSQL文を文字列として格納
-			String sql = "UPDATE users_tb SET is_user_banned = " + isUserBanned + " WHERE user_id = '" + userId + "'";
+			String sql = "UPDATE users_tb SET is_user_banned = " + isUserBanned + " WHERE user_id = " + userId;
 
 			// メソッドを利用してDBに接続
 			con = getConnection();
@@ -436,7 +436,7 @@ public class UserDAO {
 		Statement smt = null;
 
 		// 削除用のSQL文を文字列として定義
-		String sql = "DELETE FROM users_tb WHERE user_id = '" + user.getUserId() + "'";
+		String sql = "DELETE FROM users_tb WHERE user_id = " + user.getUserId();
 
 		try {
 			// getConnection(Dメソッドを利用し、DBに接続
