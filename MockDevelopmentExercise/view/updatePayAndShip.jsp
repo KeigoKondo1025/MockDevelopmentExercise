@@ -29,8 +29,7 @@ String strItemSituation = "";
     <div class="container">
     	<!--購入商品-->
     	<h2>購入商品</h2>
-        <div class="update-payment-shipment">
-        	<form action="<%=request.getContextPath()%>/UpdatePayAndShip" method="post">
+
         <%
         	if(buyItemList != null) {
         		for(int i = 0; i < buyItemList.size(); i++) {
@@ -42,28 +41,31 @@ String strItemSituation = "";
         				strItemSituation = "取引済";
         			}
         %>
-        	<p>商品名：<%=buyItemList.get(i).getItemName()%></p>
-        	<p>ステータス：<%=strItemSituation%></p>
-        	<p>
-        <%	if (buyItemList.get(i).getItemSituation() == 1) {%>
+        	<div class="update-payment-shipment">
+	        	<p>商品名：<%=buyItemList.get(i).getItemName()%></p>
+	        	<p>ステータス：<%=strItemSituation%></p>
+        	</div>
+
+        <%
+        if(buyItemList.get(i).getItemSituation() == 1) {
+        %>
+        <form class="update-payment-shipment" action="<%=request.getContextPath()%>/UpdatePayAndShip" method="post">
         	<input type="hidden" name="itemSituation" value="2">
         	<input type="hidden" name="itemId" value="<%=buyItemList.get(i).getItemId()%>">
         	<input type="submit" name="pay" value="入金しました">
-        <%}%>
-        </p>
-        <%
+        </form>
+        <%			}
         		}
         	}
         %>
-			</form>
-        </div>
+		</div>
+
+    <div class="container" id="update-payment-dosplay">
         <!--出品商品のうち売れたもの-->
         <h2>売れた商品</h2>
-        <div class="update-payment-shipment">
-        	<form action="<%=request.getContextPath()%>/UpdatePayAndShip" method="post">
+
         	<%
         	if(sellItemList != null) {
-
         		for(int i = 0; i < sellItemList.size(); i++) {
         			if (sellItemList.get(i).getItemSituation() == 1) {
         				strItemSituation = "入金待ち";
@@ -72,24 +74,24 @@ String strItemSituation = "";
         			} else if (sellItemList.get(i).getItemSituation() == 3) {
         				strItemSituation = "取引済";
         			}
-        		if (sellItemList.get(i).getItemSituation() != 0) {
         %>
-        	<p>商品名：<%=sellItemList.get(i).getItemName()%></p>
-        	<p>ステータス：<%=strItemSituation%></p><br>
-        	<p>
-        <%		}
-        	if (sellItemList.get(i).getItemSituation() == 2) {%>
-        	<input type="hidden" name="itemSituation" value="3">
-        	<input type="hidden" name="itemId" value="<%=sellItemList.get(i).getItemId()%>">
-        	<input type="submit" name="ship" value="発送しました">
-        <%}%>
-        </p>
-        <%
-        }
-        	}
-        %>
+        	<div class="update-payment-shipment">
+	        	<p>商品名：<%=sellItemList.get(i).getItemName()%></p>
+	        	<p>ステータス：<%=strItemSituation%></p>
+        	</div>
+
+        <%	if (sellItemList.get(i).getItemSituation() == 2) {%>
+        	<form class="update-payment-shipment" action="<%=request.getContextPath()%>/UpdatePayAndShip" method="post">
+	        	<input type="hidden" name="itemSituation" value="3">
+	        	<input type="hidden" name="itemId" value="<%=sellItemList.get(i).getItemId()%>">
+	        	<input type="submit" name="ship" value="発送しました">
         	</form>
+        <%		}
+        	}
+        }
+        %>
+
         </div>
-    </div>
+
 </body>
 </html>
