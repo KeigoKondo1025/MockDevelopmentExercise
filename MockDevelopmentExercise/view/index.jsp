@@ -62,12 +62,10 @@
 <head>
 <title>Vicon トップページ</title>
 <meta charset="UTF-8">
-<link rel="stylesheet"
-	href="<%=request.getContextPath()%>/common/css/style.css"><!-- 共通CSS -->
-<link rel="stylesheet"
-	href="<%=request.getContextPath()%>/common/css/menu.css"><!-- ヘッダーCSS -->
-<link rel="stylesheet"
-	href="<%=request.getContextPath()%>/common/css/recommendation.css"><!-- 商品一覧CSS -->
+<link rel="stylesheet" href="<%=request.getContextPath()%>/common/css/style.css"><!-- 共通CSS -->
+<link rel="stylesheet" href="<%=request.getContextPath()%>/common/css/menu.css"><!-- ヘッダーCSS -->
+<link rel="stylesheet" href="<%=request.getContextPath()%>/common/css/recommendation.css"><!-- 商品一覧CSS -->
+<link rel="stylesheet" href="<%=request.getContextPath() %>/common/css/footer.css">
 </head>
 <body>
 	<%@include file="/common/header.jsp"%>
