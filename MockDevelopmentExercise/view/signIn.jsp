@@ -25,7 +25,7 @@
 
 <html lang="ja">
 <head>
-<title>神田雑貨店フリマ</title>
+<title>Vicon ログイン</title>
 <meta charset="UTF-8">
 <link rel="stylesheet" href="<%=request.getContextPath() %>/common/css/style.css">
 <link rel="stylesheet" href="<%=request.getContextPath() %>/common/css/menu.css">
