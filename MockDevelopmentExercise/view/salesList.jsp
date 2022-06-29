@@ -17,7 +17,7 @@ ArrayList<Item> itemList = (ArrayList<Item>)request.getAttribute("itemList");
 
 <html>
 	<head>
-	<title>Vicon</title>
+	<title>Vicon 売上げ</title>
 	</head>
 	<body>
 
