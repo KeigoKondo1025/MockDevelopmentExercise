@@ -11,7 +11,7 @@ String prefectureName = null;
 %>
 <html>
 	<head>
-		<title>ユーザー情報変更</title>
+		<title>Vicon ユーザー情報変更</title>
 
 	</head>
 	<body>
