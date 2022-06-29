@@ -97,5 +97,6 @@ String strItemSituation = "";
             <!-- 繰り返し処理ここまで-->
         </table>
     </div>
+	<%@include file="/common/footer.jsp" %>
 </body>
 </html>
