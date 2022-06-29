@@ -601,7 +601,7 @@ public class ItemDAO {
 					sql += ") and ";
 				}
 			};
-			sql += " item_situation = 3";
+			sql += " item_situation = 0";
 		};
 		//結果を格納する変数
 		ArrayList<Item> itemList = new ArrayList<Item>();
