@@ -30,7 +30,7 @@ String strItemSituation = "";
     	<!--購入商品-->
     	<h2>購入商品</h2>
         <div class="update-payment-shipment">
-        	<form action="<%=request.getContextPath()%>/update" method="post">
+        	<form action="<%=request.getContextPath()%>/UpdatePayAndShip" method="post">
         <%
         	if(buyItemList != null) {
         		for(int i = 0; i < buyItemList.size(); i++) {
