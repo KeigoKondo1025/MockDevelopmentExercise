@@ -40,7 +40,7 @@ String strItemSituation = "";
 				 <input type="hidden" name="cmd" value="itemSearch">
                  <input type="submit" name="search" value="検索">
               </form>
-              <form action="<%=request.getContextPath()%>/ItemList"method="post">
+              <form action="<%=request.getContextPath()%>/ItemList"method="get">
                    <input type="submit" name="searchall" value="全件表示">
               </form>
          </div>
