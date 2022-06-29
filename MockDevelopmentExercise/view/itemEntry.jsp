@@ -5,7 +5,7 @@ User user = (User)session.getAttribute("user");
 %>
 <html>
 	<head>
-		<title>商品出品</title>
+		<title>Vicon 商品出品</title>
 		<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/common/css/style.css">
 		<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/common/css/menu.css">
 		<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/common/css/itemEntry.css">
