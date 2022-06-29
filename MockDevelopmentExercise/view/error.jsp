@@ -4,11 +4,10 @@
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
-<link rel="stylesheet"
-	href="<%=request.getContextPath()%>/common/css/style.css">
+<link rel="stylesheet "href="<%=request.getContextPath()%>/common/css/style.css">
 <!-- 共通CSS -->
-<link rel="stylesheet"
-	href="<%=request.getContextPath()%>/common/css/menu.css">
+<link rel="stylesheet" href="<%=request.getContextPath()%>/common/css/menu.css">
+<link rel="stylesheet" href="<%=request.getContextPath() %>/common/css/footer.css">
 <!-- ヘッダーCSS -->
 <title>Vicon エラーページ</title>
 </head>
