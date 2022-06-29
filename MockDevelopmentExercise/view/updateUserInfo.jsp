@@ -4,6 +4,7 @@
 <link rel="stylesheet" href="<%=request.getContextPath() %>/common/css/style.css">
 <link rel="stylesheet" href="<%=request.getContextPath() %>/common/css/menu.css">
 <link rel="stylesheet" href="<%=request.getContextPath() %>/common/css/userInfo.css">
+<link rel="stylesheet" href="<%=request.getContextPath() %>/common/css/footer.css">
 
 <%
 User userinfo = (User)session.getAttribute("user");
