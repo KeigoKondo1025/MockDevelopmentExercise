@@ -60,7 +60,7 @@
 
 <html lang="ja">
 <head>
-<title>Vicon</title>
+<title>Vicon トップページ</title>
 <meta charset="UTF-8">
 <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/common/css/style.css"><!-- 共通CSS -->
