@@ -47,7 +47,7 @@ String prefectureName = null;
 					<tr>
 						<th>郵便番号</th>
 						<td>〒<%= userinfo.getPostalCode() %></td>
-						<td>〒<input type="text" name="postalCpde" size="4"><input type="text" name="postalCode2" size="5"></td>
+						<td>〒<input type="text" name="postalCpde"></td>
 					</tr>
 					<tr>
 						<th>都道府県</th>
