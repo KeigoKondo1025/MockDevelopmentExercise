@@ -33,22 +33,22 @@ String prefectureName = null;
 					<tr>
 						<th>ユーザー名</th>
 						<td><%= userinfo.getUserName() %></td>
-						<td><input type="text" name="userName"></td>
+						<td><input type="text" name="userName" required></td>
 					</tr>
 					<tr>
 						<th>苗字</th>
 						<td><%= userinfo.getFamilyName() %></td>
-						<th><input type="text" name="familyName"></th>
+						<td><input type="text" name="familyName" required></td>
 					</tr>
 					<tr>
 						<th>名前</th>
 						<td><%= userinfo.getFirstName() %></td>
-						<td><input type="text" name="firstName"></td>
+						<td><input type="text" name="firstName" required></td>
 					</tr>
 					<tr>
 						<th>郵便番号</th>
 						<td>〒<%= userinfo.getPostalCode() %></td>
-						<td>〒<input type="text" name="postalCpde"></td>
+						<td>〒<input type="text" name="postalCpde" required></td>
 					</tr>
 					<tr>
 						<th>都道府県</th>
@@ -112,38 +112,38 @@ String prefectureName = null;
 					<tr>
 						<th>住所1</th>
 						<td><%= userinfo.getAddress1() %></td>
-						<td><input type="text" name="address1"></td>
+						<td><input type="text" name="address1" required></td>
 					</tr>
 					<tr>
 						<th>住所2</th>
 						<td><%=userinfo.getAddress2() %></td>
-						<td><input type="text" name="address2"></td>
+						<td><input type="text" name="address2" required></td>
 					</tr>
 					<tr>
 						<th>メールアドレス</th>
 						<td><%= userinfo.getMail() %></td>
-						<td><input type="text" name="mail"></td>
+						<td><input type="text" name="mail" required></td>
 					</tr>
 					<tr>
 					<tr>
 						<th>電話番号</th>
 						<td><%= userinfo.getPhoneNumber() %></td>
-						<td><input type="text" name="phoneNumber"></td>
+						<td><input type="text" name="phoneNumber" required></td>
 					</tr>
 					<tr>
 						<th>パスワード</th>
 						<td><%= userinfo.getPassWord() %></td>
-						<td><input type="text" name="pass"></td>
+						<td><input type="text" name="pass" required></td>
 					</tr>
 				</table>
-				<input type="hidden" name="userId" value="<%=userinfo.getUserId() %>">
-				<input type="hidden" name="mail" value="<%=userinfo.getMail() %>">
-				<input type="hidden" name="authority" value="<%=userinfo.getAuthority() %>">
-				<input type="hidden" name="userId" value="<%=userinfo.getUserId() %>">
+				<input type="hidden" name="userId" value="<%=userinfo.getUserId() %>" required>
+				<input type="hidden" name="mail" value="<%=userinfo.getMail() %>" required>
+				<input type="hidden" name="authority" value="<%=userinfo.getAuthority() %>" required>
+				<input type="hidden" name="userId" value="<%=userinfo.getUserId() %>" required>
 				<%
 					}
 				%>
-				<input type="submit" value="確定">
+				<input type="submit" value="確定" required>
 			</form>
 		</div>
 		<%@include file="/common/footer.jsp" %>
