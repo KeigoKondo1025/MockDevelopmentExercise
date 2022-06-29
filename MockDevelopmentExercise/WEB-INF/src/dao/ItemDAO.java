@@ -471,7 +471,7 @@ public class ItemDAO {
 		Statement smt = null;
 
 		//sql文を文字列で設定
-		String sql = "select * from items_tb where item_situation = 0";
+		String sql = "select * from items_tb where item_situation = 3";
 		//結果を格納する変数
 		ArrayList<Item> itemList = new ArrayList<Item>();
 
@@ -601,7 +601,7 @@ public class ItemDAO {
 					sql += ") and ";
 				}
 			};
-			sql += " item_situation = 0";
+			sql += " item_situation = 3";
 		};
 		//結果を格納する変数
 		ArrayList<Item> itemList = new ArrayList<Item>();
