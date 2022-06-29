@@ -29,6 +29,7 @@
 <meta charset="UTF-8">
 <link rel="stylesheet" href="<%=request.getContextPath() %>/common/css/style.css">
 <link rel="stylesheet" href="<%=request.getContextPath() %>/common/css/menu.css">
+<link rel="stylesheet" href="<%=request.getContextPath() %>/common/css/footer.css">
 </head>
 <body>
 	<%@include file="/common/header.jsp"%>
