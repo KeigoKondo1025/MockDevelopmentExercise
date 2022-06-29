@@ -46,6 +46,7 @@ MyFormat moneyFormat = new MyFormat();
 					<input type="submit" value="検索">
 				</form>
 				<form action="<%= request.getContextPath() %>/SalesList" method="get">
+					<input type="hidden" name="cmd" value="sales">
 					<input type="submit" value="全件表示">
 				</form>
 			</div>
