@@ -24,7 +24,11 @@ public class UserSearchServlet extends HttpServlet {
 			String userName = (String)request.getParameter("userName");
 
 			ArrayList<Integer> userIdList = userDao.searchByUserName(userName);
-			request.setAttribute("userIdList", userIdList);
+			ArrayList<User> userList = new ArrayList<User>();
+ 			for(int id:userIdList) {
+ 				userList.add(userDao.searchByUserId(id));
+ 			}
+ 			request.setAttribute("userList", userList);
 
 		} catch (IllegalStateException e) {
 			error = "DB接続エラーの為、検索出来ません。";
