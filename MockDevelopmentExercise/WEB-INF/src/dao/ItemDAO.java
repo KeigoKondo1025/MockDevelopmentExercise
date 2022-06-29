@@ -464,14 +464,14 @@ public class ItemDAO {
 		return itemList;
 	}
 
-	//購入済みの商品を全て検索するメソッド
+	//出品中の商品を全て検索するメソッド
 	public ArrayList<Item> selectSales(){
 		//データベース接続に利用する変数
 		Connection con = null;
 		Statement smt = null;
 
 		//sql文を文字列で設定
-		String sql = "select * from items_tb where item_situation = 3";
+		String sql = "select * from items_tb where item_situation = 0";
 		//結果を格納する変数
 		ArrayList<Item> itemList = new ArrayList<Item>();
 
@@ -517,14 +517,14 @@ public class ItemDAO {
 		return itemList;
 	}
 
-	//購入済みの商品から重複する出品者情報を含まない出品者IDを検索するメソッド
+	//出品中の商品から重複する出品者情報を含まない出品者IDを検索するメソッド
 	public ArrayList<Integer> selectSellerList(){
 		//データベース接続に利用する変数
 		Connection con = null;
 		Statement smt = null;
 
 		//sql文を文字列で設定
-		String sql = "select item_situation,seller_user_id from items_tb group by item_situation,seller_user_id having item_situation = 3";
+		String sql = "select item_situation,seller_user_id from items_tb group by item_situation,seller_user_id having item_situation = 0";
 		//結果を格納する変数
 		ArrayList<Integer> sellerIdList = new ArrayList<Integer>();
 
