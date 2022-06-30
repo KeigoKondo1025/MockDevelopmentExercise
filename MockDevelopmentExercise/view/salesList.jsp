@@ -15,6 +15,7 @@
 request.setCharacterEncoding("UTF-8");
 ArrayList<Item> itemList = (ArrayList<Item>)request.getAttribute("itemList");
 MyFormat moneyFormat = new MyFormat();
+int total = 0;
 %>
 
 <html>
@@ -73,6 +74,7 @@ MyFormat moneyFormat = new MyFormat();
 						User sellerUser = userDao.searchByUserId(item.getSellerId());
 						User buyerUser = userDao.searchByUserId(item.getBuyerId());
 						String category = idToNameDao.categoryIdToName(item.getCategoryId());
+						total += item.getPrice();
 				%>
 				<tr>
 					<td><%= sellerUser.getUserName() %></td>
@@ -89,6 +91,10 @@ MyFormat moneyFormat = new MyFormat();
 				}
 				%>
 			</table>
+			<div class="sum">
+				<p>合計 : <%= moneyFormat.moneyFormat(total) %> 売上げ : <%= moneyFormat.moneyFormat(total/10) %></p>
+			</div>
+
 		</div>
 		<%@include file="/common/footer.jsp" %>
 	</body>
