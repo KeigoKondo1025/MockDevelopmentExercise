@@ -117,7 +117,7 @@ String prefectureName = null;
 					<tr>
 						<th>住所2</th>
 						<td><%=userinfo.getAddress2() %></td>
-						<td><input type="text" name="address2" required></td>
+						<td><input type="text" name="address2"></td>
 					</tr>
 					<tr>
 						<th>メールアドレス</th>
