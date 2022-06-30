@@ -8,3 +8,9 @@
 	width: 14%;
 	background-color: dimgray;
 }
+
+.sum p{
+	border-top: 3px double dimgray;
+	margin-right: 10px;
+	text-align: right;
+}
