@@ -115,7 +115,7 @@ public class UserDAO {
 		Statement smt = null;	// SQLステートメント
 
 		// ISBNによる検索用のSQL文を文字列として定義
-		String sql = "SELECT * FROM users_tb WHERE user_id =" + userId + " is_user_deleted = false";
+		String sql = "SELECT * FROM users_tb WHERE user_id =" + userId + " and is_user_deleted = false";
 
 		// オブジェクト化
 		User user = new User();
