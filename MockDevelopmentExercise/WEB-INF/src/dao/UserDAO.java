@@ -51,7 +51,7 @@ public class UserDAO {
 			con = getConnection();
 
 			// SQL文の作成
-			String sql = "SELECT * FROM users_tb ORDER BY user_id";
+			String sql = "SELECT * FROM users_tb where is_user_deleted = false ORDER BY user_id";
 
 			// SQL文を送信するための準備
 			smt = con.createStatement();
@@ -115,7 +115,7 @@ public class UserDAO {
 		Statement smt = null;	// SQLステートメント
 
 		// ISBNによる検索用のSQL文を文字列として定義
-		String sql = "SELECT * FROM users_tb WHERE user_id =" + userId;
+		String sql = "SELECT * FROM users_tb WHERE user_id =" + userId + " is_user_deleted = false";
 
 		// オブジェクト化
 		User user = new User();
@@ -248,7 +248,7 @@ public class UserDAO {
 			con = getConnection();
 
 			// SQL文の作成
-			String sql = "SELECT user_id FROM users_tb where user_name like '%" + userName + "%'";
+			String sql = "SELECT user_id FROM users_tb where user_name like '%" + userName + "%' and is_user_deleted = false";
 
 			// SQL文を送信するための準備
 			smt = con.createStatement();
